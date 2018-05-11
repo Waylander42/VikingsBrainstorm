@@ -38,6 +38,62 @@ Board* BoardFactory::createBoard1() { //top right bot left
 	return new Board(board);
 }
 
+Board* BoardFactory::createBoard2() { //top right bot left
+	SeaPart board[3][3];
+	board[0][0] = SeaPart(1, 0, 1, 0); 
+	board[0][1] = SeaPart(0, 1, 0, 1); 
+	board[0][2] = SeaPart(1, 0, 1, 0); 
+	board[1][0] = SeaPart(0, 0, 1, 1); 
+	board[1][1] = SeaPart(1, 1, 0, 0); 
+	board[1][2] = SeaPart(0, 1, 1, 0); 
+	board[2][0] = SeaPart(0, 0, 1, 1); 
+	board[2][1] = SeaPart(0, 1, 1, 0); 
+	board[2][2] = SeaPart(0, 1, 1, 0); 
+	return new Board(board);
+}
+
+Board* BoardFactory::createBoard3() { //top right bot left
+	SeaPart board[3][3];
+	board[0][0] = SeaPart(1, 0, 1, 0); 
+	board[0][1] = SeaPart(1, 1, 0, 0); 
+	board[0][2] = SeaPart(1, 0, 1, 0); 
+	board[1][0] = SeaPart(0, 1, 1, 0); 
+	board[1][1] = SeaPart(1, 1, 0, 0); 
+	board[1][2] = SeaPart(0, 1, 1, 0); 
+	board[2][0] = SeaPart(0, 1, 1, 0); 
+	board[2][1] = SeaPart(1, 0, 1, 0); 
+	board[2][2] = SeaPart(0, 1, 1, 0); 
+	return new Board(board);
+}
+
+Board* BoardFactory::createBoard4() { //top right bot left
+	SeaPart board[3][3];
+	board[0][0] = SeaPart(1, 0, 1, 0); 
+	board[0][1] = SeaPart(1, 0, 1, 0); 
+	board[0][2] = SeaPart(1, 0, 0, 1); 
+	board[1][0] = SeaPart(0, 0, 1, 1); 
+	board[1][1] = SeaPart(0, 0, 1, 1);
+	board[1][2] = SeaPart(1, 0, 0, 1); 
+	board[2][0] = SeaPart(0, 0, 1, 1);
+	board[2][1] = SeaPart(0, 0, 1, 1); 
+	board[2][2] = SeaPart(1, 0, 1, 0); 
+	return new Board(board);
+}
+
+Board* BoardFactory::createBoard5() { //top right bot left
+	SeaPart board[3][3];
+	board[0][0] = SeaPart(1, 0, 1, 0); 
+	board[0][1] = SeaPart(1, 1, 0, 0); 
+	board[0][2] = SeaPart(1, 1, 0, 0); 
+	board[1][0] = SeaPart(0, 1, 1, 0);
+	board[1][1] = SeaPart(1, 1, 0, 0);
+	board[1][2] = SeaPart(1, 0, 1, 0);
+	board[2][0] = SeaPart(0, 1, 1, 0); 
+	board[2][1] = SeaPart(1, 0, 1, 0);
+	board[2][2] = SeaPart(0, 1, 1, 0);
+	return new Board(board);
+}
+
 Board* BoardFactory::createBoard10() { //top right bot left
 	SeaPart board[3][3];
 	board[0][0] = SeaPart(0, 1, 0, 1); //5
