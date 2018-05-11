@@ -93,3 +93,18 @@ void Boat::setIdentity(int _identity) {
 int Boat::getIdentity() {
 	return identity;
 }
+
+char Boat::getColor() {
+	switch (color)
+	{
+	case Boat::RED: return 'R';
+		break;
+	case Boat::GREEN: return 'G';
+		break;
+	case Boat::BLUE: return 'B';
+		break;
+	case Boat::YELLOW: return 'Y';
+		break;
+	}
+	return 'X';
+}

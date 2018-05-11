@@ -19,6 +19,7 @@ public:
 	Orientation getOrientation2();
 	void setIdentity(int);
 	int getIdentity();
+	char getColor();
 
 private:
 	Orientation orientation1;

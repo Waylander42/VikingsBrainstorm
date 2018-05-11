@@ -426,6 +426,44 @@ void Board::print() {
 		}
 	}
 
+	for (int i = 0; i < nbBoats; i++) {
+		for (int x = 0; x < 3; x++) {
+			for (int y = 0; y < 3; y++) {
+				int centerX = x * 5 + 3;
+				int centerY = y * 5 + 3;
+				Boat::Orientation orientation;
+				if (boats[i].getPart1() == &board[x][y]) {
+					orientation = boats[i].getOrientation1;
+				}
+				else if (boats[i].getPart2() == &board[x][y]) {
+					orientation = boats[i].getOrientation2;
+				}
+				switch (orientation) {
+				case Boat::Orientation::TOP: grid[centerX][centerY - 1] = boats[i].getColor();
+											 grid[centerX][centerY - 2] = boats[i].getColor();
+											 grid[centerX + 1][centerY - 2] = boats[i].getColor();
+											 grid[centerX + 1][centerY - 2] = boats[i].getColor();
+											 break;
+				case Boat::Orientation::LEFT: grid[centerX + 1][centerY] = boats[i].getColor();
+											 grid[centerX + 2][centerY] = boats[i].getColor();
+											 grid[centerX + 2][centerY + 1] = boats[i].getColor();
+											 grid[centerX + 2][centerY - 1] = boats[i].getColor();
+											 break;
+				case Boat::Orientation::BOT: grid[centerX][centerY + 1] = boats[i].getColor();
+											 grid[centerX][centerY + 2] = boats[i].getColor();
+											 grid[centerX + 1][centerY + 2] = boats[i].getColor();
+											 grid[centerX + 1][centerY + 2] = boats[i].getColor();
+											 break;
+				case Boat::Orientation::RIGHT: grid[centerX + 1][centerY] = boats[i].getColor();
+											   grid[centerX + 2][centerY] = boats[i].getColor();
+											   grid[centerX + 2][centerY + 1] = boats[i].getColor();
+											   grid[centerX + 2][centerY - 1] = boats[i].getColor();
+											   break;
+				}
+			}
+		}
+	}
+
 
 	for (int x = 0; x < GRID_SIZE; x++) {
 		for (int y = 0; y < GRID_SIZE; y++) {
