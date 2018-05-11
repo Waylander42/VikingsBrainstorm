@@ -15,7 +15,12 @@ public:
 	static Board* createBoard3();
 	static Board* createBoard4();
 	static Board* createBoard5();
+	static Board* createBoard6();
+	static Board* createBoard7();
+	static Board* createBoard8();
+	static Board* createBoard9();
 	static Board* createBoard10();
+	static Board* createBoard11();
 	static Board* createBoard20();
 	static Board* createBoard30();
 	static Board* createBoard40();
