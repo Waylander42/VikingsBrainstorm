@@ -7,7 +7,7 @@ class Board
 public:
 	Board();
 	~Board();
-	Board(SeaPart[3][3]);
+	Board(SeaPart[3][3], Boat*, int);
 	int getIdentity();
 	bool canRotate(int, int);
 	bool rotateLeft(int, int);
