@@ -8,6 +8,7 @@ public:
 	Board();
 	~Board();
 	Board(SeaPart[3][3]);
+	int getIdentity();
 	bool canRotate(int, int);
 	bool rotateLeft(int, int);
 	bool rotateRight(int, int);
