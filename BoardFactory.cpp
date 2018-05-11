@@ -82,44 +82,44 @@ Board* BoardFactory::createBoard30() { //top right bot left
 	return new Board(board);
 }
 
-Board* BoardFactory::createBoard40() { //top right bot left verif
+Board* BoardFactory::createBoard40() { //top right bot left 
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(0, 1, 1, 0);
-	board[0][1] = SeaPart(1, 0, 1, 0);
-	board[0][2] = SeaPart(0, 0, 1, 1);
-	board[1][0] = SeaPart(0, 1, 1, 0);
-	board[1][1] = SeaPart(0, 1, 0, 1);
-	board[1][2] = SeaPart(1, 0, 1, 0);
-	board[2][0] = SeaPart(0, 1, 1, 0);
-	board[2][1] = SeaPart(1, 1, 0, 0);
-	board[2][2] = SeaPart(0, 0, 1, 1);
+	board[0][0] = SeaPart(1,0,1,0);
+	board[0][1] = SeaPart(1,1,0,0);
+	board[0][2] = SeaPart(1,0,1,0);
+	board[1][0] = SeaPart(0,0,1,1);
+	board[1][1] = SeaPart(1,1,0,0);
+	board[1][2] = SeaPart(0,1,1,0);
+	board[2][0] = SeaPart(0,1,1,0);
+	board[2][1] = SeaPart(1,0,1,0);
+	board[2][2] = SeaPart(0,1,1,0);
 	return new Board(board);
 }
 
-Board* BoardFactory::createBoard50() { //top right bot left verif
+Board* BoardFactory::createBoard50() { //top right bot left 
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(0, 1, 1, 0);
-	board[0][1] = SeaPart(1, 0, 1, 0);
-	board[0][2] = SeaPart(0, 0, 1, 1);
-	board[1][0] = SeaPart(0, 1, 1, 0);
-	board[1][1] = SeaPart(0, 1, 0, 1);
-	board[1][2] = SeaPart(1, 0, 1, 0);
-	board[2][0] = SeaPart(0, 1, 1, 0);
-	board[2][1] = SeaPart(1, 1, 0, 0);
-	board[2][2] = SeaPart(0, 0, 1, 1);
+	board[0][0] = SeaPart(1,0,0,1);
+	board[0][1] = SeaPart(1,0,0,1);
+	board[0][2] = SeaPart(0,0,1,1);
+	board[1][0] = SeaPart(0,1,0,1);
+	board[1][1] = SeaPart(1,0,1,0);
+	board[1][2] = SeaPart(0,1,0,1);
+	board[2][0] = SeaPart(1,1,0,0);
+	board[2][1] = SeaPart(0,1,1,0);
+	board[2][2] = SeaPart(0,1,1,0);
 	return new Board(board);
 }
 
-Board* BoardFactory::createBoard60() { //top right bot left verif
+Board* BoardFactory::createBoard60() { //top right bot left 
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(0, 1, 1, 0);
-	board[0][1] = SeaPart(1, 0, 1, 0);
-	board[0][2] = SeaPart(0, 0, 1, 1);
-	board[1][0] = SeaPart(0, 1, 1, 0);
-	board[1][1] = SeaPart(0, 1, 0, 1);
-	board[1][2] = SeaPart(1, 0, 1, 0);
-	board[2][0] = SeaPart(0, 1, 1, 0);
-	board[2][1] = SeaPart(1, 1, 0, 0);
-	board[2][2] = SeaPart(0, 0, 1, 1);
+	board[0][0] = SeaPart(1,0,1,0);
+	board[0][1] = SeaPart(1,0,0,1);
+	board[0][2] = SeaPart(0,0,1,1);
+	board[1][0] = SeaPart(0,0,1,1);
+	board[1][1] = SeaPart(1,0,1,0);
+	board[1][2] = SeaPart(0,1,0,1);
+	board[2][0] = SeaPart(0,0,1,1);
+	board[2][1] = SeaPart(0,0,1,1);
+	board[2][2] = SeaPart(0,0,1,1);
 	return new Board(board);
 }
