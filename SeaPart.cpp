@@ -37,6 +37,10 @@ void SeaPart::rotateRight() {
 	top, right, bot, left = right, bot, left, top;
 }
 
+void SeaPart::rotateHalf() {
+	top, right, bot, left = bot, left, top, right;
+}
+
 int SeaPart::getIdentity() {
 	if (left == 1 && bot == 1) {
 		return 0;

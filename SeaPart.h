@@ -8,6 +8,7 @@ public:
 
 	void rotateLeft();
 	void rotateRight();
+	void rotateHalf();
 	int getIdentity();
 	int getTop();
 	int getBot();
