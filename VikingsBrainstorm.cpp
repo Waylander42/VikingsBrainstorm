@@ -15,6 +15,7 @@ int main()
 	Board* board = BoardFactory::createBoard(nGrid);
 	board->print();
 	char x;
+	std::cout << "Entrez quelque chose pour fermer : ";
 	std::cin >> x;
 	return 0;
 }
