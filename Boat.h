@@ -10,7 +10,7 @@ public:
 	enum Color { RED, GREEN, BLUE, YELLOW };
 
 	Boat();
-	Boat(SeaPart*, Orientation, SeaPart*, Orientation);
+	Boat(SeaPart*, Orientation, SeaPart*, Orientation, Color);
 	~Boat();
 	void rotate(SeaPart*, Orientation, SeaPart*, Orientation);
 	SeaPart* getPart1();

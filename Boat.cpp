@@ -7,13 +7,15 @@ Boat::Boat()
 	orientation1 = Orientation::BOT;
 	part1 = NULL;
 	part2 = NULL;
+	color = RED;
 }
 
-Boat::Boat(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, Orientation _orientation2) {
+Boat::Boat(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, Orientation _orientation2, Color _color) {
 	orientation1 = _orientation1;
 	orientation2 = _orientation2;
 	part1 = _part1;
 	part2 = _part2;
+	color = _color;
 }
 
 
