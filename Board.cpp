@@ -67,10 +67,14 @@ SeaPart* Board::getSeaPart(int x, int y) {
 }
 
 bool Board::canRotate(int x, int y) {
+	int breaker = true;
 	for (int i = 0; i < nbBoats; i++) {
-		if (boats[i].getPart1() == &board[x][y] || boats[i].getPart2() == &board[x][y] ) {
+		if (boats[i].getPart1() == getSeaPart(x,y) || boats[i].getPart2() == getSeaPart(x, y)) {
+			breaker = false;
 			break;
 		}
+	}
+	if (breaker) {
 		return false;
 	}
 	if (y > 0) {
