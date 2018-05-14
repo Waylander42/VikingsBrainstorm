@@ -1,0 +1,11 @@
+
+*.tlog
+*.obj
+*.enc
+*.idb
+*.pdb
+*.user
+*.filters
+*.vcxproj
+*.log
+*.pch
