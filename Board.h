@@ -1,6 +1,8 @@
 ﻿#pragma once
-#include "SeaPart.h";
-#include "Boat.h";
+#include "SeaPart.h"
+#include "Boat.h"
+#include "Step.h"
+#include <list>
 
 class Board
 {
@@ -15,6 +17,7 @@ public:
 	bool rotateLeft(int, int);
 	bool rotateRight(int, int);
 	void print();
+	std::list<Step> getListOfStep();
 
 private:
 	void setBoatsIdentity();

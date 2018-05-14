@@ -1,8 +1,12 @@
 #pragma once
-class Human
+#include "Player.h"
+#include "Board.h"
+
+class Human : public Player
 {
 public:
-	Human();
+	Human(Board*);
 	~Human();
+	void play();
 };
 

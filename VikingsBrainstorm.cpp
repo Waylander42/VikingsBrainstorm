@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "Board.h"
 #include "BoardFactory.h"
+#include "Player.h"
+#include "Human.h"
 #include <iostream>
 
 int main()
@@ -13,11 +15,13 @@ int main()
 	std::cin >> nGrid;
 	std::cout << std::endl;
 	Board* board = BoardFactory::createBoard(nGrid);
-	board->print();
+	Human player = Human(board);
+	player.play();
 	char x;
 	std::cout << "Entrez quelque chose pour fermer : ";
 	std::cin >> x;
 	return 0;
+
 }
 
 

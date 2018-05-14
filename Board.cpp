@@ -63,23 +63,23 @@ bool Board::canRotate(int x, int y) {
 		}
 		return false;
 	}
-	if (x > 0) {
-		if (board[x - 1][y].getRight() != 1) {
-			return false;
-		}
-	}
-	if (x < 3) {
-		if (board[x + 1][y].getLeft() != 1) {
-			return false;
-		}
-	}
 	if (y > 0) {
-		if (board[x][y - 1].getBot() != 1) {
+		if (board[x][y - 1].getRight() != 0) {
 			return false;
 		}
 	}
-	if (y < 3) {
-		if (board[x][y + 1].getTop() != 1) {
+	if (y < 2) {
+		if (board[x][y + 1].getLeft() != 0) {
+			return false;
+		}
+	}
+	if (x > 0) {
+		if (board[x - 1][y].getBot() != 0) {
+			return false;
+		}
+	}
+	if (x < 2) {
+		if (board[x + 1][y].getTop() != 0) {
 			return false;
 		}
 	}
@@ -203,6 +203,20 @@ bool Board::rotateLeft(int x, int y) {
 	}
 	setBoatsIdentity();
 	return true;
+}
+
+std::list<Step> Board::getListOfStep() {
+	std::list<Step> list = std::list<Step>();
+	for (int x = 0; x < 3; x++) {
+		for (int y = 0; y < 3; y++) {
+			if (canRotate(x, y)) {
+				list.push_back(Step(x, y, Step::Rotation::LEFT));
+				list.push_back(Step(x, y, Step::Rotation::RIGHT));
+				list.push_back(Step(x, y, Step::Rotation::HALF));
+			}
+		}
+	}
+	return list;
 }
 
 void Board::setBoatsIdentity() {
