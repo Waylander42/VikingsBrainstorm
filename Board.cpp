@@ -19,7 +19,9 @@ Board::Board():nbBoats(0)
 	
 }
 
-Board::Board(SeaPart _board[3][3]):board{ { _board[0][0], _board[0][1], _board[0][2] },{ _board[1][0],	_board[1][1], _board[1][2] },{ _board[2][0], _board[2][1], _board[2][2] } }, nbBoats(0)
+Board::Board(SeaPart _board[3][3]):board{ { _board[0][0], _board[0][1], _board[0][2] },
+										{ _board[1][0],	_board[1][1], _board[1][2] },
+										{ _board[2][0], _board[2][1], _board[2][2] } }, nbBoats(0)
 {
 	/*for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -27,6 +29,14 @@ Board::Board(SeaPart _board[3][3]):board{ { _board[0][0], _board[0][1], _board[0
 		}
 	}*/
 }
+
+Board::Board(Board const& b):nbBoats(b.nbBoats), board{ { b.board[0][0], b.board[0][1], b.board[0][2] },
+														{ b.board[1][0], b.board[1][1], b.board[1][2] },
+														{ b.board[2][0], b.board[2][1], b.board[2][2] } },
+													boats{ b.boats[0], b.boats[1],b.boats[2],b.boats[3] }
+{	
+}
+
 
 Board::~Board()
 {
@@ -38,7 +48,7 @@ int Board::getIdentity() {
 		+ board[2][0].getIdentity() * 46656 + board[2][1].getIdentity() * 279936 + board[2][2].getIdentity() * 1679616;
 	int boatsID = 0;
 	for (int i = 0; i < nbBoats; i++) {
-		boatsID = boats[i].getIdentity();
+		boatsID += boats[i].getIdentity(); //+= ou = ?
 	}
 	int ID = boardID + boatsID*10077696;
 	return ID;
@@ -470,25 +480,25 @@ void Board::print() {
 				}
 				if (!breaker) {
 					switch (orientation) {
-					case Boat::Orientation::TOP: grid[centerX + 1][centerY] = boats[i].getColor();
+					case Boat::Orientation::TOP: //grid[centerX + 1][centerY] = boats[i].getColor();
 						grid[centerX + 2][centerY] = boats[i].getColor();
-						grid[centerX + 2][centerY - 1] = boats[i].getColor();
-						grid[centerX + 2][centerY + 1] = boats[i].getColor();
+						//grid[centerX + 2][centerY - 1] = boats[i].getColor();
+						//grid[centerX + 2][centerY + 1] = boats[i].getColor();
 						break;
-					case Boat::Orientation::LEFT: grid[centerX][centerY + 1] = boats[i].getColor();
+					case Boat::Orientation::LEFT: //grid[centerX][centerY + 1] = boats[i].getColor();
 						grid[centerX][centerY + 2] = boats[i].getColor();
-						grid[centerX + 1][centerY + 2] = boats[i].getColor();
-						grid[centerX - 1][centerY + 2] = boats[i].getColor();
+						//grid[centerX + 1][centerY + 2] = boats[i].getColor();
+						//grid[centerX - 1][centerY + 2] = boats[i].getColor();
 						break;
-					case Boat::Orientation::BOT: grid[centerX - 1][centerY] = boats[i].getColor();
+					case Boat::Orientation::BOT: //grid[centerX - 1][centerY] = boats[i].getColor();
 						grid[centerX - 2][centerY] = boats[i].getColor();
-						grid[centerX - 2][centerY - 1] = boats[i].getColor();
-						grid[centerX - 2][centerY + 1] = boats[i].getColor();
+						//grid[centerX - 2][centerY - 1] = boats[i].getColor();
+						//grid[centerX - 2][centerY + 1] = boats[i].getColor();
 						break;
-					case Boat::Orientation::RIGHT: grid[centerX][centerY - 1] = boats[i].getColor();
+					case Boat::Orientation::RIGHT: //grid[centerX][centerY - 1] = boats[i].getColor();
 						grid[centerX][centerY - 2] = boats[i].getColor();
-						grid[centerX + 1][centerY - 2] = boats[i].getColor();
-						grid[centerX - 1][centerY - 2] = boats[i].getColor();
+						//grid[centerX + 1][centerY - 2] = boats[i].getColor();
+						//grid[centerX - 1][centerY - 2] = boats[i].getColor();
 						break;
 					}
 				}
