@@ -83,7 +83,6 @@ void Boat::setIdentity(int _identity) {
 	if (color == Color::YELLOW) {
 		identity = _identity + 18;
 	}
-	std::cout << color;
 }
 
 int Boat::getIdentity() const{

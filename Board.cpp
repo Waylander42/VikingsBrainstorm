@@ -164,7 +164,7 @@ bool Board::rotateLeft(int x, int y) {
 	if (!canRotate(x, y)) {
 		return false;
 	}
-	board[x][y].rotateRight();
+	board[x][y].rotateLeft();
 	for (int i = 0; i < nbBoats; i++) {
 		Boat::Orientation orientation;
 		bool breaker = true;
@@ -231,6 +231,21 @@ std::list<Step> Board::getListOfStep() {
 		}
 	}
 	return list;
+}
+
+bool Board::doStep(Step step) {
+	if (!canRotate(step.getX(), step.getY())) {
+		return false;
+	}
+	switch (step.getRotation()) {
+		case Step::Rotation::LEFT: rotateLeft(step.getX(), step.getY());
+			break;
+		case Step::Rotation::RIGHT : rotateRight(step.getX(), step.getY());
+			break;
+		case Step::Rotation::HALF :
+			break;
+	}
+	return true;
 }
 
 void Board::setBoatsIdentity() {

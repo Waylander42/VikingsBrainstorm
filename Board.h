@@ -19,6 +19,7 @@ public:
 	bool rotateRight(int, int);
 	void print();
 	std::list<Step> getListOfStep();
+	bool doStep(Step);
 
 private:
 	void setBoatsIdentity();
