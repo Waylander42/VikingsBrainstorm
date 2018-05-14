@@ -8,6 +8,7 @@ public:
 	Board();
 	~Board();
 	Board(SeaPart[3][3]);
+	Board(Board const&);
 	int getIdentity();
 	void setBoats(Boat[4], int);
 	SeaPart* getSeaPart(int, int);
