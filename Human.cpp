@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "Human.h"
 #include <list>
 
@@ -13,8 +13,10 @@ Human::~Human()
 }
 
 void Human::play() {
-	board->print();
-	std::list<Step> steps = board->getListOfStep();
-	printListOfSteps(steps);
+	while (true) {
+		board->print();
+		std::list<Step> steps = board->getListOfStep();
+		printListOfSteps(steps);
+	}
 
 }
