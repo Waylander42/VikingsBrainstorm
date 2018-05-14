@@ -42,15 +42,15 @@ Board::~Board()
 {
 }
 
-int Board::getIdentity() {
-	int boardID = board[0][0].getIdentity() + board[0][1].getIdentity() * 6 + board[0][2].getIdentity() * 36
+unsigned int Board::getIdentity() {
+	unsigned int boardID = board[0][0].getIdentity() + board[0][1].getIdentity() * 6 + board[0][2].getIdentity() * 36
 		+ board[1][0].getIdentity() * 216 + board[1][1].getIdentity() * 1296 + board[1][2].getIdentity() * 7776
 		+ board[2][0].getIdentity() * 46656 + board[2][1].getIdentity() * 279936 + board[2][2].getIdentity() * 1679616;
-	int boatsID = 0;
+	unsigned int boatsID = 0;
 	for (int i = 0; i < nbBoats; i++) {
 		boatsID += boats[i].getIdentity(); //+= ou = ?
 	}
-	int ID = boardID + boatsID*10077696;
+	unsigned int ID = boardID + boatsID*10077696;
 	return ID;
 }
 

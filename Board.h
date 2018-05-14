@@ -11,7 +11,7 @@ public:
 	~Board();
 	Board(SeaPart[3][3]);
 	Board(Board const&);
-	int getIdentity();
+	unsigned int getIdentity();
 	void setBoats(Boat[4], int);
 	SeaPart* getSeaPart(int, int);
 	bool canRotate(int, int);
