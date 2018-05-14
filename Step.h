@@ -6,6 +6,9 @@ public:
 	Step();
 	Step(int, int, Rotation);
 	~Step();
+	int getX();
+	int getY();
+	Rotation getRotation();
 	void print() const;
 
 private:

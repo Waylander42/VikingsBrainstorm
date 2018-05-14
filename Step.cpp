@@ -16,6 +16,18 @@ Step::~Step()
 {
 }
 
+int Step::getX() {
+	return x;
+}
+
+int Step::getY() {
+	return y;
+}
+
+Step::Rotation Step::getRotation() {
+	return rotation;
+}
+
 void Step::print() const{
 	std::cout << "Tourner la Piece (" << x << "," << y << ") ";
 	switch (rotation) {

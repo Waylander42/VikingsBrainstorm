@@ -29,12 +29,20 @@ int SeaPart::getRight() const{
 	return right;
 }
 
-void SeaPart::rotateLeft() {
-	top, left, bot, right = left, bot, right, top; 
+void SeaPart::rotateRight() {
+	int temp = top;
+	top = left;
+	left = bot;
+	bot = right;
+	right = temp;
 }
 
-void SeaPart::rotateRight() {
-	top, right, bot, left = right, bot, left, top;
+void SeaPart::rotateLeft() {
+	int temp = top;
+	top = right;
+	right = bot;
+	bot = left;
+	left = temp;
 }
 
 void SeaPart::rotateHalf() {
