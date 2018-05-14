@@ -1,23 +1,16 @@
 ﻿#include "stdafx.h"
 #include "Boat.h"
+#include <iostream>
 
-Boat::Boat()
+Boat::Boat():orientation1(Orientation::TOP), orientation2(Orientation::BOT), part1(NULL), part2(NULL), color(Boat::Color::RED)
 {
-	orientation1 = Orientation::TOP;
-	orientation1 = Orientation::BOT;
-	part1 = NULL;
-	part2 = NULL;
-	color = RED;
 }
 
-Boat::Boat(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, Orientation _orientation2, Color _color) {
-	orientation1 = _orientation1;
-	orientation2 = _orientation2;
-	part1 = _part1;
-	part2 = _part2;
-	color = _color;
+Boat::Boat(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, Orientation _orientation2, Color _color): orientation1(_orientation1), orientation2(_orientation2), part1(_part1), part2(_part2), color(_color) {
 }
 
+Boat::Boat(Boat const& boat) : orientation1(boat.orientation1), orientation2(boat.orientation2), part1(boat.part1), part2(boat.part2), color(boat.color), identity(boat.identity) {
+}
 
 Boat::~Boat()
 {
@@ -78,35 +71,47 @@ Boat::Orientation Boat::getOrientation2() {
 }
 
 void Boat::setIdentity(int _identity) {
-	if (color = Color::RED) {
+	if (color == Color::RED) {
 		identity = _identity + 0;
 	}
-	if (color = Color::GREEN) {
+	if (color == Color::GREEN) {
 		identity = _identity + 6;
 	}
-	if (color = Color::BLUE) {
+	if (color == Color::BLUE) {
 		identity = _identity + 12;
 	}
-	if (color = Color::YELLOW) {
+	if (color == Color::YELLOW) {
 		identity = _identity + 18;
 	}
+	std::cout << color;
 }
 
-int Boat::getIdentity() {
+int Boat::getIdentity() const{
 	return identity;
 }
 
-char Boat::getColor() {
+char Boat::getColor() const{
 	switch (color)
 	{
-	case Boat::RED: return 'R';
+	case Boat::Color::RED: return 'R';
 		break;
-	case Boat::GREEN: return 'G';
+	case Boat::Color::GREEN: return 'G';
 		break;
-	case Boat::BLUE: return 'B';
+	case Boat::Color::BLUE: return 'B';
 		break;
-	case Boat::YELLOW: return 'Y';
+	case Boat::Color::YELLOW: return 'Y';
 		break;
 	}
 	return 'X';
+}
+
+Boat &Boat::operator=(const Boat &source)
+{
+	orientation1 = source.orientation1;
+	part1 = source.part1;
+	orientation2 = source.orientation2;
+	part2 = source.part2;
+	color = source.color;
+	identity = source.identity;
+	return *this;
 }

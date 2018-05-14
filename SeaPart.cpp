@@ -13,19 +13,19 @@ SeaPart::~SeaPart()
 {
 }
 
-int SeaPart::getTop() {
+int SeaPart::getTop() const{
 	return top;
 }
 
-int SeaPart::getBot() {
+int SeaPart::getBot() const{
 	return bot;
 }
 
-int SeaPart::getLeft() {
+int SeaPart::getLeft() const{
 	return left;
 }
 
-int SeaPart::getRight() {
+int SeaPart::getRight() const{
 	return right;
 }
 

@@ -5,7 +5,7 @@
 #include "Constantes.h"
 
 
-Board::Board()
+Board::Board():nbBoats(0)
 {
 	board[0][0] = SeaPart(0, 0, 0, 0);
 	board[0][1] = SeaPart(0, 0, 0, 0);
@@ -17,19 +17,15 @@ Board::Board()
 	board[2][1] = SeaPart(0, 0, 0, 0);
 	board[2][2] = SeaPart(0, 0, 0, 0);
 	
-	boats = NULL;
-	nbBoats = 0;
 }
 
-Board::Board(SeaPart _board[3][3], Boat* _boats, int _nbBoats)
+Board::Board(SeaPart _board[3][3]):board{ { _board[0][0], _board[0][1], _board[0][2] },{ _board[1][0],	_board[1][1], _board[1][2] },{ _board[2][0], _board[2][1], _board[2][2] } }, nbBoats(0)
 {
-	for (int i = 0; i < 3; i++) {
+	/*for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
-			board[j][i] = _board[j][i];
+			board[i][j] = _board[i][j];
 		}
-	}
-	boats = _boats;
-	nbBoats = _nbBoats;
+	}*/
 }
 
 Board::~Board()
@@ -46,6 +42,18 @@ int Board::getIdentity() {
 	}
 	int ID = boardID + boatsID*10077696;
 	return ID;
+}
+
+void Board::setBoats(Boat _boats[4], int _nbBoats) {
+	boats[0] = _boats[0];
+	boats[1] = _boats[1];
+	boats[2] = _boats[2];
+	boats[3] = _boats[3];
+	nbBoats = _nbBoats;
+}
+
+SeaPart* Board::getSeaPart(int x, int y) {
+	return &board[x][y];
 }
 
 bool Board::canRotate(int x, int y) {
@@ -437,38 +445,42 @@ void Board::print() {
 				int centerX = x * 5 + 3;
 				int centerY = y * 5 + 3;
 				Boat::Orientation orientation;
+				bool breaker = true;
 				if (boats[i].getPart1() == &board[x][y]) {
-					orientation = boats[i].getOrientation1;
+					orientation = boats[i].getOrientation1();
+					breaker = false;
 				}
 				else if (boats[i].getPart2() == &board[x][y]) {
-					orientation = boats[i].getOrientation2;
+					orientation = boats[i].getOrientation2();
+					breaker = false;
 				}
-				switch (orientation) {
-				case Boat::Orientation::TOP: grid[centerX][centerY - 1] = boats[i].getColor();
-					grid[centerX][centerY - 2] = boats[i].getColor();
-					grid[centerX + 1][centerY - 2] = boats[i].getColor();
-					grid[centerX + 1][centerY - 2] = boats[i].getColor();
-					break;
-				case Boat::Orientation::LEFT: grid[centerX + 1][centerY] = boats[i].getColor();
-					grid[centerX + 2][centerY] = boats[i].getColor();
-					grid[centerX + 2][centerY + 1] = boats[i].getColor();
-					grid[centerX + 2][centerY - 1] = boats[i].getColor();
-					break;
-				case Boat::Orientation::BOT: grid[centerX][centerY + 1] = boats[i].getColor();
-					grid[centerX][centerY + 2] = boats[i].getColor();
-					grid[centerX + 1][centerY + 2] = boats[i].getColor();
-					grid[centerX + 1][centerY + 2] = boats[i].getColor();
-					break;
-				case Boat::Orientation::RIGHT: grid[centerX + 1][centerY] = boats[i].getColor();
-					grid[centerX + 2][centerY] = boats[i].getColor();
-					grid[centerX + 2][centerY + 1] = boats[i].getColor();
-					grid[centerX + 2][centerY - 1] = boats[i].getColor();
-					break;
+				if (!breaker) {
+					switch (orientation) {
+					case Boat::Orientation::TOP: grid[centerX + 1][centerY] = boats[i].getColor();
+						grid[centerX + 2][centerY] = boats[i].getColor();
+						grid[centerX + 2][centerY - 1] = boats[i].getColor();
+						grid[centerX + 2][centerY + 1] = boats[i].getColor();
+						break;
+					case Boat::Orientation::LEFT: grid[centerX][centerY + 1] = boats[i].getColor();
+						grid[centerX][centerY + 2] = boats[i].getColor();
+						grid[centerX + 1][centerY + 2] = boats[i].getColor();
+						grid[centerX - 1][centerY + 2] = boats[i].getColor();
+						break;
+					case Boat::Orientation::BOT: grid[centerX - 1][centerY] = boats[i].getColor();
+						grid[centerX - 2][centerY] = boats[i].getColor();
+						grid[centerX - 2][centerY - 1] = boats[i].getColor();
+						grid[centerX - 2][centerY + 1] = boats[i].getColor();
+						break;
+					case Boat::Orientation::RIGHT: grid[centerX][centerY - 1] = boats[i].getColor();
+						grid[centerX][centerY - 2] = boats[i].getColor();
+						grid[centerX + 1][centerY - 2] = boats[i].getColor();
+						grid[centerX - 1][centerY - 2] = boats[i].getColor();
+						break;
+					}
 				}
 			}
 		}
 	}
-
 
 	for (int x = 0; x < GRID_SIZE; x++) {
 		for (int y = 0; y < GRID_SIZE; y++) {
@@ -476,4 +488,5 @@ void Board::print() {
 		}
 		std::cout << "\n";
 	}
+
 }

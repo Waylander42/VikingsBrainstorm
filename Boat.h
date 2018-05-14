@@ -11,6 +11,7 @@ public:
 
 	Boat();
 	Boat(SeaPart*, Orientation, SeaPart*, Orientation, Color);
+	Boat(Boat const&);
 	~Boat();
 	void rotate(SeaPart*, Orientation, SeaPart*, Orientation);
 	SeaPart* getPart1();
@@ -18,8 +19,9 @@ public:
 	Orientation getOrientation1();
 	Orientation getOrientation2();
 	void setIdentity(int);
-	int getIdentity();
-	char getColor();
+	int getIdentity() const;
+	char getColor() const;
+	Boat &operator=(const Boat &);
 
 private:
 	Orientation orientation1;

@@ -10,10 +10,10 @@ public:
 	void rotateRight();
 	void rotateHalf();
 	int getIdentity();
-	int getTop();
-	int getBot();
-	int getLeft();
-	int getRight();
+	int getTop() const;
+	int getBot() const;
+	int getLeft() const;
+	int getRight() const;
 
 private :
 	int top;
