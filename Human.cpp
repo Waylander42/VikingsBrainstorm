@@ -13,10 +13,7 @@ Human::~Human()
 }
 
 void Human::play() {
-	while (true) {
-		board->print();
-		std::list<Step> steps = board->getListOfStep();
-		printListOfSteps(steps);
-	}
-
+	board->print();
+	std::list<Step> steps = board->getListOfStep();
+	printListOfSteps(steps);
 }
