@@ -15,6 +15,16 @@ int main()
 	std::cin >> nGrid;
 	std::cout << std::endl;
 	Board* board = BoardFactory::createBoard(nGrid);
+	/*for (int i = 1; i < 12; i++) {
+		Board* board = BoardFactory::createBoard(i);
+		std::cout << board->getIdentity();
+		std::cout << " @ ";
+	}
+	for (int j = 2; j < 7; j++) {
+		Board* board = BoardFactory::createBoard(j*10);
+		std::cout << board->getIdentity();
+		std::cout << " @ ";
+	}*/
 	Human player = Human(board);
 	player.play();
 	char x;
