@@ -15,9 +15,7 @@ Human::~Human()
 
 void Human::play() {
 	startTimer();
-	std::cout << "endBoard = " << endBoard << std::endl;
 	while (board->getBoatsLocation() != endBoard) {
-		std::cout << "boatLocation = " << board->getBoatsLocation() << std::endl;
 		board->print(endBoard);
 		std::list<Step> steps = board->getListOfStep();
 		printListOfSteps(steps);
