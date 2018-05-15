@@ -6,8 +6,9 @@ Boat::Boat():orientation1(Orientation::TOP), orientation2(Orientation::BOT), par
 {
 }
 
-Boat::Boat(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, Orientation _orientation2, Color _color): orientation1(_orientation1), orientation2(_orientation2), part1(_part1), part2(_part2), color(_color) {
-}
+	Boat::Boat(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, Orientation _orientation2, Color _color):
+		orientation1(_orientation1), orientation2(_orientation2), part1(_part1), part2(_part2), color(_color) {
+	}
 
 Boat::Boat(Boat const& boat) : orientation1(boat.orientation1), orientation2(boat.orientation2), part1(boat.part1), part2(boat.part2), color(boat.color), identity(boat.identity) {
 }
