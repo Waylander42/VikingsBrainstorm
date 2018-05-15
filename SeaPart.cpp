@@ -1,7 +1,7 @@
 ﻿#include "stdafx.h"
 #include "SeaPart.h"
 
-SeaPart::SeaPart(int _identityt):identity(_identityt)
+SeaPart::SeaPart(int _identity, int _position):identity(_identity), position(_position)
 {
 }
 
@@ -119,6 +119,10 @@ void SeaPart::rotateHalf() {
 	}
 }
 
-int SeaPart::getIdentity() {
+int SeaPart::getIdentity() const{
 	return identity;
+}
+
+int SeaPart::getPosition() const{
+	return position;
 }
