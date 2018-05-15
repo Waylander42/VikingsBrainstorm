@@ -8,5 +8,8 @@ public:
 	Human(Board*);
 	~Human();
 	void play();
+
+private:
+	int askAction(int);
 };
 

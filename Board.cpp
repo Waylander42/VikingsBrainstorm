@@ -219,6 +219,65 @@ bool Board::rotateRight(int x, int y) {
 	return true;
 }
 
+bool Board::rotateHalf(int x, int y) {
+	if (!canRotate(x, y)) {
+		return false;
+	}
+	board[x][y].rotateHalf();
+	for (int i = 0; i < nbBoats; i++) {
+		Boat::Orientation orientation;
+		bool breaker = true;
+		if (boats[i].getPart1() == &board[x][y]) {
+			orientation = boats[i].getOrientation1();
+			breaker = false;
+		}
+		else if (boats[i].getPart2() == &board[x][y]) {
+			orientation = boats[i].getOrientation2();
+			breaker = false;
+		}
+		if (!breaker) {
+			SeaPart* part1 = &board[x][y];
+			SeaPart* part2;
+			switch (orientation) {
+			case Boat::Orientation::TOP: if (x > 0) { // alors part 2 est en haut
+											 part2 = &board[x - 1][y];
+										 }
+										 else {
+											 part2 = NULL;
+										 }
+										 boats[i].rotate(part1, Boat::Orientation::BOT, part2, Boat::Orientation::TOP);
+										 break;
+			case Boat::Orientation::RIGHT: if (y < 2) { // alors part 2 est à droite
+											   part2 = &board[x][y + 1];
+										   }
+										   else {
+											   part2 = NULL;
+										   }
+										   boats[i].rotate(part1, Boat::Orientation::LEFT, part2, Boat::Orientation::RIGHT);
+										   break;
+			case Boat::Orientation::BOT: if (x < 2) { // alors part 2 est en bas
+											 part2 = &board[x + 1][y];
+										 }
+										 else {
+											 part2 = NULL;
+										 }
+										 boats[i].rotate(part1, Boat::Orientation::TOP, part2, Boat::Orientation::BOT);
+										 break;
+			case Boat::Orientation::LEFT: if (y > 0) { // alors part 2 est à gauche
+											  part2 = &board[x][y - 1];
+										  }
+										  else {
+											  part2 = NULL;
+										  }
+										  boats[i].rotate(part1, Boat::Orientation::RIGHT, part2, Boat::Orientation::LEFT);
+										  break;
+			}
+		}
+	}
+	setBoatsIdentity();
+	return true;
+}
+
 std::list<Step> Board::getListOfStep() {
 	std::list<Step> list = std::list<Step>();
 	for (int x = 0; x < 3; x++) {
@@ -242,7 +301,7 @@ bool Board::doStep(Step step) {
 			break;
 		case Step::Rotation::RIGHT : rotateRight(step.getX(), step.getY());
 			break;
-		case Step::Rotation::HALF :
+		case Step::Rotation::HALF : rotateHalf(step.getX(), step.getY());
 			break;
 	}
 	return true;
