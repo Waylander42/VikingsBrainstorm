@@ -29,7 +29,7 @@ Step::Rotation Step::getRotation() {
 }
 
 void Step::print() const{
-	std::cout << "Tourner la Piece (" << x << "," << y << ") ";
+	std::cout << "Tourner la Piece (" << x + 1 << "," << y + 1 << ") ";
 	switch (rotation) {
 	case LEFT: std::cout << "vers la gauche" << std::endl;
 		break;

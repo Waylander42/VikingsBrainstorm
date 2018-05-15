@@ -22,7 +22,7 @@ void Human::play() {
 		std::cin >> action;
 		std::cout << std::endl << std::endl;
 		std::list<Step>::const_iterator it = steps.begin();
-		std::advance(it, action);
+		std::advance(it, action - 1);
 		board->doStep(*it);
 	}
 }
