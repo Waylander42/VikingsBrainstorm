@@ -64,12 +64,11 @@ unsigned int Board::getBoatLocation(int i) {
 	int orientation = boats[i].getOrientation1();
 	res = getLocation(pos, orientation);
 	switch (color) {
-	case Boat::Color::RED: res = res * 1;
-	case Boat::Color::GREEN: res = res * 24;
-	case Boat::Color::BLUE: res = res * 576;
-	case Boat::Color::YELLOW: res = res * 13824;
+	case 'R': return res * 1;
+	case 'G': return res * 24;
+	case 'B': return res * 576;
+	case 'Y': return res * 13824;
 	}
-	return res;
 }
 
 unsigned int Board::getBoatsLocation() {
