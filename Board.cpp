@@ -101,6 +101,65 @@ bool Board::canRotate(int x, int y) {
 }
 
 
+bool Board::rotateLeft(int x, int y) {
+	if (!canRotate(x, y)) {
+		return false;
+	}
+	board[x][y].rotateLeft();
+	for (int i = 0; i < nbBoats; i++) {
+		Boat::Orientation orientation;
+		bool breaker = true;
+		if (boats[i].getPart1() == getSeaPart(x,y)) {
+			orientation = boats[i].getOrientation1();
+			breaker = false;
+		}
+		else if (boats[i].getPart2() == getSeaPart(x, y)) {
+			orientation = boats[i].getOrientation2();
+			breaker = false;
+		}
+		if (!breaker) {
+			SeaPart* part1 = getSeaPart(x, y);
+			SeaPart* part2;
+			switch (orientation) {
+			case Boat::Orientation::TOP: if (y < 2) { // alors part 2 est à droite
+											 part2 = getSeaPart(x, y + 1);
+										 }
+										 else {
+											 part2 = NULL;
+										 }
+										 boats[i].rotate(part1, Boat::Orientation::LEFT, part2, Boat::Orientation::RIGHT);
+										 break;
+			case Boat::Orientation::LEFT: if (x > 0) { // alors part 2 est en haut
+											   part2 = &board[x - 1][y];
+										   }
+										   else {
+											   part2 = NULL;
+										   }
+										   boats[i].rotate(part1, Boat::Orientation::BOT, part2, Boat::Orientation::TOP);
+										   break;
+			case Boat::Orientation::BOT: if (y > 0) { // alors part 2 est à gauche
+											 part2 = &board[x][y - 1];
+										 }
+										 else {
+											 part2 = NULL;
+										 }
+										 boats[i].rotate(part1, Boat::Orientation::RIGHT, part2, Boat::Orientation::LEFT);
+										 break;
+			case Boat::Orientation::RIGHT: if (x < 2) { // alors part 2 est en bas
+											  part2 = &board[x + 1][y];
+										  }
+										  else {
+											  part2 = NULL;
+										  }
+										  boats[i].rotate(part1, Boat::Orientation::TOP, part2, Boat::Orientation::BOT);
+										  break;
+			}
+		}
+	}
+	setBoatsIdentity();
+	return true;
+}
+
 bool Board::rotateRight(int x, int y) {
 	if (!canRotate(x, y)) {
 		return false;
@@ -121,92 +180,33 @@ bool Board::rotateRight(int x, int y) {
 			SeaPart* part1 = &board[x][y];
 			SeaPart* part2;
 			switch (orientation) {
-			case Boat::Orientation::TOP: if (y < 2) { // alors part 2 est à gauche
-				part2 = &board[x][y + 1];
-			}
+			case Boat::Orientation::TOP: if (y > 0) { // alors part 2 est à gauche
+											 part2 = &board[x][y - 1];
+										 }
 										 else {
 											 part2 = NULL;
 										 }
-										 boats[i].rotate(part1, Boat::Orientation::LEFT, part2, Boat::Orientation::RIGHT);
+										 boats[i].rotate(part1, Boat::Orientation::RIGHT, part2, Boat::Orientation::LEFT);
 										 break;
-			case Boat::Orientation::RIGHT: if (x < 2) { // alors part 2 est en bas
-				part2 = &board[x + 1][y];
-			}
-										   else {
-											   part2 = NULL;
+			case Boat::Orientation::RIGHT: if (x > 0) { // alors part 2 est en haut
+											   part2 = &board[x - 1][y];
 										   }
-										   boats[i].rotate(part1, Boat::Orientation::BOT, part2, Boat::Orientation::TOP);
-										   break;
-			case Boat::Orientation::BOT: if (y > 0) { // alors part 2 est à droite
-				part2 = &board[x][y - 1];
-			}
-										 else {
-											 part2 = NULL;
-										 }
-										 boats[i].rotate(part1, Boat::Orientation::RIGHT, part2, Boat::Orientation::LEFT);
-										 break;
-			case Boat::Orientation::LEFT: if (x > 0) { // alors part 2 est en haut
-				part2 = &board[x - 1][y];
-			}
-										  else {
-											  part2 = NULL;
-										  }
-										  boats[i].rotate(part1, Boat::Orientation::TOP, part2, Boat::Orientation::BOT);
-										  break;
-			}
-		}
-	}
-	setBoatsIdentity();
-	return true;
-}
-
-bool Board::rotateLeft(int x, int y) {
-	if (!canRotate(x, y)) {
-		return false;
-	}
-	board[x][y].rotateLeft();
-	for (int i = 0; i < nbBoats; i++) {
-		Boat::Orientation orientation;
-		bool breaker = true;
-		if (boats[i].getPart1() == &board[x][y]) {
-			orientation = boats[i].getOrientation1();
-			breaker = false;
-		}
-		else if (boats[i].getPart2() == &board[x][y]) {
-			orientation = boats[i].getOrientation2();
-			breaker = false;
-		}
-		if (!breaker) {
-			SeaPart* part1 = &board[x][y];
-			SeaPart* part2;
-			switch (orientation) {
-			case Boat::Orientation::TOP: if (y > 0) { // alors part 2 est à droite
-				part2 = &board[x][y - 1];
-			}
-										 else {
-											 part2 = NULL;
-										 }
-										 boats[i].rotate(part1, Boat::Orientation::RIGHT, part2, Boat::Orientation::LEFT);
-										 break;
-			case Boat::Orientation::RIGHT: if (x < 2) { // alors part 2 est en bas
-				part2 = &board[x + 1][y];
-			}
 										   else {
 											   part2 = NULL;
 										   }
 										   boats[i].rotate(part1, Boat::Orientation::BOT, part2, Boat::Orientation::TOP);
 										   break;
 			case Boat::Orientation::BOT: if (y < 2) { // alors part 2 est à gauche
-				part2 = &board[x][y + 1];
-			}
+											 part2 = &board[x][y + 1];
+										 }
 										 else {
 											 part2 = NULL;
 										 }
-										 boats[i].rotate(part1, Boat::Orientation::LEFT, part2, Boat::Orientation::RIGHT);
+										 boats[i].rotate(part1, Boat::Orientation::RIGHT, part2, Boat::Orientation::LEFT);
 										 break;
-			case Boat::Orientation::LEFT: if (x > 0) { // alors part 2 est en haut
-				part2 = &board[x - 1][y];
-			}
+			case Boat::Orientation::LEFT: if (x < 2) { // alors part 2 est en bas
+											  part2 = &board[x + 1][y];
+										  }
 										  else {
 											  part2 = NULL;
 										  }
