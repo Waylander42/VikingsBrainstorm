@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "Board.h"
 #include "BoardFactory.h"
+#include "EndBoardFactory.h"
 #include "Player.h"
 #include "Human.h"
 #include <iostream>
@@ -12,6 +13,7 @@
 int main()
 {
 	Board* board = NULL;
+	unsigned int endBoard;
 	while (board == NULL) {
 		try {
 			std::cout << "Entrez le numero d'une grille : ";
@@ -19,6 +21,7 @@ int main()
 			std::cin >> s;
 			int nGrid = std::stoi(s);
 			board = BoardFactory::createBoard(nGrid);
+			endBoard = EndBoardFactory::createEndBoard(nGrid);
 		}
 		catch (std::exception const & e)
 		{
@@ -27,7 +30,7 @@ int main()
 
 	}
 	std::cout << std::endl;
-	Human player = Human(board);
+	Human player = Human(board, endBoard);
 	player.play();
 	char x;
 	std::cout << "Entrez quelque chose pour fermer : ";

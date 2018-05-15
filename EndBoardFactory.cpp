@@ -29,6 +29,7 @@ unsigned int EndBoardFactory::createEndBoard(int number) {
 	case 40: return createEndBoard40();
 	case 50: return createEndBoard50();
 	case 60: return createEndBoard60();
+	default: NULL;
 	}
 }
 

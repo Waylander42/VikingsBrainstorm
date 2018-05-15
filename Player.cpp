@@ -2,7 +2,7 @@
 #include "Player.h"
 
 
-Player::Player(Board* _board):board(_board)
+Player::Player(Board* _board, unsigned int _endBoard):board(_board),endBoard(_endBoard)
 {
 }
 
@@ -22,6 +22,10 @@ void Player::printListOfSteps(std::list<Step> steps) {
 		it->print();
 		count++;
 	}
+}
+
+unsigned int Player::getEndBoard() {
+	return endBoard;
 }
 
 void Player::startTimer() {

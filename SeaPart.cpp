@@ -5,7 +5,7 @@ SeaPart::SeaPart(int _identity):identity(_identity), position(0)
 {
 }
 
-SeaPart::SeaPart() :SeaPart(0), position(0)
+SeaPart::SeaPart() :SeaPart(0)
 {
 }
 

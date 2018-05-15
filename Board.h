@@ -12,9 +12,7 @@ public:
 	Board(SeaPart[3][3]);
 	Board(Board const&);
 
-	unsigned int Board::getLocation(int, int);
-	unsigned int Board::getBoatLocation(int);
-	unsigned int Board::getBoatsLocation();
+	unsigned int getBoatsLocation();
 	unsigned int getIdentity();
 	
 	SeaPart* getSeaPart(int, int);
@@ -34,6 +32,8 @@ public:
 
 private:
 	void setBoatsIdentity();
+	unsigned int getLocation(int, int);
+	unsigned int getBoatLocation(int);
 
 	SeaPart board[3][3];
 	Boat boats[4];   //array of boats

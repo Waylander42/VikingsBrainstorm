@@ -4,7 +4,7 @@
 #include <string>
 
 
-Human::Human(Board* board):Player(board)
+Human::Human(Board* board, unsigned int endBoard):Player(board, endBoard)
 {
 }
 
@@ -15,7 +15,9 @@ Human::~Human()
 
 void Human::play() {
 	startTimer();
-	while (true) {
+	std::cout << "endBoard = " << endBoard << std::endl;
+	while (board->getBoatsLocation() != endBoard) {
+		std::cout << "boatLocation = " << board->getBoatsLocation() << std::endl;
 		board->print();
 		std::list<Step> steps = board->getListOfStep();
 		printListOfSteps(steps);
