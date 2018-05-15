@@ -11,19 +11,26 @@ public:
 	~Board();
 	Board(SeaPart[3][3]);
 	Board(Board const&);
+
 	unsigned int Board::getLocation(int, int);
 	unsigned int Board::getBoatLocation(int);
 	unsigned int Board::getBoatsLocation();
 	unsigned int getIdentity();
-	void setBoats(Boat[4], int);
+	
 	SeaPart* getSeaPart(int, int);
+
 	bool canRotate(int, int);
 	bool rotateLeft(int, int);
 	bool rotateRight(int, int);
 	bool rotateHalf(int, int);
-	void print();
+
 	std::list<Step> getListOfStep();
 	bool doStep(Step);
+
+	void initBoats(Boat[4], int);
+	void initSeaPart();
+
+	void print();
 
 private:
 	void setBoatsIdentity();

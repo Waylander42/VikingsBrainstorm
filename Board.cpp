@@ -93,12 +93,22 @@ unsigned int Board::getIdentity() {
 	return ID;
 }
 
-void Board::setBoats(Boat _boats[4], int _nbBoats) {
+void Board::initBoats(Boat _boats[4], int _nbBoats) {
 	boats[0] = _boats[0];
 	boats[1] = _boats[1];
 	boats[2] = _boats[2];
 	boats[3] = _boats[3];
 	nbBoats = _nbBoats;
+}
+
+void Board::initSeaPart() {
+	int count = 0;
+	for (int x = 0; x < 3; x++) {
+		for (int y = 0; y < 3; y++) {
+			board[x][y].init(count);
+			count++;
+		}
+	}
 }
 
 SeaPart* Board::getSeaPart(int x, int y) {

@@ -1,11 +1,11 @@
 ﻿#include "stdafx.h"
 #include "SeaPart.h"
 
-SeaPart::SeaPart(int _identity, int _position):identity(_identity), position(_position)
+SeaPart::SeaPart(int _identity):identity(_identity), position(0)
 {
 }
 
-SeaPart::SeaPart() :SeaPart(0)
+SeaPart::SeaPart() :SeaPart(0), position(0)
 {
 }
 
@@ -125,4 +125,8 @@ int SeaPart::getIdentity() const{
 
 int SeaPart::getPosition() const{
 	return position;
+}
+
+void SeaPart::init(int _position) {
+	position = _position;
 }
