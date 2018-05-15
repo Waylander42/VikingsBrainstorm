@@ -32,6 +32,7 @@ Board* BoardFactory::createBoard(int number) {
 	case 40: return createBoard40();
 	case 50: return createBoard50();
 	case 60: return createBoard60();
+	default: return NULL;
 	}
 }
 

@@ -23,3 +23,11 @@ void Player::printListOfSteps(std::list<Step> steps) {
 		count++;
 	}
 }
+
+void Player::startTimer() {
+	timer = time(NULL);
+}
+
+double Player::getTimer() {
+	return ((double)clock() - timer);
+}

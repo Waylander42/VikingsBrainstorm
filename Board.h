@@ -20,6 +20,7 @@ public:
 	bool canRotate(int, int);
 	bool rotateLeft(int, int);
 	bool rotateRight(int, int);
+	bool rotateHalf(int, int);
 	void print();
 	std::list<Step> getListOfStep();
 	bool doStep(Step);

@@ -7,24 +7,26 @@
 #include "Player.h"
 #include "Human.h"
 #include <iostream>
+#include <string>
 
 int main()
 {
-	std::cout << "Entrez le numero d'une grille : ";
-	int nGrid;
-	std::cin >> nGrid;
-	std::cout << std::endl;
-	Board* board = BoardFactory::createBoard(nGrid);
-	/*for (int i = 1; i < 12; i++) {
-		Board* board = BoardFactory::createBoard(i);
-		std::cout << board->getIdentity();
-		std::cout << " @ ";
+	Board* board = NULL;
+	while (board == NULL) {
+		try {
+			std::cout << "Entrez le numero d'une grille : ";
+			std::string s = "";
+			std::cin >> s;
+			int nGrid = std::stoi(s);
+			board = BoardFactory::createBoard(nGrid);
+		}
+		catch (std::exception const & e)
+		{
+			board = NULL;
+		}
+
 	}
-	for (int j = 2; j < 7; j++) {
-		Board* board = BoardFactory::createBoard(j*10);
-		std::cout << board->getIdentity();
-		std::cout << " @ ";
-	}*/
+	std::cout << std::endl;
 	Human player = Human(board);
 	player.play();
 	char x;
