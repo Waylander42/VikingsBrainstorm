@@ -43,13 +43,13 @@ Board::~Board()
 }
 
 unsigned int Board::getLocation(int _pos, int _ori) {
-	if (_ori == Boat::Orientation::TOP) {
+	if (_ori == Boat::Orientation::BOT) {
 		return 4 * (_pos / 3) + _pos;
 	}
-	else if (_ori == Boat::Orientation::BOT) {
+	else if (_ori == Boat::Orientation::TOP) {
 		return 4 * (_pos / 3) + _pos + 7;
 	}
-	else if (_ori == Boat::Orientation::LEFT) {
+	else if (_ori == Boat::Orientation::RIGHT) {
 		return 4 * (_pos / 3) + _pos + 3;
 	}
 	else {
