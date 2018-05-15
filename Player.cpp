@@ -29,9 +29,12 @@ unsigned int Player::getEndBoard() {
 }
 
 void Player::startTimer() {
-	timer = time(NULL);
+	timer = clock();
 }
 
-double Player::getTimer() {
-	return ((double)clock() - timer);
+void Player::printTimer() {
+	double time = ((double)clock() - timer);
+	int seconde = time / 1000;
+	int miliSeconde = time - seconde * 1000;
+	std::cout << seconde << "," << miliSeconde << " secondes";
 }

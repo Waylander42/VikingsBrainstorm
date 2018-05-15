@@ -13,7 +13,7 @@ public:
 	void printListOfSteps(std::list<Step>);
 	unsigned int getEndBoard();
 	void startTimer();
-	double getTimer();
+	void printTimer();
 
 protected:
 	Board * board;

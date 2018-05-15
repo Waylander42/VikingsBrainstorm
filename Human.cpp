@@ -18,7 +18,7 @@ void Human::play() {
 	std::cout << "endBoard = " << endBoard << std::endl;
 	while (board->getBoatsLocation() != endBoard) {
 		std::cout << "boatLocation = " << board->getBoatsLocation() << std::endl;
-		board->print();
+		board->print(endBoard);
 		std::list<Step> steps = board->getListOfStep();
 		printListOfSteps(steps);
 		int action = askAction(steps.size());
@@ -27,7 +27,9 @@ void Human::play() {
 		std::advance(it, action - 1);
 		board->doStep(*it);
 	}
-	std::cout << "resolution en " << getTimer() << "secondes" << std::endl;
+	std::cout << "resolution en ";
+	printTimer(); 
+	std::cout << std::endl;
 }
 
 int Human::askAction(int size) {

@@ -245,13 +245,13 @@ bool Board::rotateRight(int x, int y) {
 										   }
 										   boats[i].rotate(part1, Boat::Orientation::BOT, part2, Boat::Orientation::TOP);
 										   break;
-			case Boat::Orientation::BOT: if (y < 2) { // alors part 2 est à gauche
+			case Boat::Orientation::BOT: if (y < 2) { // alors part 2 est à droite
 											 part2 = &board[x][y + 1];
 										 }
 										 else {
 											 part2 = NULL;
 										 }
-										 boats[i].rotate(part1, Boat::Orientation::RIGHT, part2, Boat::Orientation::LEFT);
+										 boats[i].rotate(part1, Boat::Orientation::LEFT, part2, Boat::Orientation::RIGHT);
 										 break;
 			case Boat::Orientation::LEFT: if (x < 2) { // alors part 2 est en bas
 											  part2 = &board[x + 1][y];
@@ -522,8 +522,9 @@ void Board::setBoatsIdentity() {
 	}
 }
 
-void Board::print() {
+void Board::print(unsigned int endBoard) {
 	char grid[GRID_SIZE][GRID_SIZE];
+	//dessine le coutour de la grille
 	for (int x = 0; x < GRID_SIZE; x++) {
 		for (int y = 0; y < GRID_SIZE; y++) {
 			grid[x][y] = ' ';
@@ -535,6 +536,7 @@ void Board::print() {
 			}
 		}
 	}
+	//dessine les diagonales qui sont quoiqu'il arrive plaines
 	int cursor = 0;
 	int x = 1;
 	int y = 1;
@@ -559,6 +561,7 @@ void Board::print() {
 
 	}
 
+	//dessine les sea part
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
 			int centerX = i * 5 + 3;
@@ -590,6 +593,7 @@ void Board::print() {
 		}
 	}
 
+	//dessine les bateaux
 	for (int i = 0; i < nbBoats; i++) {
 		for (int x = 0; x < 3; x++) {
 			for (int y = 0; y < 3; y++) {
@@ -632,7 +636,28 @@ void Board::print() {
 			}
 		}
 	}
+	int yellow = endBoard / 13824;
+	int reste = endBoard % 13824;
+	int blue = reste / 576;
+	reste = reste % 576;
+	int green = reste / 24;
+	int red = reste % 24;
+	//dessine la zone d'arrivé des bateaux
+	for (int i = 0; i < nbBoats; i++) {
+		switch (boats[i].getColor())
+		{
+		case 'R': drawBoatArrival(red, &grid[0][0], 'R');
+			break;
+		case 'G': drawBoatArrival(green, &grid[0][0], 'G');
+			break;
+		case 'B': drawBoatArrival(blue, &grid[0][0], 'B');
+			break;
+		case 'Y': drawBoatArrival(yellow, &grid[0][0], 'Y');
+			break;
+		}
+	}
 
+	//affiche la grille
 	for (int x = 0; x < GRID_SIZE; x++) {
 		for (int y = 0; y < GRID_SIZE; y++) {
 			std::cout << grid[x][y] << ' ';
@@ -640,4 +665,34 @@ void Board::print() {
 		std::cout << "\n";
 	}
 
+}
+
+void Board::drawBoatArrival(int position, char* grid, char color) {
+	switch (position)
+	{
+	case 0: grid[0 * 17 + 2] = color; grid[0 * 17 + 3] = color; grid[0 * 17 + 4] = color;
+		break;
+	case 1: grid[0 * 17 + 7] = color; grid[0 * 17 + 8] = color; grid[0 * 17 + 9] = color;
+		break;
+	case 2: grid[0 * 17 + 12] = color; grid[0 * 17 + 13] = color; grid[0 * 17 + 14] = color;
+		break;
+	case 3: grid[2 * 17 + 0] = color; grid[3 * 17 + 0] = color; grid[4 * 17 + 0] = color;
+		break;
+	case 10: grid[7 * 17 + 0] = color; grid[8 * 17 + 0] = color; grid[9 * 17 + 0] = color;
+		break;
+	case 17: grid[12 * 17 + 0] = color; grid[13 * 17 + 0] = color; grid[14 * 17 + 0] = color;
+		break;
+	case 6: grid[2 * 17 + 16] = color; grid[3 * 17 + 16] = color; grid[4 * 17 + 16] = color;
+		break;
+	case 13: grid[7 * 17 + 16] = color; grid[8 * 17 + 16] = color; grid[9 * 17 + 16] = color;
+		break;
+	case 20: grid[12 * 17 + 16] = color; grid[13 * 17 + 16] = color; grid[14 * 17 + 16] = color;
+		break;
+	case 21: grid[16*17 + 2] = color; grid[16 * 17 + 3] = color; grid[16 * 17 + 4] = color;
+		break;
+	case 22: grid[16 * 17 + 7] = color; grid[16 * 17 + 8] = color; grid[16 * 17 + 9] = color;
+		break;
+	case 23: grid[16 * 17 + 12] = color; grid[16 * 17 + 13] = color; grid[16 * 17 + 14] = color;
+		break;
+	}
 }

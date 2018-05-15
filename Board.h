@@ -28,12 +28,13 @@ public:
 	void initBoats(Boat[4], int);
 	void initSeaPart();
 
-	void print();
+	void print(unsigned int);
 
 private:
 	void setBoatsIdentity();
 	unsigned int getLocation(int, int);
 	unsigned int getBoatLocation(int);
+	void drawBoatArrival(int,char*, char);
 
 	SeaPart board[3][3];
 	Boat boats[4];   //array of boats
