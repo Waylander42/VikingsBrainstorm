@@ -7,15 +7,15 @@
 
 Board::Board():nbBoats(0)
 {
-	board[0][0] = SeaPart(0, 0, 0, 0);
-	board[0][1] = SeaPart(0, 0, 0, 0);
-	board[0][2] = SeaPart(0, 0, 0, 0);
-	board[1][0] = SeaPart(0, 0, 0, 0);
-	board[1][1] = SeaPart(0, 0, 0, 0);
-	board[1][2] = SeaPart(0, 0, 0, 0);
-	board[2][0] = SeaPart(0, 0, 0, 0);
-	board[2][1] = SeaPart(0, 0, 0, 0);
-	board[2][2] = SeaPart(0, 0, 0, 0);
+	board[0][0] = SeaPart(0);
+	board[0][1] = SeaPart(0);
+	board[0][2] = SeaPart(0);
+	board[1][0] = SeaPart(0);
+	board[1][1] = SeaPart(0);
+	board[1][2] = SeaPart(0);
+	board[2][0] = SeaPart(0);
+	board[2][1] = SeaPart(0);
+	board[2][2] = SeaPart(0);
 	
 }
 

@@ -1,11 +1,11 @@
 ﻿#include "stdafx.h"
 #include "SeaPart.h"
 
-SeaPart::SeaPart(int _top, int _right, int _bot, int _left):top(_top), bot(_bot), left(_left), right(_right)
+SeaPart::SeaPart(int _identityt):identity(_identityt)
 {
 }
 
-SeaPart::SeaPart() :SeaPart(0, 0, 0, 0)
+SeaPart::SeaPart() :SeaPart(0)
 {
 }
 
@@ -14,56 +14,111 @@ SeaPart::~SeaPart()
 }
 
 int SeaPart::getTop() const{
+	int top = -1;
+	switch (identity) {
+	case 0: top = 0;
+		break;
+	case 1: top = 1;
+		break;
+	case 2: top = 1;
+		break;
+	case 3: top = 0;
+		break;
+	case 4: top = 0;
+		break;
+	case 5: top = 1;
+		break;
+	}
 	return top;
 }
 
 int SeaPart::getBot() const{
+	int bot = -1;
+	switch (identity) {
+	case 0: bot = 1;
+		break;
+	case 1: bot = 0;
+		break;
+	case 2: bot = 0;
+		break;
+	case 3: bot = 1;
+		break;
+	case 4: bot = 0;
+		break;
+	case 5: bot = 1;
+		break;
+	}
 	return bot;
 }
 
 int SeaPart::getLeft() const{
+	int left = -1;
+	switch (identity) {
+	case 0: left = 1;
+		break;
+	case 1: left = 1;
+		break;
+	case 2: left = 0;
+		break;
+	case 3: left = 0;
+		break;
+	case 4: left = 1;
+		break;
+	case 5: left = 0;
+		break;
+	}
 	return left;
 }
 
 int SeaPart::getRight() const{
+	int right = -1;
+	switch (identity) {
+	case 0: right = 0;
+		break;
+	case 1: right = 0;
+		break;
+	case 2: right = 1;
+		break;
+	case 3: right = 1;
+		break;
+	case 4: right = 1;
+		break;
+	case 5: right = 0;
+		break;
+	}
 	return right;
 }
 
 void SeaPart::rotateRight() {
-	int temp = top;
-	top = left;
-	left = bot;
-	bot = right;
-	right = temp;
+	if (identity < 4) {
+		identity = (identity + 1) % 4;
+	}
+	else if (identity == 4) {
+		identity = 5;
+	}
+	else {
+		identity = 4;
+	}
 }
 
 void SeaPart::rotateLeft() {
-	int temp = top;
-	top = right;
-	right = bot;
-	bot = left;
-	left = temp;
+	if (identity < 4) {
+		identity = (identity + 3) % 4;
+	}
+	else if (identity == 4) {
+		identity = 5;
+	}
+	else {
+		identity = 4;
+	}
 }
 
 void SeaPart::rotateHalf() {
-	top, right, bot, left = bot, left, top, right;
+	if (identity < 4) {
+		identity = (identity + 2) % 4;
+	}
 }
 
 int SeaPart::getIdentity() {
-	if (left == 1 && bot == 1) {
-		return 0;
-	}
-	else if (right == 1 && bot == 1) {
-		return 1;
-	}
-	else if (top == 1 && left == 1) {
-		return 2;
-	}
-	else if (top == 1 && left == 1) {
-		return 3;
-	}
-	else if (left == 1 && right == 1) {
-		return 4;
-	}
-	return 5;
+	return identity;
 }

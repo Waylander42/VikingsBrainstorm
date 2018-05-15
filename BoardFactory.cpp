@@ -37,15 +37,15 @@ Board* BoardFactory::createBoard(int number) {
 
 Board* BoardFactory::createBoard1() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1, 0, 0, 1); //3
-	board[0][1] = SeaPart(0, 1, 0, 1); //5
-	board[0][2] = SeaPart(1, 1, 0, 0); //4
-	board[1][0] = SeaPart(1, 0, 0, 1); //3
-	board[1][1] = SeaPart(1, 0, 1, 0); //6
-	board[1][2] = SeaPart(0, 1, 0, 1); //5
-	board[2][0] = SeaPart(1, 0, 0, 1); //3
-	board[2][1] = SeaPart(0, 0, 1, 1); //1
-	board[2][2] = SeaPart(1, 1, 0, 0); //4
+	board[0][0] = SeaPart(1); 
+	board[0][1] = SeaPart(4); 
+	board[0][2] = SeaPart(2); 
+	board[1][0] = SeaPart(1); 
+	board[1][1] = SeaPart(5); 
+	board[1][2] = SeaPart(4); 
+	board[2][0] = SeaPart(1); 
+	board[2][1] = SeaPart(0); 
+	board[2][2] = SeaPart(2); 
 
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(2,1), Boat::Orientation::LEFT, b->getSeaPart(2, 2), Boat::Orientation::RIGHT, Boat::Color::RED) };
@@ -55,15 +55,15 @@ Board* BoardFactory::createBoard1() { //top right bot left
 
 Board* BoardFactory::createBoard2() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1, 0, 1, 0); 
-	board[0][1] = SeaPart(0, 1, 0, 1); 
-	board[0][2] = SeaPart(1, 0, 1, 0); 
-	board[1][0] = SeaPart(0, 0, 1, 1); 
-	board[1][1] = SeaPart(1, 1, 0, 0); 
-	board[1][2] = SeaPart(0, 1, 1, 0); 
-	board[2][0] = SeaPart(0, 0, 1, 1); 
-	board[2][1] = SeaPart(0, 1, 1, 0); 
-	board[2][2] = SeaPart(0, 1, 1, 0); 
+	board[0][0] = SeaPart(5); 
+	board[0][1] = SeaPart(4); 
+	board[0][2] = SeaPart(5); 
+	board[1][0] = SeaPart(0); 
+	board[1][1] = SeaPart(2); 
+	board[1][2] = SeaPart(3); 
+	board[2][0] = SeaPart(0); 
+	board[2][1] = SeaPart(3); 
+	board[2][2] = SeaPart(3); 
 
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(2,0), Boat::Orientation::LEFT, b->getSeaPart(2, 1), Boat::Orientation::RIGHT, Boat::Color::GREEN) };
@@ -73,15 +73,15 @@ Board* BoardFactory::createBoard2() { //top right bot left
 
 Board* BoardFactory::createBoard3() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1, 0, 1, 0); 
-	board[0][1] = SeaPart(1, 1, 0, 0); 
-	board[0][2] = SeaPart(1, 0, 1, 0); 
-	board[1][0] = SeaPart(0, 1, 1, 0); 
-	board[1][1] = SeaPart(1, 1, 0, 0); 
-	board[1][2] = SeaPart(0, 1, 1, 0); 
-	board[2][0] = SeaPart(0, 1, 1, 0); 
-	board[2][1] = SeaPart(1, 0, 1, 0); 
-	board[2][2] = SeaPart(0, 1, 1, 0); 
+	board[0][0] = SeaPart(5); 
+	board[0][1] = SeaPart(2); 
+	board[0][2] = SeaPart(5); 
+	board[1][0] = SeaPart(3); 
+	board[1][1] = SeaPart(2); 
+	board[1][2] = SeaPart(3); 
+	board[2][0] = SeaPart(3); 
+	board[2][1] = SeaPart(5); 
+	board[2][2] = SeaPart(3); 
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::LEFT, b->getSeaPart(0, 1), Boat::Orientation::RIGHT, Boat::Color::YELLOW) };
@@ -91,15 +91,15 @@ Board* BoardFactory::createBoard3() { //top right bot left
 
 Board* BoardFactory::createBoard4() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1, 0, 1, 0); 
-	board[0][1] = SeaPart(1, 0, 1, 0); 
-	board[0][2] = SeaPart(1, 0, 0, 1); 
-	board[1][0] = SeaPart(0, 0, 1, 1); 
-	board[1][1] = SeaPart(0, 0, 1, 1);
-	board[1][2] = SeaPart(1, 0, 0, 1); 
-	board[2][0] = SeaPart(0, 0, 1, 1);
-	board[2][1] = SeaPart(0, 0, 1, 1); 
-	board[2][2] = SeaPart(1, 0, 1, 0); 
+	board[0][0] = SeaPart(5); 
+	board[0][1] = SeaPart(5); 
+	board[0][2] = SeaPart(1); 
+	board[1][0] = SeaPart(0); 
+	board[1][1] = SeaPart(0);
+	board[1][2] = SeaPart(1); 
+	board[2][0] = SeaPart(0);
+	board[2][1] = SeaPart(0); 
+	board[2][2] = SeaPart(5); 
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(2,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::RED) };
@@ -109,15 +109,15 @@ Board* BoardFactory::createBoard4() { //top right bot left
 
 Board* BoardFactory::createBoard5() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1, 0, 1, 0); 
-	board[0][1] = SeaPart(1, 1, 0, 0); 
-	board[0][2] = SeaPart(1, 1, 0, 0); 
-	board[1][0] = SeaPart(0, 1, 1, 0);
-	board[1][1] = SeaPart(1, 1, 0, 0);
-	board[1][2] = SeaPart(1, 0, 1, 0);
-	board[2][0] = SeaPart(0, 1, 1, 0); 
-	board[2][1] = SeaPart(1, 0, 1, 0);
-	board[2][2] = SeaPart(0, 1, 1, 0);
+	board[0][0] = SeaPart(5); 
+	board[0][1] = SeaPart(2); 
+	board[0][2] = SeaPart(2); 
+	board[1][0] = SeaPart(3);
+	board[1][1] = SeaPart(2);
+	board[1][2] = SeaPart(5);
+	board[2][0] = SeaPart(3); 
+	board[2][1] = SeaPart(5);
+	board[2][2] = SeaPart(3);
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::LEFT, b->getSeaPart(0,1), Boat::Orientation::RIGHT, Boat::Color::BLUE) };
@@ -127,15 +127,15 @@ Board* BoardFactory::createBoard5() { //top right bot left
 
 Board* BoardFactory::createBoard6() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1, 0, 1, 0);
-	board[0][1] = SeaPart(1, 0, 1, 0);
-	board[0][2] = SeaPart(0, 1, 1, 0);
-	board[1][0] = SeaPart(0, 1, 0, 1);
-	board[1][1] = SeaPart(0, 1, 1, 0);
-	board[1][2] = SeaPart(0, 1, 1, 0);
-	board[2][0] = SeaPart(0, 0, 1, 1);
-	board[2][1] = SeaPart(0, 1, 1, 0);
-	board[2][2] = SeaPart(0, 1, 1, 0);
+	board[0][0] = SeaPart(5);
+	board[0][1] = SeaPart(5);
+	board[0][2] = SeaPart(3);
+	board[1][0] = SeaPart(4);
+	board[1][1] = SeaPart(3);
+	board[1][2] = SeaPart(3);
+	board[2][0] = SeaPart(0);
+	board[2][1] = SeaPart(3);
+	board[2][2] = SeaPart(3);
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::GREEN),
@@ -146,15 +146,15 @@ Board* BoardFactory::createBoard6() { //top right bot left
 
 Board* BoardFactory::createBoard7() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(0, 1, 0, 1);
-	board[0][1] = SeaPart(1, 0, 1, 0);
-	board[0][2] = SeaPart(1, 1, 0, 0);
-	board[1][0] = SeaPart(0, 1, 0, 1);
-	board[1][1] = SeaPart(0, 1, 1, 0);
-	board[1][2] = SeaPart(0, 1, 1, 0);
-	board[2][0] = SeaPart(0, 0, 1, 1);
-	board[2][1] = SeaPart(0, 1, 1, 0);
-	board[2][2] = SeaPart(0, 1, 1, 0);
+	board[0][0] = SeaPart(4);
+	board[0][1] = SeaPart(5);
+	board[0][2] = SeaPart(2);
+	board[1][0] = SeaPart(4);
+	board[1][1] = SeaPart(3);
+	board[1][2] = SeaPart(3);
+	board[2][0] = SeaPart(0);
+	board[2][1] = SeaPart(3);
+	board[2][2] = SeaPart(3);
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::RED),
@@ -166,15 +166,15 @@ Board* BoardFactory::createBoard7() { //top right bot left
 
 Board* BoardFactory::createBoard8() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1, 0, 1, 0);
-	board[0][1] = SeaPart(0, 1, 0, 1);
-	board[0][2] = SeaPart(1, 1, 0, 0);
-	board[1][0] = SeaPart(0, 0, 1, 1);
-	board[1][1] = SeaPart(0, 1, 0, 1);
-	board[1][2] = SeaPart(0, 1, 1, 0);
-	board[2][0] = SeaPart(0, 0, 1, 1);
-	board[2][1] = SeaPart(0, 0, 1, 1);
-	board[2][2] = SeaPart(0, 1, 1, 0);
+	board[0][0] = SeaPart(5);
+	board[0][1] = SeaPart(4);
+	board[0][2] = SeaPart(2);
+	board[1][0] = SeaPart(0);
+	board[1][1] = SeaPart(4);
+	board[1][2] = SeaPart(3);
+	board[2][0] = SeaPart(0);
+	board[2][1] = SeaPart(0);
+	board[2][2] = SeaPart(3);
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,1), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::BLUE),
@@ -185,15 +185,15 @@ Board* BoardFactory::createBoard8() { //top right bot left
 
 Board* BoardFactory::createBoard9() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1, 0, 0, 1);
-	board[0][1] = SeaPart(0, 0, 1, 1);
-	board[0][2] = SeaPart(1, 1, 0, 0);
-	board[1][0] = SeaPart(1, 0, 1, 0);
-	board[1][1] = SeaPart(0, 1, 0, 1);
-	board[1][2] = SeaPart(1, 0, 1, 0);
-	board[2][0] = SeaPart(0, 0, 1, 1);
-	board[2][1] = SeaPart(0, 0, 1, 1);
-	board[2][2] = SeaPart(0, 1, 1, 0);
+	board[0][0] = SeaPart(1);
+	board[0][1] = SeaPart(0);
+	board[0][2] = SeaPart(2);
+	board[1][0] = SeaPart(5);
+	board[1][1] = SeaPart(4);
+	board[1][2] = SeaPart(5);
+	board[2][0] = SeaPart(0);
+	board[2][1] = SeaPart(0);
+	board[2][2] = SeaPart(3);
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,1), Boat::Orientation::LEFT, b->getSeaPart(0,2), Boat::Orientation::RIGHT, Boat::Color::RED),
@@ -205,15 +205,15 @@ Board* BoardFactory::createBoard9() { //top right bot left
 
 Board* BoardFactory::createBoard10() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(0, 1, 0, 1); //5
-	board[0][1] = SeaPart(1, 1, 0, 0); //4
-	board[0][2] = SeaPart(1, 0, 1, 0); //6
-	board[1][0] = SeaPart(0, 0, 1, 1); //1
-	board[1][1] = SeaPart(1,1,0,0); //4
-	board[1][2] = SeaPart(0,1,1,0); //2
-	board[2][0] = SeaPart(0,0,1,1); //1
-	board[2][1] = SeaPart(0,0,1,1); //1
-	board[2][2] = SeaPart(0,1,0,1); //5
+	board[0][0] = SeaPart(4); 
+	board[0][1] = SeaPart(2); 
+	board[0][2] = SeaPart(5); 
+	board[1][0] = SeaPart(0); 
+	board[1][1] = SeaPart(2); 
+	board[1][2] = SeaPart(3); 
+	board[2][0] = SeaPart(0); 
+	board[2][1] = SeaPart(0); 
+	board[2][2] = SeaPart(4); 
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::TOP, b->getSeaPart(1, 0), Boat::Orientation::BOT, Boat::Color::GREEN),
@@ -224,15 +224,15 @@ Board* BoardFactory::createBoard10() { //top right bot left
 
 Board* BoardFactory::createBoard11() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1, 0, 1, 0);
-	board[0][1] = SeaPart(0, 1, 0, 1);
-	board[0][2] = SeaPart(1, 1, 0, 0);
-	board[1][0] = SeaPart(0, 0, 1, 1);
-	board[1][1] = SeaPart(0, 1, 0, 1);
-	board[1][2] = SeaPart(1, 1, 0, 0);
-	board[2][0] = SeaPart(0, 0, 1, 1);
-	board[2][1] = SeaPart(0, 0, 1, 1);
-	board[2][2] = SeaPart(0, 0, 1, 1);
+	board[0][0] = SeaPart(5);
+	board[0][1] = SeaPart(4);
+	board[0][2] = SeaPart(2);
+	board[1][0] = SeaPart(0);
+	board[1][1] = SeaPart(4);
+	board[1][2] = SeaPart(2);
+	board[2][0] = SeaPart(0);
+	board[2][1] = SeaPart(0);
+	board[2][2] = SeaPart(0);
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,1), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::YELLOW),
@@ -244,15 +244,15 @@ Board* BoardFactory::createBoard11() { //top right bot left
 
 Board* BoardFactory::createBoard20() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(0,1,0,1); //5
-	board[0][1] = SeaPart(1,1,0,0); //4
-	board[0][2] = SeaPart(1,1,0,0); //4
-	board[1][0] = SeaPart(1,0,0,1); //3
-	board[1][1] = SeaPart(0,1,0,1); //5
-	board[1][2] = SeaPart(0,1,1,0); //2
-	board[2][0] = SeaPart(1,0,0,1); //3
-	board[2][1] = SeaPart(0,0,1,1); //1
-	board[2][2] = SeaPart(0,1,0,1); //5	
+	board[0][0] = SeaPart(4); 
+	board[0][1] = SeaPart(2); 
+	board[0][2] = SeaPart(2); 
+	board[1][0] = SeaPart(1); 
+	board[1][1] = SeaPart(4); 
+	board[1][2] = SeaPart(3); 
+	board[2][0] = SeaPart(1); 
+	board[2][1] = SeaPart(0); 
+	board[2][2] = SeaPart(4); 	
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(1,1), Boat::Orientation::TOP, b->getSeaPart(2,1), Boat::Orientation::BOT, Boat::Color::GREEN),
@@ -264,15 +264,15 @@ Board* BoardFactory::createBoard20() { //top right bot left
 
 Board* BoardFactory::createBoard30() { //top right bot left
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(0,1,0,1); //5
-	board[0][1] = SeaPart(1,0,1,0); //6
-	board[0][2] = SeaPart(1,0,1,0); //6
-	board[1][0] = SeaPart(0,0,1,1); //1
-	board[1][1] = SeaPart(0,0,1,1); //1
-	board[1][2] = SeaPart(0,0,1,1); //1
-	board[2][0] = SeaPart(0, 1, 1, 0); //2
-	board[2][1] = SeaPart(0, 1, 1, 0); //2
-	board[2][2] = SeaPart(0, 1, 1, 0); //2
+	board[0][0] = SeaPart(4); 
+	board[0][1] = SeaPart(5); 
+	board[0][2] = SeaPart(5); 
+	board[1][0] = SeaPart(0); 
+	board[1][1] = SeaPart(0); 
+	board[1][2] = SeaPart(0); 
+	board[2][0] = SeaPart(3); 
+	board[2][1] = SeaPart(3); 
+	board[2][2] = SeaPart(3); 
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::BLUE),
@@ -284,15 +284,15 @@ Board* BoardFactory::createBoard30() { //top right bot left
 
 Board* BoardFactory::createBoard40() { //top right bot left 
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1,0,1,0);
-	board[0][1] = SeaPart(1,1,0,0);
-	board[0][2] = SeaPart(1,0,1,0);
-	board[1][0] = SeaPart(0,0,1,1);
-	board[1][1] = SeaPart(1,1,0,0);
-	board[1][2] = SeaPart(0,1,1,0);
-	board[2][0] = SeaPart(0,1,1,0);
-	board[2][1] = SeaPart(1,0,1,0);
-	board[2][2] = SeaPart(0,1,1,0);
+	board[0][0] = SeaPart(5);
+	board[0][1] = SeaPart(2);
+	board[0][2] = SeaPart(5);
+	board[1][0] = SeaPart(0);
+	board[1][1] = SeaPart(2);
+	board[1][2] = SeaPart(3);
+	board[2][0] = SeaPart(3);
+	board[2][1] = SeaPart(5);
+	board[2][2] = SeaPart(3);
 
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::BLUE),
@@ -305,15 +305,15 @@ Board* BoardFactory::createBoard40() { //top right bot left
 
 Board* BoardFactory::createBoard50() { //top right bot left 
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1,0,0,1);
-	board[0][1] = SeaPart(1,0,0,1);
-	board[0][2] = SeaPart(0,0,1,1);
-	board[1][0] = SeaPart(0,1,0,1);
-	board[1][1] = SeaPart(1,0,1,0);
-	board[1][2] = SeaPart(0,1,0,1);
-	board[2][0] = SeaPart(1,1,0,0);
-	board[2][1] = SeaPart(0,1,1,0);
-	board[2][2] = SeaPart(0,1,1,0);
+	board[0][0] = SeaPart(1);
+	board[0][1] = SeaPart(1);
+	board[0][2] = SeaPart(0);
+	board[1][0] = SeaPart(4);
+	board[1][1] = SeaPart(5);
+	board[1][2] = SeaPart(4);
+	board[2][0] = SeaPart(2);
+	board[2][1] = SeaPart(3);
+	board[2][2] = SeaPart(3);
 
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,2), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::RED),
@@ -326,15 +326,15 @@ Board* BoardFactory::createBoard50() { //top right bot left
 
 Board* BoardFactory::createBoard60() { //top right bot left 
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(1,0,1,0);
-	board[0][1] = SeaPart(1,0,0,1);
-	board[0][2] = SeaPart(0,0,1,1);
-	board[1][0] = SeaPart(0,0,1,1);
-	board[1][1] = SeaPart(1,0,1,0);
-	board[1][2] = SeaPart(0,1,0,1);
-	board[2][0] = SeaPart(0,0,1,1);
-	board[2][1] = SeaPart(0,0,1,1);
-	board[2][2] = SeaPart(0,0,1,1);
+	board[0][0] = SeaPart(5);
+	board[0][1] = SeaPart(1);
+	board[0][2] = SeaPart(0);
+	board[1][0] = SeaPart(0);
+	board[1][1] = SeaPart(5);
+	board[1][2] = SeaPart(4);
+	board[2][0] = SeaPart(0);
+	board[2][1] = SeaPart(0);
+	board[2][2] = SeaPart(0);
 	
 	Board* b = new Board(board);
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::BLUE),

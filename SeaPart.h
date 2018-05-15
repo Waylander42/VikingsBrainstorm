@@ -3,7 +3,7 @@ class SeaPart
 {
 public:
 	SeaPart();
-	SeaPart(int, int, int, int);
+	SeaPart(int);
 	~SeaPart();
 
 	void rotateLeft();
@@ -16,9 +16,6 @@ public:
 	int getRight() const;
 
 private :
-	int top;
-	int bot;
-	int left;
-	int right;
+	int identity;
 };
 
