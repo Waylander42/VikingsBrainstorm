@@ -42,6 +42,45 @@ Board::~Board()
 {
 }
 
+unsigned int Board::getLocation(int _pos, int _ori) {
+	if (_ori == Boat::Orientation::TOP) {
+		return 4 * (_pos / 3) + _pos;
+	}
+	else if (_ori == Boat::Orientation::BOT) {
+		return 4 * (_pos / 3) + _pos + 7;
+	}
+	else if (_ori == Boat::Orientation::LEFT) {
+		return 4 * (_pos / 3) + _pos + 3;
+	}
+	else {
+		return 4 * (_pos / 3) + _pos + 4;
+	}
+}
+
+unsigned int Board::getBoatLocation(int i) {
+	unsigned int res = 0;
+	char color = boats[i].getColor();
+	int pos = boats[i].getPart1()->getPosition();
+	int orientation = boats[i].getOrientation1();
+	res = getLocation(pos, orientation);
+	switch (color) {
+	case Boat::Color::RED: res = res * 1;
+	case Boat::Color::GREEN: res = res * 24;
+	case Boat::Color::BLUE: res = res * 576;
+	case Boat::Color::YELLOW: res = res * 13824;
+	}
+	return res;
+}
+
+unsigned int Board::getBoatsLocation() {
+	unsigned int res = 0;
+	for (int i = 0; i < nbBoats; i++) {
+		res += getBoatLocation(i);
+	}
+	return res;
+}
+
+
 unsigned int Board::getIdentity() {
 	unsigned int boardID = board[0][0].getIdentity() + board[0][1].getIdentity() * 6 + board[0][2].getIdentity() * 36
 		+ board[1][0].getIdentity() * 216 + board[1][1].getIdentity() * 1296 + board[1][2].getIdentity() * 7776

@@ -11,6 +11,9 @@ public:
 	~Board();
 	Board(SeaPart[3][3]);
 	Board(Board const&);
+	unsigned int Board::getLocation(int, int);
+	unsigned int Board::getBoatLocation(int);
+	unsigned int Board::getBoatsLocation();
 	unsigned int getIdentity();
 	void setBoats(Boat[4], int);
 	SeaPart* getSeaPart(int, int);
