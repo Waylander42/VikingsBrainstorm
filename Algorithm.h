@@ -6,6 +6,7 @@
 class Algorithm
 {
 public:
+	Algorithm();
 	Algorithm(Board*, unsigned int);
 	~Algorithm();
 	virtual void launch() {};

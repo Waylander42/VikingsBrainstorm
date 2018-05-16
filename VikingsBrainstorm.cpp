@@ -74,7 +74,7 @@ int main()
 	else {
 		Algorithm algo;
 		switch (nAlgo) {
-		case 1: algo = ParcoursEnLargeur();
+		case 1: algo = ParcoursEnLargeur(board, endBoard);
 		//case 2: algo = Algorithm();
 		//case 3: algo = Algorithm();
 		default: break;
