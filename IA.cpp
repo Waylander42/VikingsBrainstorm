@@ -16,10 +16,10 @@ void IA::play() {
 	std::cout << "resolution en ";
 	printTimer();
 	std::cout << std::endl;
-	std::list<Step> result = algorithm.getResult();
+	std::list<Step*> result = algorithm.getResult(); //regarder pour step*
 	while (result.empty() == false) {
-		result.front().print();
-		board->doStep(result.front());
+		result.front()->print();
+		board->doStep(Step(result.front()->getX(),result.front()->getY(),result.front()->getRotation()));
 		board->print(endBoard);
 		result.pop_front();
 	}
