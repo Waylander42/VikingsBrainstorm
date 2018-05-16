@@ -12,7 +12,7 @@ public:
 	Board(SeaPart[3][3]);
 	Board(Board const&);
 
-	unsigned int getBoatsLocation();
+	unsigned int getBoatsLocation(); //retourn un entier qui décrit de façon unique la position des bateaux
 	unsigned int getIdentity();
 	
 	SeaPart* getSeaPart(int, int);
@@ -25,6 +25,7 @@ public:
 	std::list<Step> getListOfStep();
 	bool doStep(Step);
 
+	//fonctions d'initialisation à appeler après la création d'un board
 	void initBoats(Boat[4], int);
 	void initSeaPart();
 
@@ -32,8 +33,8 @@ public:
 
 private:
 	void setBoatsIdentity();
-	unsigned int getLocation(int, int);
-	unsigned int getBoatLocation(int);
+	unsigned int getLocation(int, int); //retourne l'emplacement du bateau. L'emplacement du bateau est un entier entre 0 et 23
+	unsigned int getBoatLocation(int); //retourne un entier qui décrit de façon unique la position d'un bateau en fonction de sa couleur
 	void drawBoatArrival(int,char*, char);
 
 	SeaPart board[3][3];
