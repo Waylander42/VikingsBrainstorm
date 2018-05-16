@@ -7,6 +7,9 @@
 #include "EndBoardFactory.h"
 #include "Player.h"
 #include "Human.h"
+#include "Constantes.h"
+#include "IA.h"
+#include "ParcoursEnLargeur.h"
 #include <iostream>
 #include <string>
 
@@ -14,6 +17,41 @@ int main()
 {
 	Board* board = NULL;
 	unsigned int endBoard;
+	int modeJeu = 0;
+	int nAlgo = 0;
+	while (modeJeu == 0) {
+		try {
+			std::cout << "Choisissez votre mode de jeu 1.Humain 2.IA : ";
+			std::string s = "";
+			std::cin >> s;
+			modeJeu = std::stoi(s);
+			if (modeJeu <= 0 || modeJeu > NB_MODEJEU) {
+				modeJeu = 0;
+			}
+		}
+		catch (std::exception const & e)
+		{
+			modeJeu = 0;
+		}
+	}
+	while (nAlgo == 0) {
+		try {
+			std::cout << "Choisissez votre algorithme de résolution ";
+			for (int i = 1; i < NB_ALGO; i++) {
+				std::cout << i << "." << ALGOS[i-1];
+			}
+			std::string s = "";
+			std::cin >> s;
+			nAlgo = std::stoi(s);
+			if (nAlgo <= 0 || nAlgo > NB_ALGO) {
+				nAlgo = 0;
+			}
+		}
+		catch (std::exception const & e)
+		{
+			nAlgo = 0;
+		}
+	}
 	while (board == NULL) {
 		try {
 			std::cout << "Entrez le numero d'une grille : ";
@@ -27,11 +65,23 @@ int main()
 		{
 			board = NULL;
 		}
-
 	}
 	std::cout << std::endl;
-	Human player = Human(board, endBoard);
-	player.play();
+	if (modeJeu == 1) {
+		Human player = Human(board, endBoard);
+		player.play();
+	}
+	else {
+		Algorithm algo;
+		switch (nAlgo) {
+		case 1: algo = ParcoursEnLargeur();
+		//case 2: algo = Algorithm();
+		//case 3: algo = Algorithm();
+		default: break;
+		}
+		IA player = IA(board, endBoard, algo);
+		player.play();
+	}
 	char x;
 	std::cout << "Entrez quelque chose pour fermer : ";
 	std::cin >> x;
