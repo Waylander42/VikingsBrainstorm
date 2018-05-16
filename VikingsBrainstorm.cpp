@@ -74,7 +74,7 @@ int main()
 		player.play();
 	}
 	else {
-		Algorithm algo(board, endBoard);
+		Algorithm algo;
 		switch (nAlgo) {
 		case 1: algo = ParcoursEnLargeur(board, endBoard);
 		//case 2: algo = Algorithm();
