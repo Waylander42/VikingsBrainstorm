@@ -9,7 +9,7 @@ class Player
 public:
 	Player(Board *, unsigned int);
 	~Player();
-	virtual void play();
+	virtual void play() {};
 	void printListOfSteps(std::list<Step>);
 	unsigned int getEndBoard();
 	void startTimer();

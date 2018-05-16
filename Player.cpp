@@ -11,10 +11,6 @@ Player::~Player()
 {
 }
 
-void Player::play()
-{
-}
-
 void Player::printListOfSteps(std::list<Step> steps) {
 	int count = 1;
 	for (std::list<Step>::const_iterator it = steps.begin(); it != steps.end(); ++it) {
