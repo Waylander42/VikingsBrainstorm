@@ -25,6 +25,7 @@ void Human::play() {
 		std::advance(it, action - 1);
 		board->doStep(*it);
 	}
+	board->print(endBoard);
 	std::cout << "resolution en ";
 	printTimer(); 
 	std::cout << std::endl;
