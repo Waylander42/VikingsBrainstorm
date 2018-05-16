@@ -10,9 +10,6 @@ Boat::Boat(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, Orientat
 		orientation1(_orientation1), orientation2(_orientation2), part1(_part1), part2(_part2), color(_color) {
 }
 
-Boat::Boat(Boat const& boat) : orientation1(boat.orientation1), orientation2(boat.orientation2), part1(boat.part1), part2(boat.part2), color(boat.color), identity(boat.identity) {
-}
-
 Boat::~Boat()
 {
 }
@@ -27,24 +24,24 @@ void Boat::rotate(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, O
 }
 
 //Renvoie la première pièce à côté du bâteau
-SeaPart * Boat::getPart1()
+SeaPart * Boat::getPart1() const
 {
 	return part1;
 }
 
 //Renvoie la deuxième pièce à côté du bâteau
-SeaPart * Boat::getPart2()
+SeaPart * Boat::getPart2() const
 {
 	return part2;
 }
 
 //Renvoie la première orientation à côté du bâteau
-Boat::Orientation Boat::getOrientation1() {
+Boat::Orientation Boat::getOrientation1() const{
 	return orientation1;
 }
 
 //Renvoie la deuxième orientation à côté du bâteau
-Boat::Orientation Boat::getOrientation2() {
+Boat::Orientation Boat::getOrientation2() const{
 	return orientation2;
 }
 
@@ -70,7 +67,7 @@ int Boat::getIdentity() const{
 }
 
 //Renvoie la couleur du bateau
-char Boat::getColor() const{
+char Boat::getColorChar() const{
 	switch (color)
 	{
 	case Boat::Color::RED: return 'R';
@@ -83,6 +80,11 @@ char Boat::getColor() const{
 		break;
 	}
 	return 'X';
+}
+
+//Renvoie la couleur du bateau
+Boat::Color Boat::getColor() const {
+	return color;
 }
 
 //Surcharge opérateur =

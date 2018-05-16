@@ -16,6 +16,7 @@ public:
 	unsigned int getIdentity();
 	
 	SeaPart* getSeaPart(int, int);
+	SeaPart* getSeapartWithId(int);
 
 	bool canRotate(int, int);
 	bool rotateLeft(int, int);

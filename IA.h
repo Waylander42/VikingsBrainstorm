@@ -7,13 +7,13 @@
 class IA : public Player
 {
 public:
-	IA(Board*, unsigned int, Algorithm);
+	IA(Board*, unsigned int, Algorithm*);
 	~IA();
 	
 	void play();
 
 private:
-	Algorithm algorithm;
+	Algorithm* algorithm;
 };
 
 

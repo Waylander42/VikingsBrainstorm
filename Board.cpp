@@ -32,11 +32,21 @@ Board::Board(SeaPart _board[3][3]):board{ { _board[0][0], _board[0][1], _board[0
 
 Board::Board(Board const& b):nbBoats(b.nbBoats), board{ { b.board[0][0], b.board[0][1], b.board[0][2] },
 														{ b.board[1][0], b.board[1][1], b.board[1][2] },
-														{ b.board[2][0], b.board[2][1], b.board[2][2] } },
-													boats{ b.boats[0], b.boats[1],b.boats[2],b.boats[3] }
-{	
-}
+														{ b.board[2][0], b.board[2][1], b.board[2][2] } }
 
+{	
+	for (int i = 0; i < 4; i++) {
+		SeaPart* part1 = NULL;
+		SeaPart* part2 = NULL;
+		if (b.boats[i].getPart1() != NULL) {
+			part1 = this->getSeapartWithId(b.boats[i].getPart1()->getPosition());
+		}
+		if (b.boats[i].getPart2() != NULL) {
+			part2 = this->getSeapartWithId(b.boats[i].getPart2()->getPosition());
+		}
+		boats[i] = Boat(part1, b.boats[i].getOrientation1(), part2, b.boats[i].getOrientation2(), b.boats[i].getColor());
+	}
+}
 
 Board::~Board()
 {
@@ -61,7 +71,7 @@ unsigned int Board::getLocation(int _pos, int _ori) {
 //retourne un entier qui décrit de façon unique la position d'un bateau en fonction de sa couleur
 unsigned int Board::getBoatLocation(int i) {
 	unsigned int res = 0;
-	char color = boats[i].getColor();
+	char color = boats[i].getColorChar();
 	int pos = boats[i].getPart1()->getPosition();
 	int orientation = boats[i].getOrientation1();
 	res = getLocation(pos, orientation);
@@ -115,6 +125,32 @@ void Board::initSeaPart() {
 
 SeaPart* Board::getSeaPart(int x, int y) {
 	return &board[x][y];
+}
+
+SeaPart * Board::getSeapartWithId(int i)
+{
+	SeaPart* part = NULL;
+	switch (i) {
+	case 0: return part = &board[0][0];
+		break;
+	case 1: return part = &board[0][1];
+		break;
+	case 2: return part = &board[0][2];
+		break;
+	case 3: return part = &board[1][0];
+		break;
+	case 4: return part = &board[1][1];
+		break;
+	case 5: return part = &board[1][2];
+		break;
+	case 6: return part = &board[2][0];
+		break;
+	case 7: return part = &board[2][1];
+		break;
+	case 8: return part = &board[2][2];
+		break;
+	}
+	return part;
 }
 
 bool Board::canRotate(int x, int y) {
@@ -614,22 +650,22 @@ void Board::print(unsigned int endBoard) {
 				if (!breaker) {
 					switch (orientation) {
 					case Boat::Orientation::TOP: //grid[centerX + 1][centerY] = boats[i].getColor();
-						grid[centerX + 2][centerY] = boats[i].getColor();
+						grid[centerX + 2][centerY] = boats[i].getColorChar();
 						//grid[centerX + 2][centerY - 1] = boats[i].getColor();
 						//grid[centerX + 2][centerY + 1] = boats[i].getColor();
 						break;
 					case Boat::Orientation::LEFT: //grid[centerX][centerY + 1] = boats[i].getColor();
-						grid[centerX][centerY + 2] = boats[i].getColor();
+						grid[centerX][centerY + 2] = boats[i].getColorChar();
 						//grid[centerX + 1][centerY + 2] = boats[i].getColor();
 						//grid[centerX - 1][centerY + 2] = boats[i].getColor();
 						break;
 					case Boat::Orientation::BOT: //grid[centerX - 1][centerY] = boats[i].getColor();
-						grid[centerX - 2][centerY] = boats[i].getColor();
+						grid[centerX - 2][centerY] = boats[i].getColorChar();
 						//grid[centerX - 2][centerY - 1] = boats[i].getColor();
 						//grid[centerX - 2][centerY + 1] = boats[i].getColor();
 						break;
 					case Boat::Orientation::RIGHT: //grid[centerX][centerY - 1] = boats[i].getColor();
-						grid[centerX][centerY - 2] = boats[i].getColor();
+						grid[centerX][centerY - 2] = boats[i].getColorChar();
 						//grid[centerX + 1][centerY - 2] = boats[i].getColor();
 						//grid[centerX - 1][centerY - 2] = boats[i].getColor();
 						break;
@@ -646,7 +682,7 @@ void Board::print(unsigned int endBoard) {
 	int red = reste % 24;
 	//dessine la zone d'arrivé des bateaux
 	for (int i = 0; i < nbBoats; i++) {
-		switch (boats[i].getColor())
+		switch (boats[i].getColorChar())
 		{
 		case 'R': drawBoatArrival(red, &grid[0][0], 'R');
 			break;

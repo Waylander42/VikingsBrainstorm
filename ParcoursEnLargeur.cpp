@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "ParcoursEnLargeur.h"
 #include "SearchTree.h"
+#include <iostream>
 
 
 ParcoursEnLargeur::ParcoursEnLargeur(Board* _board, unsigned int _endBoard):Algorithm(_board, _endBoard)
@@ -18,15 +19,15 @@ void ParcoursEnLargeur::launch() {
 		return;
 	}
 	SearchTree tree = SearchTree(new Node(board));
+	tree.getRoot()->getBoard()->print(endBoard);
 	frontier.push_back(tree.getRoot());
 	while (!frontier.empty())
 	{
 		Node* father = frontier.front();
+		std::cout << father->getDepth() << std::endl;
 		frontier.pop_front();
 		explored.push_back(father->getBoard()->getIdentity());
-
 		std::list<Step> stepList = father->getBoard()->getListOfStep();
-
 		for (std::list<Step>::const_iterator it = stepList.begin(); it != stepList.end(); ++it) {
 			Board childBoard = Board(*(father->getBoard()));
 			childBoard.doStep(*it);
@@ -38,7 +39,7 @@ void ParcoursEnLargeur::launch() {
 					return;
 				}
 				else {
-					Node* child = new Node(&childBoard, &(Step)(*it), father, father->getDepth());
+					Node* child = new Node(&childBoard, &(Step)(*it), father, father->getDepth() + 1);
 					frontier.push_back(child);
 				}
 			}
