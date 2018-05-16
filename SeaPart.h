@@ -5,7 +5,6 @@ public:
 	SeaPart();
 	SeaPart(int);
 	~SeaPart();
-
 	int getTop() const;
 	int getBot() const;
 	int getLeft() const;

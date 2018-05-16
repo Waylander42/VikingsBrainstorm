@@ -42,6 +42,7 @@ Board::~Board()
 {
 }
 
+//retourne l'emplacement du bateau. L'emplacement du bateau est un entier entre 0 et 23
 unsigned int Board::getLocation(int _pos, int _ori) {
 	if (_ori == Boat::Orientation::BOT) {
 		return 4 * (_pos / 3) + _pos;
@@ -57,6 +58,7 @@ unsigned int Board::getLocation(int _pos, int _ori) {
 	}
 }
 
+//retourne un entier qui décrit de façon unique la position d'un bateau en fonction de sa couleur
 unsigned int Board::getBoatLocation(int i) {
 	unsigned int res = 0;
 	char color = boats[i].getColor();
@@ -71,6 +73,7 @@ unsigned int Board::getBoatLocation(int i) {
 	}
 }
 
+//retourne un entier qui décrit de façon unique la position des bateaux
 unsigned int Board::getBoatsLocation() {
 	unsigned int res = 0;
 	for (int i = 0; i < nbBoats; i++) {
@@ -86,7 +89,7 @@ unsigned int Board::getIdentity() {
 		+ board[2][0].getIdentity() * 46656 + board[2][1].getIdentity() * 279936 + board[2][2].getIdentity() * 1679616;
 	unsigned int boatsID = 0;
 	for (int i = 0; i < nbBoats; i++) {
-		boatsID += boats[i].getIdentity(); //+= ou = ?
+		boatsID += boats[i].getIdentity();
 	}
 	unsigned int ID = boardID + boatsID*10077696;
 	return ID;
@@ -117,7 +120,7 @@ SeaPart* Board::getSeaPart(int x, int y) {
 bool Board::canRotate(int x, int y) {
 	int breaker = true;
 	for (int i = 0; i < nbBoats; i++) {
-		if (boats[i].getPart1() == getSeaPart(x,y) || boats[i].getPart2() == getSeaPart(x, y)) {
+		if (boats[i].getPart1() == getSeaPart(x,y) || boats[i].getPart2() == getSeaPart(x, y)) {  //si il y a un bateau qui touche la pièce, alors on peut tourner
 			breaker = false;
 			break;
 		}
@@ -126,22 +129,22 @@ bool Board::canRotate(int x, int y) {
 		return false;
 	}
 	if (y > 0) {
-		if (board[x][y - 1].getRight() != 0) {
+		if (board[x][y - 1].getRight() != 0) { //si la pièce à gauche possède un trou à droite
 			return false;
 		}
 	}
 	if (y < 2) {
-		if (board[x][y + 1].getLeft() != 0) {
+		if (board[x][y + 1].getLeft() != 0) { //si la pièce à droite possède un trou à gauche
 			return false;
 		}
 	}
 	if (x > 0) {
-		if (board[x - 1][y].getBot() != 0) {
+		if (board[x - 1][y].getBot() != 0) { //si la pièce en haut possède un trou en bas
 			return false;
 		}
 	}
 	if (x < 2) {
-		if (board[x + 1][y].getTop() != 0) {
+		if (board[x + 1][y].getTop() != 0) { //si la pièce en bas possède un trou en haut
 			return false;
 		}
 	}
@@ -165,7 +168,7 @@ bool Board::rotateLeft(int x, int y) {
 			orientation = boats[i].getOrientation2();
 			breaker = false;
 		}
-		if (!breaker) {
+		if (!breaker) {  //si le bateau est à coté de la partie qui tourne, on tourne le bateau
 			SeaPart* part1 = getSeaPart(x, y);
 			SeaPart* part2;
 			switch (orientation) {
@@ -204,7 +207,7 @@ bool Board::rotateLeft(int x, int y) {
 			}
 		}
 	}
-	setBoatsIdentity();
+	setBoatsIdentity();  //on met à jour l'identité des bateaux
 	return true;
 }
 
@@ -224,7 +227,7 @@ bool Board::rotateRight(int x, int y) {
 			orientation = boats[i].getOrientation2();
 			breaker = false;
 		}
-		if (!breaker) {
+		if (!breaker) {  //si le bateau est à coté de la partie qui tourne, on tourne le bateau
 			SeaPart* part1 = &board[x][y];
 			SeaPart* part2;
 			switch (orientation) {
@@ -263,7 +266,7 @@ bool Board::rotateRight(int x, int y) {
 			}
 		}
 	}
-	setBoatsIdentity();
+	setBoatsIdentity();  //on met à jour l'identité des bateaux
 	return true;
 }
 
@@ -283,7 +286,7 @@ bool Board::rotateHalf(int x, int y) {
 			orientation = boats[i].getOrientation2();
 			breaker = false;
 		}
-		if (!breaker) {
+		if (!breaker) {  //si le bateau est à coté de la partie qui tourne, on tourne le bateau
 			SeaPart* part1 = &board[x][y];
 			SeaPart* part2;
 			switch (orientation) {
@@ -322,7 +325,7 @@ bool Board::rotateHalf(int x, int y) {
 			}
 		}
 	}
-	setBoatsIdentity();
+	setBoatsIdentity();  //on met à jour l'identité des bateaux
 	return true;
 }
 
