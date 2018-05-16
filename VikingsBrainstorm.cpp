@@ -38,9 +38,9 @@ int main()
 	}
 	while (nAlgo == 0) {
 		try {
-			std::cout << "Choisissez votre algorithme de resolution ";
-			for (int i = 1; i < NB_ALGO; i++) {
-				std::cout << i << "." << ALGOS[i-1];
+			std::cout << "Choisissez votre algorithme de resolution :" << std::endl;
+			for (int i = 1; i < NB_ALGO+1; i++) {
+				std::cout << i << " : " << ALGOS[i - 1] << std::endl;
 			}
 			std::string s = "";
 			std::cin >> s;
