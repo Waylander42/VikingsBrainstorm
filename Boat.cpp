@@ -6,9 +6,9 @@ Boat::Boat():orientation1(Orientation::TOP), orientation2(Orientation::BOT), par
 {
 }
 
-	Boat::Boat(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, Orientation _orientation2, Color _color):
+Boat::Boat(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, Orientation _orientation2, Color _color):
 		orientation1(_orientation1), orientation2(_orientation2), part1(_part1), part2(_part2), color(_color) {
-	}
+}
 
 Boat::Boat(Boat const& boat) : orientation1(boat.orientation1), orientation2(boat.orientation2), part1(boat.part1), part2(boat.part2), color(boat.color), identity(boat.identity) {
 }
@@ -17,34 +17,7 @@ Boat::~Boat()
 {
 }
 
-Boat::Orientation Boat::rotateRight(Orientation orientation)
-{
-	switch (orientation) {
-		case Orientation::TOP : return Orientation::RIGHT;
-			break;
-		case Orientation::RIGHT : return Orientation::BOT;
-			break;
-		case Orientation::BOT : return Orientation::LEFT;
-			break;
-		case Orientation::LEFT : return Orientation::TOP;
-			break;
-	}
-}
-
-Boat::Orientation Boat::rotateLeft(Orientation orientation)
-{
-	switch (orientation) {
-	case Orientation::TOP: return Orientation::LEFT;
-		break;
-	case Orientation::LEFT : return Orientation::BOT;
-		break;
-	case Orientation::BOT: return Orientation::RIGHT;
-		break;
-	case Orientation::RIGHT : return Orientation::TOP;
-		break;
-	}
-}
-
+//Update l'orientation du bateau par rapport au 2 pièces
 void Boat::rotate(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, Orientation _orientation2)
 {
 	orientation1 = _orientation1;
@@ -53,24 +26,29 @@ void Boat::rotate(SeaPart* _part1, Orientation _orientation1, SeaPart* _part2, O
 	part2 = _part2;
 }
 
+//Renvoie la première pièce à côté du bâteau
 SeaPart * Boat::getPart1()
 {
 	return part1;
 }
 
+//Renvoie la deuxième pièce à côté du bâteau
 SeaPart * Boat::getPart2()
 {
 	return part2;
 }
 
+//Renvoie la première orientation à côté du bâteau
 Boat::Orientation Boat::getOrientation1() {
 	return orientation1;
 }
 
+//Renvoie la deuxième orientation à côté du bâteau
 Boat::Orientation Boat::getOrientation2() {
 	return orientation2;
 }
 
+//Crée une identité pour le bateau
 void Boat::setIdentity(int _identity) {
 	if (color == Color::RED) {
 		identity = _identity + 0;
@@ -86,10 +64,12 @@ void Boat::setIdentity(int _identity) {
 	}
 }
 
+//Renvoie l'identité du bateau
 int Boat::getIdentity() const{
 	return identity;
 }
 
+//Renvoie la couleur du bateau
 char Boat::getColor() const{
 	switch (color)
 	{
@@ -105,6 +85,7 @@ char Boat::getColor() const{
 	return 'X';
 }
 
+//Surcharge opérateur =
 Boat &Boat::operator=(const Boat &source)
 {
 	orientation1 = source.orientation1;
