@@ -6,6 +6,10 @@ Algorithm::Algorithm(Board* _board, unsigned int _endBoard):board(_board), endBo
 {
 }
 
+Algorithm::Algorithm() : Algorithm(NULL, 0)
+{
+}
+
 
 Algorithm::~Algorithm()
 {

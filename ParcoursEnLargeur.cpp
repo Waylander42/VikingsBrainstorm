@@ -13,7 +13,7 @@ ParcoursEnLargeur::~ParcoursEnLargeur()
 }
 
 void ParcoursEnLargeur::launch() {
-	if (board->getBoatsLocation == endBoard)
+	if (board->getBoatsLocation() == endBoard)
 	{
 		return;
 	}
@@ -30,7 +30,7 @@ void ParcoursEnLargeur::launch() {
 		for (std::list<Step>::const_iterator it = stepList.begin(); it != stepList.end(); ++it) {
 			Board childBoard = Board(*(father->getBoard()));
 			childBoard.doStep(*it);
-			if (!(boardInFrontierOrExplored)) {
+			if (!boardInFrontierOrExplored(&childBoard)) {
 				if (childBoard.getBoatsLocation() == endBoard) {
 					std::list<Step*> steps = father->getStepsFromRacine();
 					steps.push_back(&(Step)(*it));
@@ -38,7 +38,7 @@ void ParcoursEnLargeur::launch() {
 					return;
 				}
 				else {
-					Node* child = new Node(&childBoard, &(Step)(*it), father, father->getDepth);
+					Node* child = new Node(&childBoard, &(Step)(*it), father, father->getDepth());
 					frontier.push_back(child);
 				}
 			}
