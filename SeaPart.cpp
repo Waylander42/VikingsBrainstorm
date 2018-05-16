@@ -13,6 +13,7 @@ SeaPart::~SeaPart()
 {
 }
 
+//Récupère la composante Top de la SeaPart
 int SeaPart::getTop() const{
 	int top = -1;
 	switch (identity) {
@@ -32,6 +33,7 @@ int SeaPart::getTop() const{
 	return top;
 }
 
+//Récupère la composante Bot de la SeaPart
 int SeaPart::getBot() const{
 	int bot = -1;
 	switch (identity) {
@@ -51,6 +53,7 @@ int SeaPart::getBot() const{
 	return bot;
 }
 
+//Récupère la composante Left de la SeaPart
 int SeaPart::getLeft() const{
 	int left = -1;
 	switch (identity) {
@@ -70,6 +73,7 @@ int SeaPart::getLeft() const{
 	return left;
 }
 
+//Récupère la composante Right de la SeaPart
 int SeaPart::getRight() const{
 	int right = -1;
 	switch (identity) {
@@ -89,6 +93,7 @@ int SeaPart::getRight() const{
 	return right;
 }
 
+//Fait faire un déplacement droite à la SeaPart
 void SeaPart::rotateRight() {
 	if (identity < 4) {
 		identity = (identity + 1) % 4;
@@ -101,6 +106,7 @@ void SeaPart::rotateRight() {
 	}
 }
 
+//Fait faire un déplacement gauche à la SeaPart
 void SeaPart::rotateLeft() {
 	if (identity < 4) {
 		identity = (identity + 3) % 4;
@@ -113,20 +119,24 @@ void SeaPart::rotateLeft() {
 	}
 }
 
+//Fait faire un demi-tour à la SeaPart
 void SeaPart::rotateHalf() {
 	if (identity < 4) {
 		identity = (identity + 2) % 4;
 	}
 }
 
+//Retourne l'identité de la SeaPart
 int SeaPart::getIdentity() const{
 	return identity;
 }
 
+//Retourne la position de la SeaPart
 int SeaPart::getPosition() const{
 	return position;
 }
 
+//Donne une position à la SeaPart
 void SeaPart::init(int _position) {
 	position = _position;
 }
