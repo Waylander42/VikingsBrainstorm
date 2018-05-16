@@ -21,7 +21,9 @@ int main()
 	int nAlgo = 0;
 	while (modeJeu == 0) {
 		try {
-			std::cout << "Choisissez votre mode de jeu 1.Humain 2.IA : ";
+			std::cout << "Choisissez votre mode de jeu :" << std::endl;
+			std::cout << "1 : Humain" << std::endl;
+			std::cout << "2 : IA" << std::endl;
 			std::string s = "";
 			std::cin >> s;
 			modeJeu = std::stoi(s);
@@ -36,7 +38,7 @@ int main()
 	}
 	while (nAlgo == 0) {
 		try {
-			std::cout << "Choisissez votre algorithme de résolution ";
+			std::cout << "Choisissez votre algorithme de resolution ";
 			for (int i = 1; i < NB_ALGO; i++) {
 				std::cout << i << "." << ALGOS[i-1];
 			}
@@ -72,9 +74,9 @@ int main()
 		player.play();
 	}
 	else {
-		Algorithm algo;
+		Algorithm algo(board, endBoard);
 		switch (nAlgo) {
-		case 1: algo = ParcoursEnLargeur();
+		case 1: algo = ParcoursEnLargeur(board, endBoard);
 		//case 2: algo = Algorithm();
 		//case 3: algo = Algorithm();
 		default: break;
