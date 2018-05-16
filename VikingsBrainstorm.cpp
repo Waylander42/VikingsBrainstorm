@@ -24,6 +24,7 @@ int main()
 			std::cout << "Choisissez votre mode de jeu :" << std::endl;
 			std::cout << "1 : Humain" << std::endl;
 			std::cout << "2 : IA" << std::endl;
+			std::cout << ">> ";
 			std::string s = "";
 			std::cin >> s;
 			modeJeu = std::stoi(s);
@@ -36,12 +37,13 @@ int main()
 			modeJeu = 0;
 		}
 	}
-	while (nAlgo == 0) {
+	while (nAlgo == 0 && modeJeu == 2) {
 		try {
 			std::cout << "Choisissez votre algorithme de resolution :" << std::endl;
 			for (int i = 1; i < NB_ALGO+1; i++) {
 				std::cout << i << " : " << ALGOS[i - 1] << std::endl;
 			}
+			std::cout << ">> ";
 			std::string s = "";
 			std::cin >> s;
 			nAlgo = std::stoi(s);
