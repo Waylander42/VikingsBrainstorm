@@ -30,6 +30,15 @@ public:
 	static unsigned int createEndBoard18();
 	static unsigned int createEndBoard19();
 	static unsigned int createEndBoard20();
+	static unsigned int createEndBoard21();
+	static unsigned int createEndBoard22();
+	static unsigned int createEndBoard23();
+	static unsigned int createEndBoard24();
+	static unsigned int createEndBoard25();
+	static unsigned int createEndBoard26();
+	static unsigned int createEndBoard27();
+	static unsigned int createEndBoard28();
+	static unsigned int createEndBoard29();
 	static unsigned int createEndBoard30();
 	static unsigned int createEndBoard40();
 	static unsigned int createEndBoard50(); 
