@@ -2,11 +2,11 @@
 #include "Node.h"
 
 
-Node::Node(Board* _board, Step* _step, Node* _father, int _depth):board(Board(*_board)), step(_step), father(_father), depth(_depth)
+Node::Node(Board* _board, Step _step, Node* _father, int _depth):board(Board(*_board)), step(new Step(_step)), father(_father), depth(_depth)
 {
 }
 
-Node::Node(Board* _board):Node(_board, NULL, NULL, 0)
+Node::Node(Board* _board): board(Board(*_board)), step(NULL), father(NULL), depth(0)
 {
 }
 

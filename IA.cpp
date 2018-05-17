@@ -25,6 +25,4 @@ void IA::play() {
 		board->print(endBoard);
 		result.pop_front();
 	}
-	board->print(endBoard);
-	
 }

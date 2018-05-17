@@ -20,7 +20,7 @@ void ParcoursEnLargeur::launch() {
 		return;
 	}
 	SearchTree tree = SearchTree(new Node(board));
-	tree.getRoot()->getBoard()->print(endBoard);
+	//tree.getRoot()->getBoard()->print(endBoard);
 	frontier.push_back(tree.getRoot());
 	while (!frontier.empty())
 	{
@@ -28,15 +28,36 @@ void ParcoursEnLargeur::launch() {
 		frontier.pop_front();
 		explored.push_back(father->getBoard()->getIdentity());
 
-		//std::cout << father->getBoard()->getIdentity() << std::endl;
-		//father->getBoard()->print(endBoard);
+		//std::cout << father->getBoard()->getBoatsLocation() << std::endl;
+		//std::cout << endBoard << std::endl << std::endl;
+		/*if (father->getDepth() == 5) {
+			father->getBoard()->print(endBoard);
+			std::cout << father->getBoard()->getBoatsLocation() << std::endl;
+			std::cout << father->getBoard()->getIdentity() << std::endl;
+		}*/
 		//std::cout.flush();
-		//Sleep(5000);
+		//Sleep(2000);
 
 		std::list<Step> stepList = father->getBoard()->getListOfStep();
 		for (std::list<Step>::const_iterator it = stepList.begin(); it != stepList.end(); ++it) {
 			Board childBoard = Board(*(father->getBoard()));
 			childBoard.doStep(*it);
+
+			if (father->getDepth() == 5) {
+				if (childBoard.getIdentity() == 3474129337) {
+					/*for (std::list<unsigned int>::const_iterator it = explored.begin(); it != explored.end(); ++it) {
+						if (3474129337 == *it) {
+							std::cout << "explored" << std::endl;
+						}
+					}
+					for (std::list<Node*>::const_iterator it = frontier.begin(); it != frontier.end(); ++it) {
+						if (3474129337 == (*it)->getBoard()->getIdentity()) {
+							std::cout << "frontier" << std::endl;
+						}
+					}*/
+					childBoard.print(endBoard);
+				}
+			}
 
 			//std::cout << childBoard.getIdentity() << std::endl;
 			//childBoard.print(endBoard);
@@ -46,12 +67,12 @@ void ParcoursEnLargeur::launch() {
 			if (!boardInFrontierOrExplored(&childBoard)) {
 				if (childBoard.getBoatsLocation() == endBoard) {
 					std::list<Step*> steps = father->getStepsFromRacine();
-					steps.push_back(&(Step)(*it));
+					steps.push_back(new Step(*it));
 					result = steps;
 					return;
 				}
 				else {
-					Node* child = new Node(&childBoard, &(Step)(*it), father, father->getDepth() + 1);
+					Node* child = new Node(&childBoard, *it, father, father->getDepth() + 1);
 					frontier.push_back(child);
 				}
 			}

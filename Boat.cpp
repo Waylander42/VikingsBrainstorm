@@ -48,16 +48,16 @@ Boat::Orientation Boat::getOrientation2() const{
 //Crée une identité pour le bateau
 void Boat::setIdentity(int _identity) {
 	if (color == Color::RED) {
-		identity = _identity + 0;
+		identity = _identity;
 	}
 	if (color == Color::GREEN) {
-		identity = _identity + 6;
+		identity = _identity * 6;
 	}
 	if (color == Color::BLUE) {
-		identity = _identity + 12;
+		identity = _identity * 36;
 	}
 	if (color == Color::YELLOW) {
-		identity = _identity + 18;
+		identity = _identity * 216;
 	}
 }
 

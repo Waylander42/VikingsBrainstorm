@@ -100,9 +100,9 @@ unsigned int Board::getIdentity() {
 		+ board[2][0].getIdentity() * 46656 + board[2][1].getIdentity() * 279936 + board[2][2].getIdentity() * 1679616;
 	unsigned int boatsID = 0;
 	for (int i = 0; i < nbBoats; i++) {
-		boatsID += boats[i].getIdentity();
+		boatsID += boats[i].getIdentity() + 10077696;
 	}
-	unsigned int ID = boardID + boatsID*10077696;
+	unsigned int ID = boardID + boatsID;
 	return ID;
 }
 

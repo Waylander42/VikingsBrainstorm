@@ -7,7 +7,7 @@ class Node
 {
 public:
 	Node(Board*);
-	Node(Board*, Step*, Node*, int);
+	Node(Board*, Step, Node*, int);
 	~Node();
 	std::list<Step*> getStepsFromRacine();
 	Board* getBoard();
