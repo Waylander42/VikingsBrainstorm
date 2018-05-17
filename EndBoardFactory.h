@@ -21,6 +21,14 @@ public:
 	static unsigned int createEndBoard9();
 	static unsigned int createEndBoard10(); 
 	static unsigned int createEndBoard11();
+	static unsigned int createEndBoard12();
+	static unsigned int createEndBoard13();
+	static unsigned int createEndBoard14();
+	static unsigned int createEndBoard15();
+	static unsigned int createEndBoard16();
+	static unsigned int createEndBoard17();
+	static unsigned int createEndBoard18();
+	static unsigned int createEndBoard19();
 	static unsigned int createEndBoard20();
 	static unsigned int createEndBoard30();
 	static unsigned int createEndBoard40();

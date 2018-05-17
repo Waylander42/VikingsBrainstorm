@@ -24,6 +24,14 @@ unsigned int EndBoardFactory::createEndBoard(int number) {
 	case 9: return createEndBoard9();
 	case 10: return createEndBoard10();
 	case 11: return createEndBoard11();
+	case 12: return createEndBoard12();
+	case 13: return createEndBoard13();
+	case 14: return createEndBoard14();
+	case 15: return createEndBoard15();
+	case 16: return createEndBoard16();
+	case 17: return createEndBoard17();
+	case 18: return createEndBoard18();
+	case 19: return createEndBoard19();
 	case 20: return createEndBoard20();
 	case 30: return createEndBoard30();
 	case 40: return createEndBoard40();
@@ -75,6 +83,38 @@ unsigned int EndBoardFactory::createEndBoard10() {
 
 unsigned int EndBoardFactory::createEndBoard11() {
 	return 0 * 1 + 20 * 24 + 0 * 576 + 23 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard12() {
+	return 1 * 1 + 3 * 24 + 23 * 576 + 10 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard13() {
+	return 0 * 1 + 1 * 24 + 0 * 576 + 20 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard14() {
+	return 1 * 1 + 0 * 24 + 10 * 576 + 23 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard15() {
+	return 1 * 1 + 10 * 24 + 22 * 576 + 13 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard16() {
+	return 1 * 1 + 3 * 24 + 6 * 576 + 0 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard17() {
+	return 1 * 1 + 10 * 24 + 13 * 576 + 0 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard18() {
+	return 0 * 1 + 0 * 24 + 13 * 576 + 21 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard19() {
+	return 0 * 1 + 6 * 24 + 3 * 576 + 20 * 13824; //red, green, blue, yellow
 }
 
 unsigned int EndBoardFactory::createEndBoard20() {
