@@ -46,6 +46,7 @@ Board::Board(Board const& b):nbBoats(b.nbBoats), board{ { b.board[0][0], b.board
 		}
 		boats[i] = Boat(part1, b.boats[i].getOrientation1(), part2, b.boats[i].getOrientation2(), b.boats[i].getColor());
 	}
+	setBoatsIdentity();
 }
 
 Board::~Board()

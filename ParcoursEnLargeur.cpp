@@ -2,6 +2,7 @@
 #include "ParcoursEnLargeur.h"
 #include "SearchTree.h"
 #include <iostream>
+#include <windows.h>
 
 
 ParcoursEnLargeur::ParcoursEnLargeur(Board* _board, unsigned int _endBoard):Algorithm(_board, _endBoard)
@@ -24,13 +25,24 @@ void ParcoursEnLargeur::launch() {
 	while (!frontier.empty())
 	{
 		Node* father = frontier.front();
-		std::cout << father->getDepth() << std::endl;
 		frontier.pop_front();
 		explored.push_back(father->getBoard()->getIdentity());
+
+		//std::cout << father->getBoard()->getIdentity() << std::endl;
+		//father->getBoard()->print(endBoard);
+		//std::cout.flush();
+		//Sleep(5000);
+
 		std::list<Step> stepList = father->getBoard()->getListOfStep();
 		for (std::list<Step>::const_iterator it = stepList.begin(); it != stepList.end(); ++it) {
 			Board childBoard = Board(*(father->getBoard()));
 			childBoard.doStep(*it);
+
+			//std::cout << childBoard.getIdentity() << std::endl;
+			//childBoard.print(endBoard);
+			//std::cout.flush();
+			//Sleep(5000);
+
 			if (!boardInFrontierOrExplored(&childBoard)) {
 				if (childBoard.getBoatsLocation() == endBoard) {
 					std::list<Step*> steps = father->getStepsFromRacine();

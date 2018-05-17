@@ -29,7 +29,7 @@ std::list<Step*> Node::getStepsFromRacine() {
 		steps.push_back(step);
 		return steps;
 	}
-	std::list<Step*> steps = getStepsFromRacine();
+	std::list<Step*> steps = father->getStepsFromRacine();
 	steps.push_back(step);
 	return steps;
 }

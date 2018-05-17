@@ -18,8 +18,10 @@ void IA::play() {
 	std::cout << std::endl;
 	std::list<Step*> result = algorithm->getResult(); //regarder pour step*
 	while (result.empty() == false) {
-		result.front()->print();
-		board->doStep(*result.front());
+		if (result.front() != NULL) {
+			result.front()->print();
+			board->doStep(*result.front());
+		}
 		board->print(endBoard);
 		result.pop_front();
 	}
