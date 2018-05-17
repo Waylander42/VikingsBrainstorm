@@ -33,6 +33,15 @@ unsigned int EndBoardFactory::createEndBoard(int number) {
 	case 18: return createEndBoard18();
 	case 19: return createEndBoard19();
 	case 20: return createEndBoard20();
+	case 21: return createEndBoard21();
+	case 22: return createEndBoard22();
+	case 23: return createEndBoard23();
+	case 24: return createEndBoard24();
+	case 25: return createEndBoard25();
+	case 26: return createEndBoard26();
+	case 27: return createEndBoard27();
+	case 28: return createEndBoard28();
+	case 29: return createEndBoard29();
 	case 30: return createEndBoard30();
 	case 40: return createEndBoard40();
 	case 50: return createEndBoard50();
@@ -119,6 +128,42 @@ unsigned int EndBoardFactory::createEndBoard19() {
 
 unsigned int EndBoardFactory::createEndBoard20() {
 	return 0 * 1 + 2 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard21() {
+	return 21 * 1 + 0 * 24 + 22 * 576 + 23 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard22() {
+	return 0 * 1 + 1 * 24 + 20 * 576 + 13 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard23() {
+	return 0 * 1 + 1 * 24 + 23 * 576 + 22 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard24() {
+	return 1 * 1 + 10 * 24 + 0 * 576 + 20 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard25() {
+	return 1 * 1 + 10 * 24 + 22 * 576 + 13 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard26() {
+	return 0 * 1 + 23 * 24 + 2 * 576 + 0 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard27() {
+	return 6 * 1 + 13 * 24 + 0 * 576 + 20 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard28() {
+	return 1 * 1 + 21 * 24 + 23 * 576 + 22 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard29() {
+	return 10 * 1 + 17 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
 unsigned int EndBoardFactory::createEndBoard30() {
