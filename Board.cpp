@@ -95,14 +95,32 @@ unsigned int Board::getBoatsLocation() {
 
 
 unsigned int Board::getIdentity() {
-	unsigned int boardID = board[0][0].getIdentity() + board[0][1].getIdentity() * 6 + board[0][2].getIdentity() * 36
+	unsigned int boardID = 0;
+	unsigned int multiplicator = 1;
+	for (int x = 0; x < 3; x++) {
+		for (int y = 0; y < 3; y++) {
+			unsigned int identity = board[x][y].getIdentity();
+			if (identity == 4) {
+				multiplicator *= 2;
+			}
+			else if (identity == 5) {
+				boardID += multiplicator;
+				multiplicator *= 2;
+			}
+			else {
+				boardID += identity * multiplicator;
+				multiplicator *= 4;
+			}
+		}
+	}
+	/*unsigned int boardID = board[0][0].getIdentity() + board[0][1].getIdentity() * 6 + board[0][2].getIdentity() * 36
 		+ board[1][0].getIdentity() * 216 + board[1][1].getIdentity() * 1296 + board[1][2].getIdentity() * 7776
-		+ board[2][0].getIdentity() * 46656 + board[2][1].getIdentity() * 279936 + board[2][2].getIdentity() * 1679616;
+		+ board[2][0].getIdentity() * 46656 + board[2][1].getIdentity() * 279936 + board[2][2].getIdentity() * 1679616;*/
 	unsigned int boatsID = 0;
 	for (int i = 0; i < nbBoats; i++) {
-		boatsID += boats[i].getIdentity() + 10077696;
+		boatsID += boats[i].getIdentity();
 	}
-	unsigned int ID = boardID + boatsID;
+	unsigned int ID = boardID + boatsID * multiplicator;
 	return ID;
 }
 
@@ -406,7 +424,7 @@ void Board::setBoatsIdentity() {
 		if (board[i][0].getLeft() == 0) {
 			identity += 1;
 			for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-				if ((boats[j].getPart1() == &board[i][0] && boats[j].getOrientation1() == Boat::Orientation::LEFT) || (boats[j].getPart2() == &board[i][0] && boats[j].getOrientation2() == Boat::Orientation::LEFT)) {
+				if ((boats[j].getPart1() == &board[i][0] && boats[j].getOrientation1() == Boat::Orientation::RIGHT) || (boats[j].getPart2() == &board[i][0] && boats[j].getOrientation2() == Boat::Orientation::RIGHT)) {
 					boats[j].setIdentity(identity);
 				}
 			}
@@ -416,7 +434,7 @@ void Board::setBoatsIdentity() {
 		if (board[i][2].getRight() == 0) {
 			identity += 1;
 			for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-				if ((boats[j].getPart1() == &board[i][2] && boats[j].getOrientation1() == Boat::Orientation::RIGHT) || (boats[j].getPart2() == &board[i][2] && boats[j].getOrientation2() == Boat::Orientation::RIGHT)) {
+				if ((boats[j].getPart1() == &board[i][2] && boats[j].getOrientation1() == Boat::Orientation::LEFT) || (boats[j].getPart2() == &board[i][2] && boats[j].getOrientation2() == Boat::Orientation::LEFT)) {
 					boats[j].setIdentity(identity);
 				}
 			}
@@ -426,7 +444,7 @@ void Board::setBoatsIdentity() {
 		if (board[0][i].getTop() == 0) {
 			identity += 1;
 			for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-				if ((boats[j].getPart1() == &board[0][i] && boats[j].getOrientation1() == Boat::Orientation::TOP) || (boats[j].getPart2() == &board[0][i] && boats[j].getOrientation2() == Boat::Orientation::TOP)) {
+				if ((boats[j].getPart1() == &board[0][i] && boats[j].getOrientation1() == Boat::Orientation::BOT) || (boats[j].getPart2() == &board[0][i] && boats[j].getOrientation2() == Boat::Orientation::BOT)) {
 					boats[j].setIdentity(identity);
 				}
 			}
@@ -436,7 +454,7 @@ void Board::setBoatsIdentity() {
 		if (board[2][i].getBot() == 0) {
 			identity += 1;
 			for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-				if ((boats[j].getPart1() == &board[2][i] && boats[j].getOrientation1() == Boat::Orientation::BOT) || (boats[j].getPart2() == &board[2][i] && boats[j].getOrientation2() == Boat::Orientation::BOT)) {
+				if ((boats[j].getPart1() == &board[2][i] && boats[j].getOrientation1() == Boat::Orientation::TOP) || (boats[j].getPart2() == &board[2][i] && boats[j].getOrientation2() == Boat::Orientation::TOP)) {
 					boats[j].setIdentity(identity);
 				}
 			}
@@ -449,7 +467,7 @@ void Board::setBoatsIdentity() {
 	if (board[1][0].getTop() == 0 && board[0][0].getBot() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[1][0] && boats[j].getOrientation1() == Boat::Orientation::TOP) || (boats[j].getPart2() == &board[1][0] && boats[j].getOrientation2() == Boat::Orientation::TOP)) {
+			if ((boats[j].getPart1() == &board[1][0] && boats[j].getOrientation1() == Boat::Orientation::BOT) || (boats[j].getPart2() == &board[1][0] && boats[j].getOrientation2() == Boat::Orientation::BOT)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -458,7 +476,7 @@ void Board::setBoatsIdentity() {
 	if (board[1][0].getBot() == 0 && board[2][0].getTop() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[1][0] && boats[j].getOrientation1() == Boat::Orientation::BOT) || (boats[j].getPart2() == &board[1][0] && boats[j].getOrientation2() == Boat::Orientation::BOT)) {
+			if ((boats[j].getPart1() == &board[1][0] && boats[j].getOrientation1() == Boat::Orientation::TOP) || (boats[j].getPart2() == &board[1][0] && boats[j].getOrientation2() == Boat::Orientation::TOP)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -467,7 +485,7 @@ void Board::setBoatsIdentity() {
 	if (board[1][0].getRight() == 0 && board[1][1].getLeft() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[1][0] && boats[j].getOrientation1() == Boat::Orientation::RIGHT) || (boats[j].getPart2() == &board[1][0] && boats[j].getOrientation2() == Boat::Orientation::RIGHT)) {
+			if ((boats[j].getPart1() == &board[1][0] && boats[j].getOrientation1() == Boat::Orientation::LEFT) || (boats[j].getPart2() == &board[1][0] && boats[j].getOrientation2() == Boat::Orientation::LEFT)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -478,7 +496,7 @@ void Board::setBoatsIdentity() {
 	if (board[0][1].getLeft() == 0 && board[0][0].getRight() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[0][1] && boats[j].getOrientation1() == Boat::Orientation::LEFT) || (boats[j].getPart2() == &board[0][1] && boats[j].getOrientation2() == Boat::Orientation::LEFT)) {
+			if ((boats[j].getPart1() == &board[0][1] && boats[j].getOrientation1() == Boat::Orientation::RIGHT) || (boats[j].getPart2() == &board[0][1] && boats[j].getOrientation2() == Boat::Orientation::RIGHT)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -487,7 +505,7 @@ void Board::setBoatsIdentity() {
 	if (board[0][1].getRight() == 0 && board[0][2].getLeft() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[0][1] && boats[j].getOrientation1() == Boat::Orientation::RIGHT) || (boats[j].getPart2() == &board[0][1] && boats[j].getOrientation2() == Boat::Orientation::RIGHT)) {
+			if ((boats[j].getPart1() == &board[0][1] && boats[j].getOrientation1() == Boat::Orientation::LEFT) || (boats[j].getPart2() == &board[0][1] && boats[j].getOrientation2() == Boat::Orientation::LEFT)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -496,7 +514,7 @@ void Board::setBoatsIdentity() {
 	if (board[0][1].getBot() == 0 && board[1][1].getTop() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[0][1] && boats[j].getOrientation1() == Boat::Orientation::BOT) || (boats[j].getPart2() == &board[0][1] && boats[j].getOrientation2() == Boat::Orientation::BOT)) {
+			if ((boats[j].getPart1() == &board[0][1] && boats[j].getOrientation1() == Boat::Orientation::TOP) || (boats[j].getPart2() == &board[0][1] && boats[j].getOrientation2() == Boat::Orientation::TOP)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -507,7 +525,7 @@ void Board::setBoatsIdentity() {
 	if (board[2][1].getLeft() == 0 && board[2][0].getRight() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[2][1] && boats[j].getOrientation1() == Boat::Orientation::LEFT) || (boats[j].getPart2() == &board[2][1] && boats[j].getOrientation2() == Boat::Orientation::LEFT)) {
+			if ((boats[j].getPart1() == &board[2][1] && boats[j].getOrientation1() == Boat::Orientation::RIGHT) || (boats[j].getPart2() == &board[2][1] && boats[j].getOrientation2() == Boat::Orientation::RIGHT)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -516,7 +534,7 @@ void Board::setBoatsIdentity() {
 	if (board[2][1].getRight() == 0 && board[2][2].getLeft() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[2][1] && boats[j].getOrientation1() == Boat::Orientation::RIGHT) || (boats[j].getPart2() == &board[2][1] && boats[j].getOrientation2() == Boat::Orientation::RIGHT)) {
+			if ((boats[j].getPart1() == &board[2][1] && boats[j].getOrientation1() == Boat::Orientation::LEFT) || (boats[j].getPart2() == &board[2][1] && boats[j].getOrientation2() == Boat::Orientation::LEFT)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -525,7 +543,7 @@ void Board::setBoatsIdentity() {
 	if (board[2][1].getTop() == 0 && board[1][1].getBot() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[2][1] && boats[j].getOrientation1() == Boat::Orientation::TOP) || (boats[j].getPart2() == &board[2][1] && boats[j].getOrientation2() == Boat::Orientation::TOP)) {
+			if ((boats[j].getPart1() == &board[2][1] && boats[j].getOrientation1() == Boat::Orientation::BOT) || (boats[j].getPart2() == &board[2][1] && boats[j].getOrientation2() == Boat::Orientation::BOT)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -536,7 +554,7 @@ void Board::setBoatsIdentity() {
 	if (board[1][2].getTop() == 0 && board[0][2].getBot() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[1][2] && boats[j].getOrientation1() == Boat::Orientation::TOP) || (boats[j].getPart2() == &board[1][2] && boats[j].getOrientation2() == Boat::Orientation::TOP)) {
+			if ((boats[j].getPart1() == &board[1][2] && boats[j].getOrientation1() == Boat::Orientation::BOT) || (boats[j].getPart2() == &board[1][2] && boats[j].getOrientation2() == Boat::Orientation::BOT)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -545,7 +563,7 @@ void Board::setBoatsIdentity() {
 	if (board[1][2].getBot() == 0 && board[2][2].getTop() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[1][2] && boats[j].getOrientation1() == Boat::Orientation::BOT) || (boats[j].getPart2() == &board[1][2] && boats[j].getOrientation2() == Boat::Orientation::BOT)) {
+			if ((boats[j].getPart1() == &board[1][2] && boats[j].getOrientation1() == Boat::Orientation::TOP) || (boats[j].getPart2() == &board[1][2] && boats[j].getOrientation2() == Boat::Orientation::TOP)) {
 				boats[j].setIdentity(identity);
 			}
 		}
@@ -554,7 +572,7 @@ void Board::setBoatsIdentity() {
 	if (board[1][2].getLeft() == 0 && board[1][1].getRight() == 0) {
 		identity += 1;
 		for (int j = 0; j < nbBoats; j++) {  //on regarde si il y a un bateau dans le trou
-			if ((boats[j].getPart1() == &board[1][2] && boats[j].getOrientation1() == Boat::Orientation::LEFT) || (boats[j].getPart2() == &board[1][2] && boats[j].getOrientation2() == Boat::Orientation::LEFT)) {
+			if ((boats[j].getPart1() == &board[1][2] && boats[j].getOrientation1() == Boat::Orientation::RIGHT) || (boats[j].getPart2() == &board[1][2] && boats[j].getOrientation2() == Boat::Orientation::RIGHT)) {
 				boats[j].setIdentity(identity);
 			}
 		}

@@ -43,8 +43,8 @@ Board* BoardFactory::createBoard(int number) {
 	case 25: return createBoard25();
 	case 26: return createBoard26();
 	case 27: return createBoard27();
-	case 28: return createBoard28();
-	case 29: return createBoard29();
+	//case 28: return createBoard28();
+	//case 29: return createBoard29();
 	case 30: return createBoard30();
 	case 40: return createBoard40();
 	case 50: return createBoard50();
@@ -611,6 +611,7 @@ Board* BoardFactory::createBoard27() { //top right bot left
 	return b;
 }
 
+/*
 Board* BoardFactory::createBoard28() { //top right bot left
 	SeaPart board[3][3];
 	board[0][0] = SeaPart(2);
@@ -631,7 +632,7 @@ Board* BoardFactory::createBoard28() { //top right bot left
 		Boat(b->getSeaPart(1,1), Boat::Orientation::LEFT, b->getSeaPart(1,2), Boat::Orientation::RIGHT, Boat::Color::YELLOW) };
 	b->initBoats(boats, 3);
 	return b;
-}
+}*/
 
 Board* BoardFactory::createBoard30() { //top right bot left
 	SeaPart board[3][3];
