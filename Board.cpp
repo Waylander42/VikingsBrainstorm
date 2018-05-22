@@ -120,7 +120,7 @@ unsigned int Board::setIdentity() {
 	for (int i = 0; i < nbBoats; i++) {
 		boatsID += boats[i].getIdentity();
 	}
-	unsigned int ID = boardID + boatsID * multiplicator;
+	unsigned int ID = boardID + boatsID *multiplicator;
 	identity = ID;
 	return ID;
 }
