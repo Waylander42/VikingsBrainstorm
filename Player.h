@@ -7,17 +7,17 @@
 class Player
 {
 public:
-	Player(Board *, unsigned int);
+	Player(Board *, unsigned long);
 	~Player();
 	virtual void play() {};
 	void printListOfSteps(std::list<Step>);
-	unsigned int getEndBoard();
+	unsigned long getEndBoard();
 	void startTimer();
 	void printTimer();
 
 protected:
 	Board * board;
-	unsigned int endBoard;
+	unsigned long endBoard;
 	std::clock_t timer;
 };
 

@@ -5,7 +5,7 @@
 class Human : public Player
 {
 public:
-	Human(Board*, unsigned int);
+	Human(Board*, unsigned long);
 	~Human();
 	void play();
 

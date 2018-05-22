@@ -4,7 +4,7 @@
 #include <string>
 
 
-Human::Human(Board* board, unsigned int endBoard):Player(board, endBoard)
+Human::Human(Board* board, unsigned long endBoard):Player(board, endBoard)
 {
 }
 

@@ -54,7 +54,7 @@ Board::~Board()
 }
 
 //retourne l'emplacement du bateau. L'emplacement du bateau est un entier entre 0 et 23
-unsigned int Board::getLocation(int _pos, int _ori) {
+unsigned long Board::getLocation(int _pos, int _ori) {
 	if (_ori == Boat::Orientation::BOT) {
 		return 4 * (_pos / 3) + _pos;
 	}
@@ -70,8 +70,8 @@ unsigned int Board::getLocation(int _pos, int _ori) {
 }
 
 //retourne un entier qui décrit de façon unique la position d'un bateau en fonction de sa couleur
-unsigned int Board::getBoatLocation(int i) {
-	unsigned int res = 0;
+unsigned long Board::getBoatLocation(int i) {
+	unsigned long res = 0;
 	char color = boats[i].getColorChar();
 	int pos = boats[i].getPart1()->getPosition();
 	int orientation = boats[i].getOrientation1();
@@ -85,8 +85,8 @@ unsigned int Board::getBoatLocation(int i) {
 }
 
 //retourne un entier qui décrit de façon unique la position des bateaux
-unsigned int Board::getBoatsLocation() {
-	unsigned int res = 0;
+unsigned long Board::getBoatsLocation() {
+	unsigned long res = 0;
 	for (int i = 0; i < nbBoats; i++) {
 		res += getBoatLocation(i);
 	}
@@ -94,12 +94,12 @@ unsigned int Board::getBoatsLocation() {
 }
 
 
-unsigned int Board::setIdentity() {
-	unsigned int boardID = 0;
-	unsigned int multiplicator = 1;
+unsigned long Board::setIdentity() {
+	/*unsigned long boardID = 0;
+	unsigned long multiplicator = 1;
 	for (int x = 0; x < 3; x++) {
 		for (int y = 0; y < 3; y++) {
-			unsigned int identity = board[x][y].getIdentity();
+			unsigned long identity = board[x][y].getIdentity();
 			if (identity == 4) {
 				multiplicator *= 2;
 			}
@@ -112,20 +112,20 @@ unsigned int Board::setIdentity() {
 				multiplicator *= 4;
 			}
 		}
-	}
-	/*unsigned int boardID = board[0][0].getIdentity() + board[0][1].getIdentity() * 6 + board[0][2].getIdentity() * 36
+	}*/
+	unsigned long boardID = board[0][0].getIdentity() + board[0][1].getIdentity() * 6 + board[0][2].getIdentity() * 36
 		+ board[1][0].getIdentity() * 216 + board[1][1].getIdentity() * 1296 + board[1][2].getIdentity() * 7776
-		+ board[2][0].getIdentity() * 46656 + board[2][1].getIdentity() * 279936 + board[2][2].getIdentity() * 1679616;*/
-	unsigned int boatsID = 0;
+		+ board[2][0].getIdentity() * 46656 + board[2][1].getIdentity() * 279936 + board[2][2].getIdentity() * 1679616;
+	unsigned long boatsID = 0;
 	for (int i = 0; i < nbBoats; i++) {
 		boatsID += boats[i].getIdentity();
 	}
-	unsigned int ID = boardID + boatsID * multiplicator;
+	unsigned long ID = boardID + boatsID * 1679616 * 6;
 	identity = ID;
 	return ID;
 }
 
-unsigned int Board::getIdentity() {
+unsigned long Board::getIdentity() {
 	return identity;
 }
 
@@ -587,7 +587,7 @@ void Board::setBoatsIdentity() {
 	}
 }
 
-void Board::print(unsigned int endBoard) {
+void Board::print(unsigned long endBoard) {
 	char grid[GRID_SIZE][GRID_SIZE];
 	//dessine le coutour de la grille
 	for (int x = 0; x < GRID_SIZE; x++) {

@@ -7,14 +7,14 @@ class Algorithm
 {
 public:
 	Algorithm();
-	Algorithm(Board*, unsigned int);
+	Algorithm(Board*, unsigned long);
 	~Algorithm();
 	virtual void launch() {};
 	std::list<Step*> getResult();
 
 protected:
 	Board * board;
-	unsigned int endBoard;
+	unsigned long endBoard;
 	std::list<Step*> result;
 };
 

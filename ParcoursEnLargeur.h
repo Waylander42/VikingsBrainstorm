@@ -5,7 +5,7 @@
 class ParcoursEnLargeur : public Algorithm
 {
 public:
-	ParcoursEnLargeur(Board*, unsigned int);
+	ParcoursEnLargeur(Board*, unsigned long);
 	~ParcoursEnLargeur();
 	void launch();
 
@@ -14,6 +14,6 @@ private:
 	bool boardInFrontierOrExplored(Board*);
 
 	std::list<Node*> frontier;
-	std::list<unsigned int> explored;
+	std::list<unsigned long> explored;
 };
 
