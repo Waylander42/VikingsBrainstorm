@@ -13,6 +13,7 @@ public:
 	Board(Board const&);
 
 	unsigned int getBoatsLocation(); //retourn un entier qui décrit de façon unique la position des bateaux
+	unsigned int setIdentity();
 	unsigned int getIdentity();
 	
 	SeaPart* getSeaPart(int, int);
@@ -41,5 +42,6 @@ private:
 	SeaPart board[3][3];
 	Boat boats[4];   //array of boats
 	int nbBoats;
+	unsigned int identity;
 };
 

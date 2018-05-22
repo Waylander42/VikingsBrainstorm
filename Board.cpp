@@ -30,7 +30,7 @@ Board::Board(SeaPart _board[3][3]):board{ { _board[0][0], _board[0][1], _board[0
 	}*/
 }
 
-Board::Board(Board const& b):nbBoats(b.nbBoats), board{ { b.board[0][0], b.board[0][1], b.board[0][2] },
+Board::Board(Board const& b):nbBoats(b.nbBoats), identity(b.identity), board{ { b.board[0][0], b.board[0][1], b.board[0][2] },
 														{ b.board[1][0], b.board[1][1], b.board[1][2] },
 														{ b.board[2][0], b.board[2][1], b.board[2][2] } }
 
@@ -94,7 +94,7 @@ unsigned int Board::getBoatsLocation() {
 }
 
 
-unsigned int Board::getIdentity() {
+unsigned int Board::setIdentity() {
 	unsigned int boardID = 0;
 	unsigned int multiplicator = 1;
 	for (int x = 0; x < 3; x++) {
@@ -121,7 +121,12 @@ unsigned int Board::getIdentity() {
 		boatsID += boats[i].getIdentity();
 	}
 	unsigned int ID = boardID + boatsID * multiplicator;
+	identity = ID;
 	return ID;
+}
+
+unsigned int Board::getIdentity() {
+	return identity;
 }
 
 void Board::initBoats(Boat _boats[4], int _nbBoats) {
@@ -263,6 +268,7 @@ bool Board::rotateLeft(int x, int y) {
 		}
 	}
 	setBoatsIdentity();  //on met à jour l'identité des bateaux
+	setIdentity();       // on met à jour l'identité du board;
 	return true;
 }
 
@@ -322,6 +328,7 @@ bool Board::rotateRight(int x, int y) {
 		}
 	}
 	setBoatsIdentity();  //on met à jour l'identité des bateaux
+	setIdentity();       // on met à jour l'identité du board;
 	return true;
 }
 
@@ -381,6 +388,7 @@ bool Board::rotateHalf(int x, int y) {
 		}
 	}
 	setBoatsIdentity();  //on met à jour l'identité des bateaux
+	setIdentity();       // on met à jour l'identité du board;
 	return true;
 }
 
