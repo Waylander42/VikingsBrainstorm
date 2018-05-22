@@ -2,7 +2,6 @@
 #include "ParcoursEnLargeur.h"
 #include "SearchTree.h"
 #include <iostream>
-#include <windows.h>
 
 
 ParcoursEnLargeur::ParcoursEnLargeur(Board* _board, unsigned long _endBoard):Algorithm(_board, _endBoard)

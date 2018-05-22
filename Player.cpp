@@ -28,9 +28,18 @@ void Player::startTimer() {
 	timer = clock();
 }
 
+#ifdef _WIN32
 void Player::printTimer() {
 	double time = ((double)clock() - timer);
 	int seconde = time / 1000;
 	int miliSeconde = time - seconde * 1000;
 	std::cout << seconde << "," << miliSeconde << " secondes";
 }
+#elif __linux__
+void Player::printTimer() {
+	double time = ((double)clock() - timer);
+	int seconde = time / 1000000;
+	int miliSeconde = time - seconde * 1000000;
+	std::cout << seconde << "," << miliSeconde << " secondes";
+}
+#endif
