@@ -11,7 +11,7 @@ EndBoardFactory::~EndBoardFactory()
 {
 }
 
-unsigned long EndBoardFactory::createEndBoard(int number) {
+unsigned int EndBoardFactory::createEndBoard(int number) {
 	switch (number) {
 	case 1: return createEndBoard1();
 	case 2: return createEndBoard2();
@@ -50,134 +50,134 @@ unsigned long EndBoardFactory::createEndBoard(int number) {
 	}
 }
 
-unsigned long EndBoardFactory::createEndBoard1() {
+unsigned int EndBoardFactory::createEndBoard1() {
 	return 21 * 1 + 0 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard2() {
+unsigned int EndBoardFactory::createEndBoard2() {
 	return 0 * 1 + 20 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard3() {
+unsigned int EndBoardFactory::createEndBoard3() {
 	return 0 * 1 + 0 * 24 + 0 * 576 + 7 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard4() {
+unsigned int EndBoardFactory::createEndBoard4() {
 	return 17 * 1 + 0 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard5() {
+unsigned int EndBoardFactory::createEndBoard5() {
 	return 0 * 1 + 0 * 24 + 2 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard6() {
+unsigned int EndBoardFactory::createEndBoard6() {
 	return 1 * 1 + 2 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard7() {
+unsigned int EndBoardFactory::createEndBoard7() {
 	return 2 * 1 + 0 * 24 + 6 * 576 + 10 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard8() {
+unsigned int EndBoardFactory::createEndBoard8() {
 	return 0 * 1 + 0 * 24 + 3 * 576 + 13 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard9() {
+unsigned int EndBoardFactory::createEndBoard9() {
 	return 6 * 1 + 13 * 24 + 0 * 576 + 20 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard10() {
+unsigned int EndBoardFactory::createEndBoard10() {
 	return 0 * 1 + 23 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard11() {
+unsigned int EndBoardFactory::createEndBoard11() {
 	return 0 * 1 + 20 * 24 + 0 * 576 + 23 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard12() {
+unsigned int EndBoardFactory::createEndBoard12() {
 	return 1 * 1 + 3 * 24 + 23 * 576 + 10 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard13() {
+unsigned int EndBoardFactory::createEndBoard13() {
 	return 0 * 1 + 1 * 24 + 0 * 576 + 20 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard14() {
+unsigned int EndBoardFactory::createEndBoard14() {
 	return 1 * 1 + 0 * 24 + 10 * 576 + 23 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard15() {
+unsigned int EndBoardFactory::createEndBoard15() {
 	return 1 * 1 + 10 * 24 + 22 * 576 + 13 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard16() {
+unsigned int EndBoardFactory::createEndBoard16() {
 	return 1 * 1 + 3 * 24 + 6 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard17() {
+unsigned int EndBoardFactory::createEndBoard17() {
 	return 1 * 1 + 10 * 24 + 13 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard18() {
+unsigned int EndBoardFactory::createEndBoard18() {
 	return 0 * 1 + 0 * 24 + 13 * 576 + 21 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard19() {
+unsigned int EndBoardFactory::createEndBoard19() {
 	return 0 * 1 + 6 * 24 + 3 * 576 + 20 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard20() {
+unsigned int EndBoardFactory::createEndBoard20() {
 	return 0 * 1 + 2 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard21() {
+unsigned int EndBoardFactory::createEndBoard21() {
 	return 21 * 1 + 0 * 24 + 22 * 576 + 23 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard22() {
+unsigned int EndBoardFactory::createEndBoard22() {
 	return 0 * 1 + 1 * 24 + 20 * 576 + 13 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard23() {
+unsigned int EndBoardFactory::createEndBoard23() {
 	return 0 * 1 + 1 * 24 + 23 * 576 + 22 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard24() {
+unsigned int EndBoardFactory::createEndBoard24() {
 	return 1 * 1 + 10 * 24 + 0 * 576 + 20 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard25() {
+unsigned int EndBoardFactory::createEndBoard25() {
 	return 1 * 1 + 10 * 24 + 22 * 576 + 13 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard26() {
+unsigned int EndBoardFactory::createEndBoard26() {
 	return 0 * 1 + 23 * 24 + 2 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard27() {
+unsigned int EndBoardFactory::createEndBoard27() {
 	return 6 * 1 + 13 * 24 + 0 * 576 + 20 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard28() {
+unsigned int EndBoardFactory::createEndBoard28() {
 	return 1 * 1 + 21 * 24 + 23 * 576 + 22 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard29() {
+unsigned int EndBoardFactory::createEndBoard29() {
 	return 10 * 1 + 17 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard30() {
+unsigned int EndBoardFactory::createEndBoard30() {
 	return 0 * 1 + 10 * 24 + 6 * 576 + 20 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard40() {
+unsigned int EndBoardFactory::createEndBoard40() {
 	return 3 * 1 + 13 * 24 + 23 * 576 + 22 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard50() {
+unsigned int EndBoardFactory::createEndBoard50() {
 	return 1 * 1 + 10 * 24 + 22 * 576 + 13 * 13824; //red, green, blue, yellow
 }
 
-unsigned long EndBoardFactory::createEndBoard60() {
+unsigned int EndBoardFactory::createEndBoard60() {
 	return 2 * 1 + 0 * 24 + 3 * 576 + 17 * 13824; //red, green, blue, yellow
 }

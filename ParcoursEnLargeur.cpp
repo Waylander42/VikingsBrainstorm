@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-ParcoursEnLargeur::ParcoursEnLargeur(Board* _board, unsigned long _endBoard):Algorithm(_board, _endBoard)
+ParcoursEnLargeur::ParcoursEnLargeur(Board* _board, unsigned int _endBoard):Algorithm(_board, _endBoard)
 {
 }
 
@@ -46,8 +46,8 @@ void ParcoursEnLargeur::launch() {
 }
 
 bool ParcoursEnLargeur::boardInFrontierOrExplored(Board* board) {
-	for (std::list<unsigned long>::const_iterator it = explored.begin(); it != explored.end(); ++it) {
-		if (board->getIdentity() == (unsigned long)(*it) ) {
+	for (std::list<unsigned int>::const_iterator it = explored.begin(); it != explored.end(); ++it) {
+		if (board->getIdentity() == (unsigned int)(*it) ) {
 			return true;
 		}
 	}

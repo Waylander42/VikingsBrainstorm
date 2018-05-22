@@ -16,7 +16,7 @@
 int main()
 {
 	Board* board = NULL;
-	unsigned long endBoard;
+	unsigned int endBoard;
 	int modeJeu = 0;
 	int nAlgo = 0;
 	while (modeJeu == 0) {

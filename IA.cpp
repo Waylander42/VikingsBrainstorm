@@ -2,7 +2,7 @@
 #include "IA.h"
 #include <list>
 
-IA::IA(Board* board, unsigned long endBoard, Algorithm* algo):Player(board, endBoard), algorithm(algo)
+IA::IA(Board* board, unsigned int endBoard, Algorithm* algo):Player(board, endBoard), algorithm(algo)
 {
 }
 

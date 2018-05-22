@@ -12,9 +12,9 @@ public:
 	Board(SeaPart[3][3]);
 	Board(Board const&);
 
-	unsigned long getBoatsLocation(); //retourn un entier qui décrit de façon unique la position des bateaux
-	unsigned long setIdentity();
-	unsigned long getIdentity();
+	unsigned int getBoatsLocation(); //retourn un entier qui décrit de façon unique la position des bateaux
+	unsigned int setIdentity();
+	unsigned int getIdentity();
 	
 	SeaPart* getSeaPart(int, int);
 	SeaPart* getSeapartWithId(int);
@@ -31,17 +31,17 @@ public:
 	void initBoats(Boat[4], int);
 	void initSeaPart();
 
-	void print(unsigned long);
+	void print(unsigned int);
 
 private:
 	void setBoatsIdentity();
-	unsigned long getLocation(int, int); //retourne l'emplacement du bateau. L'emplacement du bateau est un entier entre 0 et 23
-	unsigned long getBoatLocation(int); //retourne un entier qui décrit de façon unique la position d'un bateau en fonction de sa couleur
+	unsigned int getLocation(int, int); //retourne l'emplacement du bateau. L'emplacement du bateau est un entier entre 0 et 23
+	unsigned int getBoatLocation(int); //retourne un entier qui décrit de façon unique la position d'un bateau en fonction de sa couleur
 	void drawBoatArrival(int,char*, char);
 
 	SeaPart board[3][3];
 	Boat boats[4];   //array of boats
 	int nbBoats;
-	unsigned long identity;
+	unsigned int identity;
 };
 

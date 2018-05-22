@@ -2,7 +2,7 @@
 #include "Algorithm.h"
 
 
-Algorithm::Algorithm(Board* _board, unsigned long _endBoard):board(_board), endBoard(_endBoard)
+Algorithm::Algorithm(Board* _board, unsigned int _endBoard):board(_board), endBoard(_endBoard)
 {
 }
 
