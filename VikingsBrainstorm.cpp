@@ -10,6 +10,7 @@
 #include "Constantes.h"
 #include "IA.h"
 #include "ParcoursEnLargeur.h"
+#include "ParcoursEnLargeurTrie.h"
 #include <iostream>
 #include <string>
 
@@ -79,7 +80,9 @@ int main()
 		Algorithm* algo = NULL;
 		switch (nAlgo) {
 		case 1: algo = new ParcoursEnLargeur(board, endBoard);
-		//case 2: algo = Algorithm();
+			break;
+		case 2: algo = new ParcoursEnLargeurTrie(board, endBoard);
+			break;
 		//case 3: algo = Algorithm();
 		default: break;
 		}
