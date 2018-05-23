@@ -11,6 +11,13 @@ ParcoursEnLargeur::ParcoursEnLargeur(Board* _board, unsigned int _endBoard):Algo
 
 ParcoursEnLargeur::~ParcoursEnLargeur()
 {
+	while (frontier.size() != 0) {
+		if (frontier.back() != NULL) {
+			delete frontier.back();
+		}
+		explored.pop_back();
+	}
+	explored.clear();
 }
 
 void ParcoursEnLargeur::launch() {
@@ -20,6 +27,7 @@ void ParcoursEnLargeur::launch() {
 	}
 	SearchTree tree = SearchTree(new Node(board));
 	frontier.push_back(tree.getRoot());
+	nodeAdress.push_back(tree.getRoot());
 	while (!frontier.empty())
 	{
 		Node* father = frontier.front();
@@ -39,9 +47,11 @@ void ParcoursEnLargeur::launch() {
 				else {
 					Node* child = new Node(&childBoard, *it, father, father->getDepth() + 1);
 					frontier.push_back(child);
+					nodeAdress.push_back(child);
 				}
 			}
 		}
+		stepList.clear();
 	}
 }
 

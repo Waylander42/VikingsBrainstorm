@@ -85,7 +85,9 @@ int main()
 		}
 		IA player = IA(board, endBoard, algo);
 		player.play();
+		delete algo;
 	}
+	main();
 	char x;
 	std::cout << "Entrez quelque chose pour fermer : ";
 	std::cin >> x;

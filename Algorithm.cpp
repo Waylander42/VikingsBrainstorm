@@ -13,6 +13,24 @@ Algorithm::Algorithm() : Algorithm(NULL, 0)
 
 Algorithm::~Algorithm()
 {
+	if (board != NULL) {
+		delete board;
+	}
+	while (result.size() != 0) {
+		if (result.back() != NULL) {
+			delete result.back();
+		}
+		result.pop_back();
+	}
+	while (nodeAdress.size() != 0) {
+		if (nodeAdress.back() != NULL) {
+			delete nodeAdress.back();
+		}
+		nodeAdress.pop_back();
+	}
+
+	result.clear();
+	nodeAdress.clear();
 }
 
 std::list<Step*> Algorithm::getResult() {

@@ -13,6 +13,9 @@ Node::Node(Board* _board): board(Board(*_board)), step(NULL), father(NULL), dept
 
 Node::~Node()
 {
+	if (step != NULL) {
+		delete step;
+	}
 }
 
 Board* Node::getBoard() {
@@ -26,10 +29,10 @@ int Node::getDepth() {
 std::list<Step*> Node::getStepsFromRacine() {
 	if (depth == 0) {
 		std::list<Step*> steps;
-		steps.push_back(step);
+		steps.push_back(NULL);
 		return steps;
 	}
 	std::list<Step*> steps = father->getStepsFromRacine();
-	steps.push_back(step);
+	steps.push_back(new Step(*step));
 	return steps;
 }

@@ -2,6 +2,7 @@
 #include "Board.h"
 #include "Step.h"
 #include <list>
+#include "Node.h"
 
 class Algorithm
 {
@@ -16,5 +17,6 @@ protected:
 	Board * board;
 	unsigned int endBoard;
 	std::list<Step*> result;
+	std::list<Node*> nodeAdress;
 };
 
