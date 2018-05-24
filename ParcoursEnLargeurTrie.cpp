@@ -37,7 +37,7 @@ void ParcoursEnLargeurTrie::launch() {
 		for (std::list<Step>::const_iterator it = stepList.begin(); it != stepList.end(); ++it) {
 			Board childBoard = Board(*(father->getBoard()));
 			childBoard.doStep(*it);
-			if (!boardInFrontierOrExplored(&childBoard)) {
+			if (!boardInExplored(&childBoard)) {
 				if (childBoard.getBoatsLocation() == endBoard) {
 					std::list<Step*> steps = father->getStepsFromRacine();
 					steps.push_back(new Step(*it));
@@ -55,8 +55,9 @@ void ParcoursEnLargeurTrie::launch() {
 	}
 }
 
-bool ParcoursEnLargeurTrie::boardInFrontierOrExplored(Board* board) {
-	for (std::list<unsigned int>::const_iterator it = explored.begin(); it != explored.end(); ++it) {
+bool ParcoursEnLargeurTrie::boardInExplored(Board* board) {
+	std::list<unsigned int>::const_iterator itEnd = explored.end();
+	for (std::list<unsigned int>::const_iterator it = explored.begin(); it != itEnd; ++it) {
 		if (board->getIdentity() <= (unsigned int)(*it)) {
 			if (board->getIdentity() == (unsigned int)(*it)) {
 				return true;

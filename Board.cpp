@@ -602,7 +602,6 @@ void Board::print(unsigned int endBoard) {
 		}
 	}
 	//dessine les diagonales qui sont quoiqu'il arrive plaines
-	int cursor = 0;
 	int x = 1;
 	int y = 1;
 	for (int part = 0; part < NB_SEAPART; part++) {

@@ -56,12 +56,14 @@ void ParcoursEnLargeur::launch() {
 }
 
 bool ParcoursEnLargeur::boardInFrontierOrExplored(Board* board) {
-	for (std::list<unsigned int>::const_iterator it = explored.begin(); it != explored.end(); ++it) {
+	std::list<unsigned int>::const_iterator exploredEnd = explored.end();
+	for (std::list<unsigned int>::const_iterator it = explored.begin(); it != exploredEnd; ++it) {
 		if (board->getIdentity() == (unsigned int)(*it) ) {
 			return true;
 		}
 	}
-	for (std::list<Node*>::const_iterator it = frontier.begin(); it != frontier.end(); ++it) {
+	std::list<Node*>::const_iterator frontierEnd = frontier.end();
+	for (std::list<Node*>::const_iterator it = frontier.begin(); it != frontierEnd; ++it) {
 		if (board->getIdentity() == (*it)->getBoard()->getIdentity()) {
 			return true;
 		}

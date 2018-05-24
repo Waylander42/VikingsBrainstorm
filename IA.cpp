@@ -25,4 +25,7 @@ void IA::play() {
 		board->print(endBoard);
 		result.pop_front();
 	}
+	std::cout << "resolution en ";
+	printTimer();
+	std::cout << std::endl;
 }

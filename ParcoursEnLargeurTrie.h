@@ -11,7 +11,7 @@ public:
 
 
 private:
-	bool boardInFrontierOrExplored(Board*);
+	bool boardInExplored(Board*);
 
 	std::list<Node*> frontier;
 	std::list<unsigned int> explored;
