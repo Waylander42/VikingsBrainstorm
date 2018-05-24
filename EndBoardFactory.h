@@ -70,5 +70,6 @@ public:
 	static unsigned int createEndBoard58();
 	static unsigned int createEndBoard59();
 	static unsigned int createEndBoard60();
+	static unsigned int createEndBoard61();
 };
 

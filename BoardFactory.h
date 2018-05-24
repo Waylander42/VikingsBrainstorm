@@ -70,6 +70,7 @@ public:
 	static Board* createBoard58();
 	static Board* createBoard59();
 	static Board* createBoard60();
+	static Board* createBoard61();
 
 };
 

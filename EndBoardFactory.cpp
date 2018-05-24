@@ -73,6 +73,7 @@ unsigned int EndBoardFactory::createEndBoard(int number) {
 	case 58: return createEndBoard58();
 	case 59: return createEndBoard59();
 	case 60: return createEndBoard60();
+	case 61: return createEndBoard61();
 	default: NULL;
 	}
 }
@@ -315,4 +316,8 @@ unsigned int EndBoardFactory::createEndBoard59() {
 
 unsigned int EndBoardFactory::createEndBoard60() {
 	return 2 * 1 + 0 * 24 + 3 * 576 + 17 * 13824; //red, green, blue, yellow
+}
+
+unsigned int EndBoardFactory::createEndBoard61() {
+	return 0 * 1 + 0 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
 }
