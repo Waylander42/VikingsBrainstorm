@@ -11,12 +11,7 @@ ParcoursEnLargeurTrie::ParcoursEnLargeurTrie(Board* _board, unsigned int _endBoa
 
 ParcoursEnLargeurTrie::~ParcoursEnLargeurTrie()
 {
-	while (frontier.size() != 0) {
-		if (frontier.back() != NULL) {
-			delete frontier.back();
-		}
-		explored.pop_back();
-	}
+	frontier.clear();
 	explored.clear();
 }
 

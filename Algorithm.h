@@ -9,7 +9,7 @@ class Algorithm
 public:
 	Algorithm();
 	Algorithm(Board*, unsigned int);
-	~Algorithm();
+	virtual ~Algorithm();
 	virtual void launch() {};
 	std::list<Step*> getResult();
 
