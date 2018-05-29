@@ -11,6 +11,7 @@
 #include "IA.h"
 #include "ParcoursEnLargeur.h"
 #include "ParcoursEnLargeurTrie.h"
+#include "BinaryTreeAlgo.h"
 #include <iostream>
 #include <string>
 
@@ -83,7 +84,8 @@ int main()
 			break;
 		case 2: algo = new ParcoursEnLargeurTrie(board, endBoard);
 			break;
-		//case 3: algo = Algorithm();
+		case 3: algo = new BinaryTreeAlgo(board, endBoard);
+			break;
 		default: break;
 		}
 		IA player = IA(board, endBoard, algo);
