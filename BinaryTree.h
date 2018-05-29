@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "CNode.h"
 #include <iostream>
 #include <list>
@@ -58,10 +58,10 @@ namespace CBT {
 			return false;
 		}
 
-		// Réparation de l'arbre au cas où les propriétés rouge-noir seraient violées
+		// RÃ©paration de l'arbre au cas oÃ¹ les propriÃ©tÃ©s rouge-noir seraient violÃ©es
 		insertionReparTree(node);
 
-		// recherche de la nouvelle racine à renvoyer
+		// recherche de la nouvelle racine Ã  renvoyer
 		root = node;
 		while (root->getFather() != NULL) {
 			root = root->getFather();
@@ -74,7 +74,7 @@ namespace CBT {
 		if (root != NULL && node->getValue() == root->getValue()) {
 			return false;
 		}
-		// descente récursive dans l'arbre jusqu'à atteindre une feuille
+		// descente rÃ©cursive dans l'arbre jusqu'Ã  atteindre une feuille
 		if (root != NULL && node->getValue() < root->getValue()) {
 			if (root->getLeft() != NULL) {
 				return insertionRecursif(root->getLeft(), node);
