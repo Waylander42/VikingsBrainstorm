@@ -97,6 +97,7 @@ Board* BoardFactory::createBoard1() { //top right bot left
 	b->initSeaPart();
 	Boat boats[4] = { Boat(b->getSeaPart(2,1), Boat::Orientation::LEFT, b->getSeaPart(2, 2), Boat::Orientation::RIGHT, Boat::Color::RED) };
 	b->initBoats(boats, 1);
+	b->setIdentity();
 	return b;
 }
 
@@ -748,6 +749,7 @@ Board* BoardFactory::createBoard31() { //top right bot left
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::LEFT, b->getSeaPart(0, 1), Boat::Orientation::RIGHT, Boat::Color::RED),
 		Boat(b->getSeaPart(2,1), Boat::Orientation::LEFT, b->getSeaPart(2, 2), Boat::Orientation::RIGHT, Boat::Color::YELLOW) };
 	b->initBoats(boats, 2);
+	b->setIdentity();
 	return b;
 }
 
@@ -768,6 +770,7 @@ Board* BoardFactory::createBoard32() { //top right bot left
 	Boat boats[4] = { Boat(b->getSeaPart(0,1), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::GREEN),
 		Boat(b->getSeaPart(2,1), Boat::Orientation::LEFT, b->getSeaPart(2, 2), Boat::Orientation::RIGHT, Boat::Color::RED) };
 	b->initBoats(boats, 2);
+	b->setIdentity();
 	return b;
 }
 
@@ -790,6 +793,7 @@ Board* BoardFactory::createBoard33() { //top right bot left
 		Boat(b->getSeaPart(2,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::RED),
 		Boat(b->getSeaPart(2,0), Boat::Orientation::TOP, NULL, Boat::Orientation::BOT, Boat::Color::GREEN) };
 	b->initBoats(boats, 4);
+	b->setIdentity();
 	return b;
 }
 
@@ -810,6 +814,7 @@ Board* BoardFactory::createBoard34() { //top right bot left
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::YELLOW),
 		Boat(b->getSeaPart(1,1), Boat::Orientation::LEFT, b->getSeaPart(1, 2), Boat::Orientation::RIGHT, Boat::Color::RED) };
 	b->initBoats(boats, 2);
+	b->setIdentity();
 	return b;
 }
 
@@ -832,6 +837,7 @@ Board* BoardFactory::createBoard35() { //top right bot left
 		Boat(b->getSeaPart(1,2), Boat::Orientation::TOP, b->getSeaPart(2,2), Boat::Orientation::BOT, Boat::Color::BLUE),
 		Boat(b->getSeaPart(2,0), Boat::Orientation::TOP, NULL, Boat::Orientation::BOT, Boat::Color::YELLOW) };
 	b->initBoats(boats, 4);
+	b->setIdentity();
 	return b;
 }
 
@@ -852,6 +858,7 @@ Board* BoardFactory::createBoard36() { //top right bot left
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::BLUE),
 		Boat(b->getSeaPart(1,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::RED) };
 	b->initBoats(boats, 2);
+	b->setIdentity();
 	return b;
 }
 
@@ -874,6 +881,7 @@ Board* BoardFactory::createBoard37() { //top right bot left
 		Boat(b->getSeaPart(1,0), Boat::Orientation::LEFT, b->getSeaPart(1,1), Boat::Orientation::RIGHT, Boat::Color::RED),
 		Boat(b->getSeaPart(2,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::BLUE) };
 	b->initBoats(boats, 4);
+	b->setIdentity();
 	return b;
 }
 
@@ -895,6 +903,7 @@ Board* BoardFactory::createBoard38() { //top right bot left
 		Boat(b->getSeaPart(1,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::YELLOW),
 		Boat(b->getSeaPart(2,0), Boat::Orientation::LEFT, b->getSeaPart(2,1), Boat::Orientation::RIGHT, Boat::Color::BLUE) };
 	b->initBoats(boats, 3);
+	b->setIdentity();
 	return b;
 }
 
@@ -917,6 +926,7 @@ Board* BoardFactory::createBoard39() { //top right bot left
 		Boat(b->getSeaPart(1,0), Boat::Orientation::LEFT, b->getSeaPart(1,1), Boat::Orientation::RIGHT, Boat::Color::RED),
 		Boat(b->getSeaPart(2,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::BLUE) };
 	b->initBoats(boats, 4);
+	b->setIdentity();
 	return b;
 }
 
@@ -962,6 +972,7 @@ Board* BoardFactory::createBoard41() { //top right bot left
 		Boat(b->getSeaPart(1,0), Boat::Orientation::LEFT, b->getSeaPart(1,1), Boat::Orientation::RIGHT, Boat::Color::YELLOW),
 		Boat(b->getSeaPart(2,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::BLUE) };
 	b->initBoats(boats, 4);
+	b->setIdentity();
 	return b;
 }
 
@@ -984,6 +995,7 @@ Board* BoardFactory::createBoard42() { //top right bot left
 		Boat(b->getSeaPart(1,2), Boat::Orientation::TOP, b->getSeaPart(2,2), Boat::Orientation::BOT, Boat::Color::YELLOW),
 		Boat(b->getSeaPart(2,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::BLUE) };
 	b->initBoats(boats, 4);
+	b->setIdentity();
 	return b;
 }
 
@@ -1004,6 +1016,7 @@ Board* BoardFactory::createBoard43() { //top right bot left
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::RED),
 		Boat(b->getSeaPart(1,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::BLUE) };
 	b->initBoats(boats, 2);
+	b->setIdentity();
 	return b;
 }
 
@@ -1026,6 +1039,7 @@ Board* BoardFactory::createBoard44() { //top right bot left
 		Boat(b->getSeaPart(0,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::GREEN),
 		Boat(b->getSeaPart(1,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::BLUE) };
 	b->initBoats(boats, 4);
+	b->setIdentity();
 	return b;
 }
 
@@ -1046,6 +1060,7 @@ Board* BoardFactory::createBoard45() { //top right bot left
 	Boat boats[4] = { Boat(b->getSeaPart(0,2), Boat::Orientation::TOP, b->getSeaPart(1,2), Boat::Orientation::BOT, Boat::Color::GREEN),
 		Boat(b->getSeaPart(2,0), Boat::Orientation::TOP, NULL, Boat::Orientation::BOT, Boat::Color::BLUE) };
 	b->initBoats(boats, 2);
+	b->setIdentity();
 	return b;
 }
 
@@ -1067,6 +1082,7 @@ Board* BoardFactory::createBoard46() { //top right bot left
 		Boat(b->getSeaPart(0,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::RED),
 		Boat(b->getSeaPart(1,1), Boat::Orientation::TOP, b->getSeaPart(2,1), Boat::Orientation::BOT, Boat::Color::BLUE) };
 	b->initBoats(boats, 3);
+	b->setIdentity();
 	return b;
 }
 
@@ -1088,6 +1104,7 @@ Board* BoardFactory::createBoard47() { //top right bot left
 		Boat(b->getSeaPart(1,0), Boat::Orientation::LEFT, b->getSeaPart(1,1), Boat::Orientation::RIGHT, Boat::Color::GREEN),
 		Boat(b->getSeaPart(2,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::RED) };
 	b->initBoats(boats, 3);
+	b->setIdentity();
 	return b;
 }
 
@@ -1110,6 +1127,7 @@ Board* BoardFactory::createBoard48() { //top right bot left
 		Boat(b->getSeaPart(1,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::GREEN),
 		Boat(b->getSeaPart(2,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::YELLOW) };
 	b->initBoats(boats, 4);
+	b->setIdentity();
 	return b;
 }
 
@@ -1132,6 +1150,7 @@ Board* BoardFactory::createBoard49() { //top right bot left
 		Boat(b->getSeaPart(1,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::YELLOW),
 		Boat(b->getSeaPart(2,2), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::BLUE) };
 	b->initBoats(boats, 4);
+	b->setIdentity();
 	return b;
 }
 
@@ -1175,6 +1194,7 @@ Board* BoardFactory::createBoard51() { //top right bot left
 	Boat boats[4] = { Boat(b->getSeaPart(0,1), Boat::Orientation::TOP, b->getSeaPart(1,1), Boat::Orientation::BOT, Boat::Color::YELLOW),
 		Boat(b->getSeaPart(1,2), Boat::Orientation::TOP, b->getSeaPart(2,2), Boat::Orientation::BOT, Boat::Color::RED) };
 	b->initBoats(boats, 2);
+	b->setIdentity();
 	return b;
 }
 
@@ -1218,6 +1238,7 @@ Board* BoardFactory::createBoard53() { //top right bot left
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::YELLOW),
 		Boat(b->getSeaPart(2,0), Boat::Orientation::LEFT, b->getSeaPart(2,1), Boat::Orientation::RIGHT, Boat::Color::RED) };
 	b->initBoats(boats, 2);
+	b->setIdentity();
 	return b;
 }
 
@@ -1238,6 +1259,7 @@ Board* BoardFactory::createBoard54() { //top right bot left
 	Boat boats[4] = { Boat(b->getSeaPart(0,2), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::RED),
 		Boat(b->getSeaPart(0,2), Boat::Orientation::TOP, b->getSeaPart(1,2), Boat::Orientation::BOT, Boat::Color::GREEN) };
 	b->initBoats(boats, 2);
+	b->setIdentity();
 	return b;
 }
 
