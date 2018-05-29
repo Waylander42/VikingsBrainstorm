@@ -18,6 +18,7 @@ namespace CBT {
 
 	private:
 		CNode<T>* root;
+		std::list<CNode<T>*> memory;
 		bool insertionRecursif(CNode<T>*, CNode<T>*);
 		void insertionReparTree(CNode<T>*);
 		void insertionCase1(CNode<T>*);
@@ -38,7 +39,12 @@ namespace CBT {
 
 	template<typename T>
 	BinaryTree<T>::~BinaryTree() {
-		delete root;
+		while (memory.size() != 0) {
+			if (memory.back() != NULL) {
+				delete memory.back();
+			}
+			memory.pop_back();
+		}
 	}
 
 	template<typename T>
@@ -47,12 +53,14 @@ namespace CBT {
 			delete root;
 		}
 		root = new CNode<T>(value, CNode<T>::Color::BLACK);
+		memory.push_back(root);
 	}
 
 	template<typename T>
 	bool BinaryTree<T>::insert(T value)
 	{
 		CNode<T>* node = new CNode<T>(value, CNode<T>::Color::RED);
+		memory.push_back(node);
 		// insertion d'un nouveau noeud dans l'arbre
 		if (insertionRecursif(root, node) == false) {
 			return false;
@@ -71,7 +79,9 @@ namespace CBT {
 
 	template<typename T>
 	bool BinaryTree<T>::insertionRecursif(CNode<T>* root, CNode<T>* node) {
-		if (root != NULL && node->getValue() == root->getValue()) {
+		if (root != NULL && node->getValue() == root->getValue()) { //si T est deja dans l'arbre on insert pas
+			delete node;
+			memory.pop_back();
 			return false;
 		}
 		// descente récursive dans l'arbre jusqu'à atteindre une feuille

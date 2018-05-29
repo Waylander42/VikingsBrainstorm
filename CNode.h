@@ -52,12 +52,6 @@ namespace CBT {
 
 	template<typename T>
 	CNode<T>::~CNode() {
-		if (left != NULL) {
-			delete left;
-		}
-		if (right != NULL) {
-			delete right;
-		}
 	}
 
 	template<typename T>
