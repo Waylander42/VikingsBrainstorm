@@ -594,7 +594,7 @@ Board* BoardFactory::createBoard24() { //top right bot left
 	b->initSeaPart();
 	Boat boats[4] = { Boat(b->getSeaPart(0,0), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::RED),
 		Boat(b->getSeaPart(0,0), Boat::Orientation::TOP, b->getSeaPart(1,0), Boat::Orientation::BOT, Boat::Color::YELLOW),
-		Boat(b->getSeaPart(2,0), Boat::Orientation::LEFT, NULL, Boat::Orientation::RIGHT, Boat::Color::GREEN) };
+		Boat(b->getSeaPart(2,0), Boat::Orientation::RIGHT, NULL, Boat::Orientation::LEFT, Boat::Color::GREEN) };
 	b->initBoats(boats, 3);
 	b->setIdentity();
 	return b;
