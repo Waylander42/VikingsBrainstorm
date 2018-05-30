@@ -103,6 +103,7 @@ namespace CBT {
 		}
 
 		node->setFather(root);
+		return true;
 	}
 
 	template<typename T>
