@@ -1401,19 +1401,19 @@ Board* BoardFactory::createBoard60() { //top right bot left
 
 Board* BoardFactory::createBoard61() { //top right bot left 
 	SeaPart board[3][3];
-	board[0][0] = SeaPart(5);
-	board[0][1] = SeaPart(4);
-	board[0][2] = SeaPart(5);
-	board[1][0] = SeaPart(0);
+	board[0][0] = SeaPart(4);
+	board[0][1] = SeaPart(3);
+	board[0][2] = SeaPart(3);
+	board[1][0] = SeaPart(1);
 	board[1][1] = SeaPart(0);
-	board[1][2] = SeaPart(3);
-	board[2][0] = SeaPart(3);
+	board[1][2] = SeaPart(4);
+	board[2][0] = SeaPart(4);
 	board[2][1] = SeaPart(3);
 	board[2][2] = SeaPart(3);
 
 	Board* b = new Board(board);
 	b->initSeaPart();
-	Boat boats[4] = { Boat(b->getSeaPart(1, 1), Boat::Orientation::LEFT, b->getSeaPart(1, 2), Boat::Orientation::RIGHT, Boat::Color::RED) };
+	Boat boats[4] = { Boat(b->getSeaPart(0, 0), Boat::Orientation::BOT, NULL, Boat::Orientation::TOP, Boat::Color::RED) };
 	b->initBoats(boats, 1);
 	b->setIdentity();
 	return b;

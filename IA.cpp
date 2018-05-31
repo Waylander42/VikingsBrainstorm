@@ -17,6 +17,11 @@ void IA::play() {
 	printTimer();
 	std::cout << std::endl;
 	std::list<Step*> result = algorithm->getResult(); //regarder pour step*
+	if(result.empty()) {
+		board->print(endBoard);
+		std::cout << "Grille impossible à résoudre" << std::endl;
+		return;
+	}
 	while (result.empty() == false) {
 		if (result.front() != NULL) {
 			result.front()->print();

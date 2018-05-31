@@ -319,5 +319,5 @@ unsigned int EndBoardFactory::createEndBoard60() {
 }
 
 unsigned int EndBoardFactory::createEndBoard61() {
-	return 0 * 1 + 0 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
+	return 2 * 1 + 0 * 24 + 0 * 576 + 0 * 13824; //red, green, blue, yellow
 }
