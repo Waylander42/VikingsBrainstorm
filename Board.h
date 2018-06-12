@@ -12,7 +12,7 @@ public:
 	Board(SeaPart[3][3]);
 	Board(Board const&);
 
-	unsigned int getBoatsLocation(); //retourn un entier qui décrit de façon unique la position des bateaux
+	unsigned int getBoatsLocation(); //retourne un entier qui décrit de façon unique la position des bateaux
 	unsigned int setIdentity();
 	unsigned int getIdentity();
 	

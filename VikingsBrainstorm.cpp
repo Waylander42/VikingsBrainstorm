@@ -14,9 +14,14 @@
 #include "BinaryTreeAlgo.h"
 #include <iostream>
 #include <string>
+#include <SDL.h>
+#include <SDL_image.h>
+#include <stdio.h>
+#include <fstream>
+#include "Controller.h"
+#include "View.h"
 
-int main()
-{
+void console() {
 	Board* board = NULL;
 	unsigned int endBoard;
 	int modeJeu = 0;
@@ -42,7 +47,7 @@ int main()
 	while (nAlgo == 0 && modeJeu == 2) {
 		try {
 			std::cout << "Choisissez votre algorithme de resolution :" << std::endl;
-			for (int i = 1; i < NB_ALGO+1; i++) {
+			for (int i = 1; i < NB_ALGO + 1; i++) {
 				std::cout << i << " : " << ALGOS[i - 1] << std::endl;
 			}
 			std::cout << ">> ";
@@ -80,24 +85,45 @@ int main()
 	else {
 		Algorithm* algo = NULL;
 		switch (nAlgo) {
+			break;
 		case 1: algo = new ParcoursEnLargeur(board, endBoard);
 			break;
 		case 2: algo = new ParcoursEnLargeurTrie(board, endBoard);
 			break;
 		case 3: algo = new BinaryTreeAlgo(board, endBoard);
-			break;
 		default: break;
 		}
 		IA player = IA(board, endBoard, algo);
 		player.play();
 		delete algo;
 	}
-	main();
+	console();
 	char x;
 	std::cout << "Entrez quelque chose pour fermer : ";
 	std::cin >> x;
-	return 0;
-
 }
 
+void userInterface() {
+	Board* board = BoardFactory::createBoard(1);
+	unsigned int endboard = EndBoardFactory::createEndBoard(1);
+	Algorithm* algo = new BinaryTreeAlgo(board, endboard);
+
+	Controller controller = Controller(board, &endboard, algo);
+	View view = View(board, &endboard, algo);
+
+	controller.setView(&view);
+
+	controller.control();
+}
+
+int main(int argc, char* args[])
+{
+	if (UI == 1) {
+		userInterface();
+	}
+	else {
+		console();
+	}
+	return 0;
+}
 
