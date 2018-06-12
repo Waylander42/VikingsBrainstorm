@@ -69,7 +69,9 @@ void Controller::control() {
 						case SDLK_LEFT:
 							if (selected != -1) {
 								setStepNumber(stepNumber-1);
-								board->doStep(*passedSteps.front());
+								if (passedSteps.front() != NULL) {
+									board->doStep(*passedSteps.front());
+								}
 								stepsList.push_front(passedSteps.front());
 								passedSteps.pop_front();
 								view->refreshBoard();
@@ -92,7 +94,9 @@ void Controller::control() {
 						case SDLK_RIGHT:
 							if (selected != -1) {
 								setStepNumber(stepNumber+1);
-								board->doStep(*stepsList.front());
+								if (stepsList.front() != NULL) {
+									board->doStep(*stepsList.front());
+								}
 								passedSteps.push_front(stepsList.front());
 								stepsList.pop_front();
 								view->refreshBoard();
@@ -115,8 +119,6 @@ void Controller::control() {
 						case SDLK_RETURN:
 							if (selected == -1) {
 								setSelected(counter);
-								//*board = *BoardFactory::createBoard(selected);
-								//*endboard = EndBoardFactory::createEndBoard(selected);
 								algo->launch();
 								stepsList = algo->getResult();
 							}
@@ -143,8 +145,6 @@ void Controller::control() {
 			//Update screen
 			SDL_RenderPresent(gRenderer);
 		}
-		//Free resources and close SDL
-		//view->close(tileSet);
 	}
 }
 
