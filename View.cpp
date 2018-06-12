@@ -2,7 +2,7 @@
 #include "View.h"
 #include <list>
 
-View::View(Board * _board, unsigned int* _endboard, Algorithm * _algo) : algo(_algo), board(_board), endboard(_endboard), selected(0), counter(0), stepNumber(0), nAlgoUI(0),
+View::View(Board * _board, unsigned int* _endboard, Algorithm * _algo) : algo(_algo), board(_board), endboard(_endboard), selected(0), counter(0), stepNumber(0), nAlgoUI(2),
 screen(IMG_Load("img/fondScreen.png")),
 fondimg(IMG_Load("img/fond.png")),
 piece0(IMG_Load("img/piece0.png")),
@@ -117,7 +117,6 @@ void View::refreshBoard() {
 	SDL_FreeSurface(textRectAlgo);
 
 	//Draw Seaparts
-	board->print(*endboard);
 	std::list<int> identities;
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -142,6 +141,10 @@ void View::refreshBoard() {
 	identities.pop_front();
 	loadPiece(identities.front(), &botright);
 	identities.pop_front();
+	Boat* boats = board->getBoats();
+	for (int i = 0; i < board->getNbBoats(); i++) {
+		prepareBoat((boats + i)->getPart1()->getPosition(), (boats + i)->getOrientation1(), (boats + i)->getColor());
+	}
 
 	SDL_UpdateWindowSurface(gWindow);
 }
@@ -171,9 +174,105 @@ void View::loadPiece(int id, SDL_Rect* rect) {
 	SDL_BlitScaled(piece, NULL, gScreenSurface, rect);
 }
 	
-/*void View::loadBoat() {
-	unsigned int id = Board::getBoatsLocation();
-}*/
+void View::prepareBoat(int pos, int ori, Boat::Color color) {
+	unsigned int location = board->getLocation(pos, ori);
+	switch (location)
+	{
+	case 0 : loadBoat(92, 150, 66, 167, 'h', color);
+		break;
+	case 1: loadBoat(281, 150, 66, 167, 'h', color);
+		break;
+	case 2: loadBoat(470, 150, 66, 167, 'h', color);
+		break;
+	case 3: loadBoat(50, 192, 167, 66, 'v', color);
+		break;
+	case 4: loadBoat(236, 192, 167, 66, 'v', color);
+		break;
+	case 5: loadBoat(426, 192, 167, 66, 'v', color);
+		break;
+	case 6: loadBoat(614, 192, 167, 66, 'v', color);
+		break;
+	case 7: loadBoat(92, 336, 66, 167, 'h', color);
+		break;
+	case 8: loadBoat(281, 336, 66, 167, 'h', color);
+		break;
+	case 9: loadBoat(470, 336, 66, 167, 'h', color);
+		break;
+	case 10: loadBoat(50, 380, 167, 66, 'v', color);
+		break;
+	case 11: loadBoat(236, 380, 167, 66, 'v', color);
+		break;
+	case 12: loadBoat(426, 380, 167, 66, 'v', color);
+		break;
+	case 13: loadBoat(614, 380, 167, 66, 'v', color);
+		break;
+	case 14: loadBoat(92, 525, 66, 167, 'h', color);
+		break;
+	case 15: loadBoat(281, 525, 66, 167, 'h', color);
+		break;
+	case 16: loadBoat(470, 525, 66, 167, 'h', color);
+		break;
+	case 17: loadBoat(50, 571, 167, 66, 'v', color);
+		break;
+	case 18: loadBoat(236, 571, 167, 66, 'v', color);
+		break;
+	case 19: loadBoat(426, 571, 167, 66, 'v', color);
+		break;
+	case 20: loadBoat(614, 571, 167, 66, 'v', color);
+		break;
+	case 21: loadBoat(92, 714, 66, 167, 'h', color);
+		break;
+	case 22: loadBoat(281, 714, 66, 167, 'h', color);
+		break;
+	case 23: loadBoat(470, 714, 66, 167, 'h', color);
+		break;
+	}
+}
+
+void View::loadBoat(int x, int y, int h, int w, char orientation, Boat::Color color) {
+	SDL_Surface * image = NULL;
+	SDL_Rect* rect = NULL;
+	switch (color)
+	{
+	case Boat::RED: bred.x = x; bred.y = y; bred.h = h; bred.w = w;
+		rect = &bred;
+		if (orientation == 'v') {
+			image = brv;
+		}
+		else {
+			image = brh;
+		}
+		break;
+	case Boat::GREEN: bgreen.x = x; bgreen.y = y; bgreen.h = h; bgreen.w = w;
+		rect = &bgreen;
+		if (orientation == 'v') {
+			image = bgv;
+		}
+		else {
+			image = bgh;
+		}
+		break;
+	case Boat::BLUE: bblue.x = x; bblue.y = y; bblue.h = h; bblue.w = w;
+		rect = &bblue;
+		if (orientation == 'v') {
+			image = bbv;
+		}
+		else {
+			image = bbh;
+		}
+		break;
+	case Boat::YELLOW: byellow.x = x; byellow.y = y; byellow.h = h; byellow.w = w;
+		rect = &byellow;
+		if (orientation == 'v') {
+			image = byv;
+		}
+		else {
+			image = byh;
+		}
+		break;
+	}
+	SDL_BlitScaled(image, NULL, gScreenSurface, rect);
+}
 
 void View::setCounter(int _counter) {
 	counter = _counter;

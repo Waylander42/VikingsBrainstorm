@@ -13,6 +13,9 @@ public:
 	Board(Board const&);
 
 	unsigned int getBoatsLocation(); //retourne un entier qui décrit de façon unique la position des bateaux
+	unsigned int getLocation(int, int); //retourne l'emplacement du bateau. L'emplacement du bateau est un entier entre 0 et 23
+	int getNbBoats();
+	Boat* getBoats();
 	unsigned int setIdentity();
 	unsigned int getIdentity();
 	
@@ -35,7 +38,6 @@ public:
 
 private:
 	void setBoatsIdentity();
-	unsigned int getLocation(int, int); //retourne l'emplacement du bateau. L'emplacement du bateau est un entier entre 0 et 23
 	unsigned int getBoatLocation(int); //retourne un entier qui décrit de façon unique la position d'un bateau en fonction de sa couleur
 	void drawBoatArrival(int,char*, char);
 
