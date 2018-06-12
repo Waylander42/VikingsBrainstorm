@@ -92,6 +92,8 @@ class View
 		SDL_Surface* byv;
 
 		void loadPiece(int, SDL_Rect*);
+		void prepareBoat(int, int, Boat::Color);
+		void loadBoat(int, int, int, int, char, Boat::Color);
 };
 
 

@@ -93,6 +93,13 @@ unsigned int Board::getBoatsLocation() {
 	return res;
 }
 
+int Board::getNbBoats() {
+	return nbBoats;
+}
+
+Boat* Board::getBoats() {
+	return boats;
+}
 
 unsigned int Board::setIdentity() {
 	unsigned int boardID = 0;
