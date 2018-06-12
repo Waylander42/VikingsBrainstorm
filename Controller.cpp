@@ -81,7 +81,9 @@ void Controller::control() {
 								else {
 									setCounter(counter-1);
 								}
-								*board = *BoardFactory::createBoard(counter);
+								Board* newBoard = BoardFactory::createBoard(counter);
+								*board = Board(*newBoard);
+								delete newBoard;
 								*endboard = EndBoardFactory::createEndBoard(counter);
 								view->refreshBoard();
 							}
@@ -102,7 +104,9 @@ void Controller::control() {
 								else {
 									setCounter(counter+1);
 								}
-								*board = *BoardFactory::createBoard(counter);
+								Board* newBoard = BoardFactory::createBoard(counter);
+								*board = Board(*newBoard);
+								delete newBoard;
 								*endboard = EndBoardFactory::createEndBoard(counter);
 								view->refreshBoard();
 							}
