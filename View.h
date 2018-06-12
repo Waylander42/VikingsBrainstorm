@@ -68,8 +68,6 @@ class View
 		SDL_Rect byellow;
 
 		SDL_Surface* screen;
-		SDL_Surface* textGrid;
-		SDL_Surface* textAlgo;
 
 		SDL_Surface* fondimg;
 

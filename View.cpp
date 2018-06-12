@@ -101,10 +101,12 @@ void View::refreshBoard() {
 	SDL_BlitScaled(fondimg, NULL, gScreenSurface, &fond);
 	std::string s = "Grille : " + std::to_string(counter);
 	std::string s2 = "Algorithme : " + ALGOS[nAlgoUI];
-	textGrid = TTF_RenderText_Blended(font, s.c_str() , black);
-	textAlgo = TTF_RenderText_Blended(font, s2.c_str(), black);
+	SDL_Surface* textGrid = TTF_RenderText_Blended(font, s.c_str() , black);
+	SDL_Surface* textAlgo = TTF_RenderText_Blended(font, s2.c_str(), black);
 	SDL_BlitScaled(textGrid, NULL, gScreenSurface, &nGrid);
 	SDL_BlitScaled(textAlgo, NULL, gScreenSurface, &nAlgo);
+	SDL_FreeSurface(textGrid);
+	SDL_FreeSurface(textAlgo);
 
 	//Draw Seaparts
 	board->print(*endboard);
