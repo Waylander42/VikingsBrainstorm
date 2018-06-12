@@ -2,7 +2,7 @@
 #include "Controller.h"
 
 
-Controller::Controller(Board * _board, unsigned int* _endboard, Algorithm * _algo) : algo(_algo), board(_board), endboard(_endboard), counter(1), selected(-1),stepNumber(0)
+Controller::Controller(Board * _board, unsigned int* _endboard, Algorithm * _algo) : algo(_algo), board(_board), endboard(_endboard), counter(1), selected(-1),stepNumber(0), nAlgoUI(2)
 {
 }
 
@@ -54,6 +54,18 @@ void Controller::control() {
 					//Select surfaces based on key press
 					switch (e.key.keysym.sym)
 					{
+						case SDLK_UP:
+							if (nAlgoUI == 2) setnAlgoUI(0);
+							else setnAlgoUI(nAlgoUI+1);
+							view->refreshBoard();
+							break;
+
+						case SDLK_DOWN:
+							if (nAlgoUI == 0) setnAlgoUI(2);
+							else setnAlgoUI(nAlgoUI-1);
+							view->refreshBoard();
+							break;
+
 						case SDLK_LEFT:
 							if (selected != -1) {
 								setStepNumber(stepNumber-1);
@@ -143,4 +155,8 @@ void Controller::setSelected(int _selected) {
 void Controller::setStepNumber(int _stepNumber) {
 	stepNumber = _stepNumber;
 	view->setStepNumber(_stepNumber);
+}
+void Controller::setnAlgoUI(int _nAlgoUI) {
+	nAlgoUI = _nAlgoUI;
+	view->setnAlgoUI(_nAlgoUI);
 }

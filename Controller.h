@@ -28,12 +28,14 @@ public:
 	void setCounter(int);
 	void setSelected(int);
 	void setStepNumber(int);
+	void setnAlgoUI(int);
 
 private:
 
 	int counter;
 	int selected;
 	int stepNumber;
+	int nAlgoUI;
 
 	Board * board;
 	unsigned int* endboard;

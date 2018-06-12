@@ -32,6 +32,7 @@ class View
 		void setCounter(int);
 		void setSelected(int);
 		void setStepNumber(int);
+		void setnAlgoUI(int);
 
 	private:
 		Board* board;
@@ -41,6 +42,7 @@ class View
 		int counter;
 		int selected;
 		int stepNumber;
+		int nAlgoUI;
 
 		TTF_Font *font;
 		SDL_Color black = {0, 0, 0};
@@ -49,6 +51,8 @@ class View
 		SDL_Rect fondUI;
 		SDL_Rect nGrid;
 		SDL_Rect nAlgo;
+		SDL_Rect rectGrid;
+		SDL_Rect rectAlgo;
 
 		SDL_Rect fond;
 
@@ -70,6 +74,8 @@ class View
 		SDL_Surface* screen;
 		SDL_Surface* textGrid;
 		SDL_Surface* textAlgo;
+		SDL_Surface* textRectGrid;
+		SDL_Surface* textRectAlgo;
 
 		SDL_Surface* fondimg;
 

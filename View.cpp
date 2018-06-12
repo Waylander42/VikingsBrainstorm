@@ -2,7 +2,7 @@
 #include "View.h"
 #include <list>
 
-View::View(Board * _board, unsigned int* _endboard, Algorithm * _algo) : algo(_algo), board(_board), endboard(_endboard), selected(0), counter(0), stepNumber(0),
+View::View(Board * _board, unsigned int* _endboard, Algorithm * _algo) : algo(_algo), board(_board), endboard(_endboard), selected(0), counter(0), stepNumber(0), nAlgoUI(0),
 screen(IMG_Load("img/fondScreen.png")),
 fondimg(IMG_Load("img/fond.png")),
 piece0(IMG_Load("img/piece0.png")),
@@ -21,8 +21,10 @@ byh(IMG_Load("img/byh.png")),
 byv(IMG_Load("img/byv.png"))
 {
 	fondUI.x = 0; fondUI.y = 0; fondUI.h = 830; fondUI.w = 730;
-	nGrid.x = 50; nGrid.y = 25; nGrid.h = 30; nGrid.w = 200;
-	nAlgo.x = 300; nAlgo.y = 25; nAlgo.h = 30; nAlgo.w = 400;
+	nGrid.x = 140; nGrid.y = 25; nGrid.h = 30; nGrid.w = 25;
+	nAlgo.x = 350; nAlgo.y = 25; nAlgo.h = 30; nAlgo.w = 340;
+	rectGrid.x = 40; rectGrid.y = 25; rectGrid.h = 30; rectGrid.w = 100;
+	rectAlgo.x = 220; rectAlgo.y = 25; rectAlgo.h = 30; rectAlgo.w = 130;
 	fond.x = 0; fond.y = 100; fond.h = 730; fond.w = 730;
 	topleft.x = 50; topleft.y = 150; topleft.h = 250; topleft.w = 250;
 	top.x = 239; top.y = 150; top.h = 250; top.w = 250;
@@ -66,7 +68,7 @@ bool View::init()
 		}
 		else
 		{
-			font = TTF_OpenFont("angelina.ttf", 300);
+			font = TTF_OpenFont("quicksand.otf", 300);
 			//Create renderer for window
 			gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 			if (gRenderer == NULL)
@@ -99,10 +101,14 @@ bool View::init()
 void View::refreshBoard() {
 	SDL_BlitScaled(screen, NULL, gScreenSurface, &fondUI);
 	SDL_BlitScaled(fondimg, NULL, gScreenSurface, &fond);
-	std::string s = "Grille : " + std::to_string(counter);
-	std::string s2 = "Algorithme : " + ALGOS[nAlgoUI];
+	std::string s = std::to_string(counter);
+	std::string s2 = ALGOS[nAlgoUI];
 	textGrid = TTF_RenderText_Blended(font, s.c_str() , black);
 	textAlgo = TTF_RenderText_Blended(font, s2.c_str(), black);
+	textRectGrid = TTF_RenderText_Blended(font, "Grille : ", black);
+	textRectAlgo = TTF_RenderText_Blended(font, "Algorithme : ", black);
+	SDL_BlitScaled(textRectGrid, NULL, gScreenSurface, &rectGrid);
+	SDL_BlitScaled(textRectAlgo, NULL, gScreenSurface, &rectAlgo);
 	SDL_BlitScaled(textGrid, NULL, gScreenSurface, &nGrid);
 	SDL_BlitScaled(textAlgo, NULL, gScreenSurface, &nAlgo);
 
@@ -173,4 +179,7 @@ void View::setSelected(int _selected) {
 }
 void View::setStepNumber(int _stepNumber) {
 	stepNumber = _stepNumber;
+}
+void View::setnAlgoUI(int _nAlgoUI) {
+	nAlgoUI = _nAlgoUI;
 }

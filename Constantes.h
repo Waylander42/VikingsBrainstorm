@@ -12,4 +12,3 @@ const int UI = 1;
 const int SCREEN_WIDTH = 730;
 const int SCREEN_HEIGHT = 830;
 
-static int nAlgoUI = 2;
