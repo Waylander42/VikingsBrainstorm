@@ -374,3 +374,11 @@ void View::setRealTime(double _realTime) {
 	SDL_FreeSurface(textTime);	
 	SDL_UpdateWindowSurface(gWindow);
 }
+
+void View::setEndBoard(unsigned int* _endBoard) {
+	endboard = _endBoard;
+}
+
+void View::setBoard(Board* _board) {
+	board = _board;
+}
