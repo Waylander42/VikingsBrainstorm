@@ -152,9 +152,11 @@ void View::refreshBoard() {
 	identities.pop_front();
 	loadPiece(identities.front(), &botright);
 	identities.pop_front();
+
 	Boat* boats = board->getBoats();
 	for (int i = 0; i < board->getNbBoats(); i++) {
 		prepareBoat((boats + i)->getPart1()->getPosition(), (boats + i)->getOrientation1(), (boats + i)->getColor());
+		prepareArrival(endboard, (boats + i)->getColor());
 	}
 
 	SDL_UpdateWindowSurface(gWindow);
@@ -285,14 +287,55 @@ void View::loadBoat(int x, int y, int h, int w, char orientation, Boat::Color co
 	SDL_BlitScaled(image, NULL, gScreenSurface, rect);
 }
 
-/*void View::prepareArrival() {
-	int yellow = endboard / 13824;
-	int reste = endboard % 13824;
-	int blue = reste / 576;
-	reste = reste % 576;
-	int green = reste / 24;
-	int red = reste % 24;
-}*/
+void View::prepareArrival(unsigned int* endboard, Boat::Color color) {
+	int reste = *endboard % 13824;
+	int position = -1;
+	switch (color) {
+	case Boat::RED: reste = reste % 576; position = reste % 24; break;
+	case Boat::GREEN: reste = reste % 576; position = reste / 24; break;
+	case Boat::BLUE: position = reste / 576; break;
+	case Boat::YELLOW: position = *endboard / 13824; break;
+	}
+
+	switch (position) {
+	case 0: loadArrival(160, 110, 30, 30, color); break;
+	case 1: loadArrival(347, 110, 30, 30, color); break;
+	case 2: loadArrival(540, 110, 30, 30, color); break;
+	case 3: loadArrival(15, 260, 30, 30, color); break;
+	case 6: loadArrival(685, 260, 30, 30, color); break;
+	case 10: loadArrival(15, 450, 30, 30, color); break;
+	case 13: loadArrival(685, 450, 30, 30, color); break;
+	case 17: loadArrival(15, 635, 30, 30, color); break;
+	case 20: loadArrival(685, 635, 30, 30, color); break;
+	case 21: loadArrival(160, 785, 30, 30, color); break;
+	case 22: loadArrival(347, 785, 30, 30, color); break;
+	case 23: loadArrival(540, 785, 30, 30, color); break;
+	}
+}
+
+void View::loadArrival(int x, int y, int h, int w, Boat::Color color) {
+	SDL_Surface * image = NULL;
+	SDL_Rect* rect = NULL;
+	switch (color)
+	{
+	case Boat::RED: ared.x = x; ared.y = y; ared.h = h; ared.w = w;
+		rect = &ared;
+		image = arrivalRed;
+		break;
+	case Boat::GREEN: agreen.x = x; agreen.y = y; agreen.h = h; agreen.w = w;
+		rect = &agreen;
+		image = arrivalGreen;
+		break;
+	case Boat::BLUE: ablue.x = x; ablue.y = y; ablue.h = h; ablue.w = w;
+		rect = &ablue;
+		image = arrivalBlue;
+		break;
+	case Boat::YELLOW: ayellow.x = x; ayellow.y = y; ayellow.h = h; ayellow.w = w;
+		rect = &ayellow;
+		image = arrivalYellow;
+	}
+	SDL_BlitScaled(image, NULL, gScreenSurface, rect);
+}
 
 void View::setCounter(int _counter) {
 	counter = _counter;

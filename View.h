@@ -35,7 +35,8 @@ class View
 		void setStepNumber(int);
 		void setnAlgoUI(int);
 		void setRealTime(double);
-
+		
+		
 
 	private:
 		Board* board;
@@ -111,6 +112,9 @@ class View
 		void loadPiece(int, SDL_Rect*);
 		void prepareBoat(int, int, Boat::Color);
 		void loadBoat(int, int, int, int, char, Boat::Color);
+		void prepareArrival(unsigned int*, Boat::Color);
+		void loadArrival(int, int, int, int, Boat::Color);
+
 };
 
 
