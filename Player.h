@@ -14,10 +14,14 @@ public:
 	unsigned int getEndBoard();
 	void startTimer();
 	void printTimer();
+	
+	double getFinalTime();
+	
 
 protected:
 	Board * board;
 	unsigned int endBoard;
 	std::clock_t timer;
+	double finalTime;
 };
 

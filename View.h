@@ -9,6 +9,7 @@
 #include "Algorithm.h"
 #include "Constantes.h"
 #include <SDL_ttf.h>
+#include "Player.h"
 
 //The window we'll be rendering to
 static SDL_Window* gWindow = NULL;
@@ -51,8 +52,10 @@ class View
 		SDL_Rect fondUI;
 		SDL_Rect nGrid;
 		SDL_Rect nAlgo;
+		SDL_Rect nTime;
 		SDL_Rect rectGrid;
 		SDL_Rect rectAlgo;
+		SDL_Rect rectTime;
 
 		SDL_Rect fond;
 
