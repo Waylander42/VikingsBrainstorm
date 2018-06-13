@@ -18,7 +18,11 @@ bgv(IMG_Load("img/bgv.png")),
 brh(IMG_Load("img/brh.png")),
 brv(IMG_Load("img/brv.png")),
 byh(IMG_Load("img/byh.png")),
-byv(IMG_Load("img/byv.png"))
+byv(IMG_Load("img/byv.png")),
+arrivalBlue(IMG_Load("img/arrivalBlue.png")),
+arrivalGreen(IMG_Load("img/arrivalGreen.png")),
+arrivalRed(IMG_Load("img/arrivalRed.png")),
+arrivalYellow(IMG_Load("img/arrivalYellow.png"))
 {
 	fondUI.x = 0; fondUI.y = 0; fondUI.h = 830; fondUI.w = 730;
 	nGrid.x = 140; nGrid.y = 25; nGrid.h = 30; nGrid.w = 25;
@@ -105,10 +109,8 @@ void View::refreshBoard() {
 	SDL_BlitScaled(fondimg, NULL, gScreenSurface, &fond);
 	std::string s = std::to_string(counter);
 	std::string s2 = ALGOS[nAlgoUI];
-	std::string s3 = "WIP"; //std::to_string(Player::getFinalTime()); //
 	SDL_Surface* textGrid = TTF_RenderText_Blended(font, s.c_str() , black);
 	SDL_Surface* textAlgo = TTF_RenderText_Blended(font, s2.c_str(), black);
-	SDL_Surface* textTime = TTF_RenderText_Blended(font, s3.c_str(), black);
 	SDL_Surface* textRectGrid = TTF_RenderText_Blended(font, "Grille : ", black);
 	SDL_Surface* textRectAlgo = TTF_RenderText_Blended(font, "Algorithme : ", black);
 	SDL_Surface* textRectTime = TTF_RenderText_Blended(font, "Temps : ", black);
@@ -117,13 +119,13 @@ void View::refreshBoard() {
 	SDL_BlitScaled(textRectTime, NULL, gScreenSurface, &rectTime);
 	SDL_BlitScaled(textGrid, NULL, gScreenSurface, &nGrid);
 	SDL_BlitScaled(textAlgo, NULL, gScreenSurface, &nAlgo);
-	SDL_BlitScaled(textTime, NULL, gScreenSurface, &nTime);
 	SDL_FreeSurface(textGrid);
 	SDL_FreeSurface(textAlgo);
-	SDL_FreeSurface(textTime);
 	SDL_FreeSurface(textRectGrid);
 	SDL_FreeSurface(textRectAlgo);
 	SDL_FreeSurface(textRectTime);
+	
+	setRealTime(realTime);
 
 	//Draw Seaparts
 	std::list<int> identities;
@@ -283,6 +285,15 @@ void View::loadBoat(int x, int y, int h, int w, char orientation, Boat::Color co
 	SDL_BlitScaled(image, NULL, gScreenSurface, rect);
 }
 
+/*void View::prepareArrival() {
+	int yellow = endboard / 13824;
+	int reste = endboard % 13824;
+	int blue = reste / 576;
+	reste = reste % 576;
+	int green = reste / 24;
+	int red = reste % 24;
+}*/
+
 void View::setCounter(int _counter) {
 	counter = _counter;
 }
@@ -294,4 +305,20 @@ void View::setStepNumber(int _stepNumber) {
 }
 void View::setnAlgoUI(int _nAlgoUI) {
 	nAlgoUI = _nAlgoUI;
+}
+void View::setRealTime(double _realTime) {
+	realTime = _realTime;
+	SDL_Surface* textTime = NULL;
+	if (realTime == 0.0) {
+		textTime = TTF_RenderText_Blended(font, "", black);
+	}
+	else {
+		int seconde = realTime / 1000;
+		int miliSeconde = realTime - seconde * 1000;
+		std::string timer = std::to_string(seconde) + "," + std::to_string(miliSeconde) + " secondes";
+		textTime = TTF_RenderText_Blended(font, timer.c_str(), black);
+	}
+	SDL_BlitScaled(textTime, NULL, gScreenSurface, &nTime);
+	SDL_FreeSurface(textTime);	
+	SDL_UpdateWindowSurface(gWindow);
 }

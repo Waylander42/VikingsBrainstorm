@@ -119,13 +119,16 @@ void Controller::control() {
 						case SDLK_RETURN:
 							if (selected == -1) {
 								setSelected(counter);
+								double timer = clock();
 								algo->launch();
+								view->setRealTime((double)clock()- timer);
 								stepsList = algo->getResult();
 							}
 							break;
 
 						case SDLK_BACKSPACE:
 							setSelected(-1);
+							view->setRealTime(0.0);
 							break;
 
 						case SDLK_ESCAPE:

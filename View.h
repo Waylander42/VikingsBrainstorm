@@ -34,6 +34,8 @@ class View
 		void setSelected(int);
 		void setStepNumber(int);
 		void setnAlgoUI(int);
+		void setRealTime(double);
+
 
 	private:
 		Board* board;
@@ -44,6 +46,7 @@ class View
 		int selected;
 		int stepNumber;
 		int nAlgoUI;
+		double realTime;
 
 		TTF_Font *font;
 		SDL_Color black = {0, 0, 0};
@@ -74,6 +77,11 @@ class View
 		SDL_Rect bred;
 		SDL_Rect byellow;
 
+		SDL_Rect ablue;
+		SDL_Rect agreen;
+		SDL_Rect ared;
+		SDL_Rect ayellow;
+
 		SDL_Surface* screen;
 
 		SDL_Surface* fondimg;
@@ -93,6 +101,12 @@ class View
 		SDL_Surface* brv;
 		SDL_Surface* byh;
 		SDL_Surface* byv;
+
+		SDL_Surface* arrivalBlue;
+		SDL_Surface* arrivalGreen;
+		SDL_Surface* arrivalRed;
+		SDL_Surface* arrivalYellow;
+
 
 		void loadPiece(int, SDL_Rect*);
 		void prepareBoat(int, int, Boat::Color);
