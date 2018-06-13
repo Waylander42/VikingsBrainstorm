@@ -35,6 +35,8 @@ class View
 		void setStepNumber(int);
 		void setnAlgoUI(int);
 		void setRealTime(double);
+		void setBoard(Board*);
+		void setEndBoard(unsigned int*);
 
 
 	private:

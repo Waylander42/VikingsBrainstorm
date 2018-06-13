@@ -89,9 +89,9 @@ void Controller::control() {
 								else {
 									setCounter(counter-1);
 								}
-								Board* newBoard = BoardFactory::createBoard(counter);
-								*board = Board(*newBoard);
-								delete newBoard;
+								delete board;
+								board = BoardFactory::createBoard(counter);
+								view->setBoard(board);
 								*endboard = EndBoardFactory::createEndBoard(counter);
 								view->refreshBoard();
 							}
@@ -114,9 +114,9 @@ void Controller::control() {
 								else {
 									setCounter(counter+1);
 								}
-								Board* newBoard = BoardFactory::createBoard(counter);
-								*board = Board(*newBoard);
-								delete newBoard;
+								delete board;
+								board = BoardFactory::createBoard(counter);
+								view->setBoard(board);
 								*endboard = EndBoardFactory::createEndBoard(counter);
 								view->refreshBoard();
 							}
@@ -146,11 +146,10 @@ void Controller::control() {
 							if (selected != -1) {
 								view->setRealTime(0.0);
 								delete algo;
-								Board* newBoard = BoardFactory::createBoard(counter);
-								*board = Board(*newBoard);
-
-								delete newBoard;
-								*endboard = EndBoardFactory::createEndBoard(counter); 
+								delete board;
+								board = BoardFactory::createBoard(counter);
+								view->setBoard(board);
+								*endboard = EndBoardFactory::createEndBoard(counter);
 								setSelected(-1);
 								view->refreshBoard();
 							}
