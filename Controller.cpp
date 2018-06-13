@@ -55,15 +55,19 @@ void Controller::control() {
 					switch (e.key.keysym.sym)
 					{
 						case SDLK_UP:
-							if (nAlgoUI == 2) setnAlgoUI(0);
-							else setnAlgoUI(nAlgoUI+1);
-							view->refreshBoard();
+							if (selected == -1) {
+								if (nAlgoUI == 2) setnAlgoUI(0);
+								else setnAlgoUI(nAlgoUI + 1);
+								view->refreshBoard();
+							}
 							break;
 
 						case SDLK_DOWN:
-							if (nAlgoUI == 0) setnAlgoUI(2);
-							else setnAlgoUI(nAlgoUI-1);
-							view->refreshBoard();
+							if (selected == -1) {
+								if (nAlgoUI == 0) setnAlgoUI(2);
+								else setnAlgoUI(nAlgoUI - 1);
+								view->refreshBoard();
+							}
 							break;
 
 						case SDLK_LEFT:
