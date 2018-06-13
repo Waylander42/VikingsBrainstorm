@@ -85,18 +85,18 @@ void console() {
 	else {
 		Algorithm* algo = NULL;
 		switch (nAlgo) {
-			break;
 		case 1: algo = new ParcoursEnLargeur(board, endBoard);
 			break;
 		case 2: algo = new ParcoursEnLargeurTrie(board, endBoard);
 			break;
 		case 3: algo = new BinaryTreeAlgo(board, endBoard);
-		default: break;
+			break;
 		}
 		IA player = IA(board, endBoard, algo);
 		player.play();
 		delete algo;
 	}
+	delete board;
 	console();
 	char x;
 	std::cout << "Entrez quelque chose pour fermer : ";
@@ -108,7 +108,7 @@ void userInterface() {
 	unsigned int endboard = EndBoardFactory::createEndBoard(1);
 	Algorithm* algo = new BinaryTreeAlgo(board, endboard);
 
-	Controller controller = Controller(board, &endboard, algo);
+	Controller controller = Controller(board, &endboard, 2);
 	View view = View(board, &endboard, algo);
 
 	controller.setView(&view);

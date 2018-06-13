@@ -1,8 +1,10 @@
 ﻿#include "stdafx.h"
 #include "Controller.h"
+#include "ParcoursEnLargeur.h"
+#include "ParcoursEnLargeurTrie.h"
+#include "BinaryTreeAlgo.h"
 
-
-Controller::Controller(Board * _board, unsigned int* _endboard, Algorithm * _algo) : algo(_algo), board(_board), endboard(_endboard), counter(1), selected(-1),stepNumber(0), nAlgoUI(2)
+Controller::Controller(Board * _board, unsigned int* _endboard, int _algo) : algo(NULL), board(_board), endboard(_endboard), counter(1), selected(-1),stepNumber(0), nAlgoUI(_algo)
 {
 }
 
@@ -122,6 +124,16 @@ void Controller::control() {
 
 						case SDLK_RETURN:
 							if (selected == -1) {
+
+								switch (nAlgoUI) {
+								case 0: algo = new ParcoursEnLargeur(board, *endboard);
+									break;
+								case 1: algo = new ParcoursEnLargeurTrie(board, *endboard);
+									break;
+								case 2: algo = new BinaryTreeAlgo(board, *endboard);
+									break;
+								}
+
 								setSelected(counter);
 								double timer = clock();
 								algo->launch();
@@ -131,8 +143,17 @@ void Controller::control() {
 							break;
 
 						case SDLK_BACKSPACE:
-							setSelected(-1);
-							view->setRealTime(0.0);
+							if (selected != -1) {
+								view->setRealTime(0.0);
+								delete algo;
+								Board* newBoard = BoardFactory::createBoard(counter);
+								*board = Board(*newBoard);
+
+								delete newBoard;
+								*endboard = EndBoardFactory::createEndBoard(counter); 
+								setSelected(-1);
+								view->refreshBoard();
+							}
 							break;
 
 						case SDLK_ESCAPE:

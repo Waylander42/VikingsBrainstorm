@@ -18,7 +18,7 @@
 class Controller
 {
 public:
-	Controller(Board *, unsigned int *, Algorithm *);
+	Controller(Board *, unsigned int *, int);
 	~Controller();
 
 	void setView(View *);

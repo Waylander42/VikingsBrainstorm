@@ -49,8 +49,7 @@ Board::Board(Board const& b):nbBoats(b.nbBoats), identity(b.identity), board{ { 
 	setBoatsIdentity();
 }
 
-Board::~Board()
-{
+Board::~Board(){
 }
 
 //retourne l'emplacement du bateau. L'emplacement du bateau est un entier entre 0 et 23
