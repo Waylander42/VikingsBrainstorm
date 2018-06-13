@@ -13,9 +13,6 @@ Algorithm::Algorithm() : Algorithm(NULL, 0)
 
 Algorithm::~Algorithm()
 {
-	if (board != NULL) {
-		delete board;
-	}
 	while (result.size() != 0) {
 		if (result.back() != NULL) {
 			delete result.back();
