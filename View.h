@@ -38,7 +38,6 @@ class View
 		void setBoard(Board*);
 		void setEndBoard(unsigned int*);
 
-
 	private:
 		Board* board;
 		unsigned int* endboard;
@@ -113,6 +112,9 @@ class View
 		void loadPiece(int, SDL_Rect*);
 		void prepareBoat(int, int, Boat::Color);
 		void loadBoat(int, int, int, int, char, Boat::Color);
+		void prepareArrival(unsigned int*, Boat::Color);
+		void loadArrival(int, int, int, int, Boat::Color);
+
 };
 
 
