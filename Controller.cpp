@@ -73,7 +73,7 @@ void Controller::control() {
 							break;
 
 						case SDLK_LEFT:
-							if (selected != -1) {
+							if (selected != -1 && stepNumber > 0) {
 								setStepNumber(stepNumber-1);
 								if (passedSteps.front() != NULL) {
 									board->doStep(*passedSteps.front());
@@ -82,7 +82,7 @@ void Controller::control() {
 								passedSteps.pop_front();
 								view->refreshBoard();
 							}
-							else {
+							else if (selected == -1) {
 								if (counter == 1) {
 									setCounter(60);
 								}
@@ -98,7 +98,7 @@ void Controller::control() {
 							break;
 
 						case SDLK_RIGHT:
-							if (selected != -1) {
+							if (selected != -1 && stepNumber < stepsList.size() - 1) {
 								setStepNumber(stepNumber+1);
 								if (stepsList.front() != NULL) {
 									board->doStep(*stepsList.front());
@@ -107,7 +107,7 @@ void Controller::control() {
 								stepsList.pop_front();
 								view->refreshBoard();
 							}
-							else {
+							else if (selected == -1) {
 								if (counter == 60) {
 									setCounter(1);
 								}
