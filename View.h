@@ -57,9 +57,11 @@ class View
 		SDL_Rect nGrid;
 		SDL_Rect nAlgo;
 		SDL_Rect nTime;
+		SDL_Rect nStep;
 		SDL_Rect rectGrid;
 		SDL_Rect rectAlgo;
 		SDL_Rect rectTime;
+		SDL_Rect rectStep;
 
 		SDL_Rect fond;
 

@@ -27,10 +27,12 @@ arrivalYellow(IMG_Load("img/arrivalYellow.png"))
 	fondUI.x = 0; fondUI.y = 0; fondUI.h = 830; fondUI.w = 730;
 	nGrid.x = 140; nGrid.y = 25; nGrid.h = 30; nGrid.w = 25;
 	nAlgo.x = 350; nAlgo.y = 25; nAlgo.h = 30; nAlgo.w = 340;
-	nTime.x = 300; nTime.y = 60; nTime.h = 30; nTime.w = 200;
+	nTime.x = 350; nTime.y = 60; nTime.h = 30; nTime.w = 200;
+	nStep.x = 140; nStep.y = 60; nStep.h = 30; nStep.w = 25;
 	rectGrid.x = 40; rectGrid.y = 25; rectGrid.h = 30; rectGrid.w = 100;
 	rectAlgo.x = 220; rectAlgo.y = 25; rectAlgo.h = 30; rectAlgo.w = 130;
-	rectTime.x = 200; rectTime.y = 60; rectTime.h = 30; rectTime.w = 100;
+	rectTime.x = 250; rectTime.y = 60; rectTime.h = 30; rectTime.w = 100;
+	rectStep.x = 40; rectStep.y = 60; rectStep.h = 30; rectStep.w = 100;
 	fond.x = 0; fond.y = 100; fond.h = 730; fond.w = 730;
 	topleft.x = 50; topleft.y = 150; topleft.h = 250; topleft.w = 250;
 	top.x = 239; top.y = 150; top.h = 250; top.w = 250;
@@ -109,21 +111,28 @@ void View::refreshBoard() {
 	SDL_BlitScaled(fondimg, NULL, gScreenSurface, &fond);
 	std::string s = std::to_string(counter);
 	std::string s2 = ALGOS[nAlgoUI];
+	std::string s3 = std::to_string(stepNumber);
 	SDL_Surface* textGrid = TTF_RenderText_Blended(font, s.c_str() , black);
 	SDL_Surface* textAlgo = TTF_RenderText_Blended(font, s2.c_str(), black);
+	SDL_Surface* textStep = TTF_RenderText_Blended(font, s3.c_str(), black);
 	SDL_Surface* textRectGrid = TTF_RenderText_Blended(font, "Grille : ", black);
 	SDL_Surface* textRectAlgo = TTF_RenderText_Blended(font, "Algorithme : ", black);
 	SDL_Surface* textRectTime = TTF_RenderText_Blended(font, "Temps : ", black);
+	SDL_Surface* textRectStep = TTF_RenderText_Blended(font, "Etape : ", black);
 	SDL_BlitScaled(textRectGrid, NULL, gScreenSurface, &rectGrid);
 	SDL_BlitScaled(textRectAlgo, NULL, gScreenSurface, &rectAlgo);
 	SDL_BlitScaled(textRectTime, NULL, gScreenSurface, &rectTime);
+	SDL_BlitScaled(textRectStep, NULL, gScreenSurface, &rectStep);
 	SDL_BlitScaled(textGrid, NULL, gScreenSurface, &nGrid);
 	SDL_BlitScaled(textAlgo, NULL, gScreenSurface, &nAlgo);
+	SDL_BlitScaled(textStep, NULL, gScreenSurface, &nStep);
 	SDL_FreeSurface(textGrid);
 	SDL_FreeSurface(textAlgo);
+	SDL_FreeSurface(textStep);
 	SDL_FreeSurface(textRectGrid);
 	SDL_FreeSurface(textRectAlgo);
 	SDL_FreeSurface(textRectTime);
+	SDL_FreeSurface(textRectStep);
 	
 	setRealTime(realTime);
 
