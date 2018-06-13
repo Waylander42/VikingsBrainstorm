@@ -36,6 +36,7 @@ private:
 	int selected;
 	int stepNumber;
 	int nAlgoUI;
+	std::list<Step*> stepsList;
 
 	Board * board;
 	unsigned int* endboard;

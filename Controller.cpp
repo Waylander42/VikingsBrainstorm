@@ -33,9 +33,6 @@ void Controller::control() {
 		//Main loop flag
 		bool quit = false;
 
-		std::list<Step*> stepsList;
-		std::list<Step*> passedSteps;
-
 		//Event handler
 		SDL_Event e;
 
@@ -74,12 +71,12 @@ void Controller::control() {
 
 						case SDLK_LEFT:
 							if (selected != -1 && stepNumber > 0) {
-								setStepNumber(stepNumber-1);
-								if (passedSteps.front() != NULL) {
-									board->doStep(*passedSteps.front());
+								setStepNumber(stepNumber - 1);
+								std::list<Step*>::iterator it = stepsList.begin();
+								std::advance(it, stepNumber + 1);
+								if (*it != NULL) {
+									board->doReverseStep(**it);
 								}
-								stepsList.push_front(passedSteps.front());
-								passedSteps.pop_front();
 								view->refreshBoard();
 							}
 							else if (selected == -1) {
@@ -99,12 +96,12 @@ void Controller::control() {
 
 						case SDLK_RIGHT:
 							if (selected != -1 && stepNumber < stepsList.size() - 1) {
-								setStepNumber(stepNumber+1);
-								if (stepsList.front() != NULL) {
-									board->doStep(*stepsList.front());
+								setStepNumber(stepNumber + 1);
+								std::list<Step*>::iterator it = stepsList.begin();
+								std::advance(it, stepNumber);
+								if (*it != NULL) {
+									board->doStep(**it);
 								}
-								passedSteps.push_front(stepsList.front());
-								stepsList.pop_front();
 								view->refreshBoard();
 							}
 							else if (selected == -1) {

@@ -29,6 +29,7 @@ public:
 
 	std::list<Step> getListOfStep();
 	bool doStep(Step);
+	bool doReverseStep(Step);
 
 	//fonctions d'initialisation à appeler après la création d'un board
 	void initBoats(Boat[4], int);

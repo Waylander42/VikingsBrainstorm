@@ -427,6 +427,21 @@ bool Board::doStep(Step step) {
 	return true;
 }
 
+bool Board::doReverseStep(Step step) {
+	if (!canRotate(step.getX(), step.getY())) {
+		return false;
+	}
+	switch (step.getRotation()) {
+	case Step::Rotation::LEFT: rotateRight(step.getX(), step.getY());
+		break;
+	case Step::Rotation::RIGHT: rotateLeft(step.getX(), step.getY());
+		break;
+	case Step::Rotation::HALF: rotateHalf(step.getX(), step.getY());
+		break;
+	}
+	return true;
+}
+
 void Board::setBoatsIdentity() {
 	for (int x = 0; x < 3; x++) {
 		for (int y = 0; y < 3; y++) {
